@@ -104,3 +104,13 @@ body {
   background-color: #9FC492;
   margin-top: 9rem;
 }
+
+.font-icon-wrapper.active {
+  background-color: white;
+  color: black !important;
+  border: none !important;
+}
+
+.font-icon-wrapper {
+  cursor: pointer;
+}

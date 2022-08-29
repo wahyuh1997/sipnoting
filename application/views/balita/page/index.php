@@ -14,9 +14,9 @@
         </div>
       </div>
     </div>
-    <div class="page-title-actions">
+    <!-- <div class="page-title-actions">
       <a href="<?= base_url('balita/add'); ?>" class="btn btn-shadow btn-info">Tambah Data Balita</a>
-    </div>
+    </div> -->
   </div>
 </div>
 <!-- End Main Content -->
