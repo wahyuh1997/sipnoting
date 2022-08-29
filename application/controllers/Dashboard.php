@@ -15,6 +15,11 @@ class Dashboard extends MY_Controller
    */
   public function index()
   {
-    $this->load_template('dashboard/page/index', null);
+    $data = [
+      'title'     => 'Dashboard',
+      'subtitle'  => 'Anak Laki-Laki',
+    ];
+
+    $this->load_template('dashboard/page/index', $data);
   }
 }
