@@ -15,13 +15,10 @@ class User extends MY_Controller
    */
   public function index()
   {
-    $data = $this->lib_curl->curl_request($this->pos_service_v1 . 'auth/get_all_user');
     // dataView
     $dataView = [
-      'title'     => 'User',
-      'subtitle'  => 'User',
-      'data'      => $data['data'],
-      'js'        => 'user/js/data'
+      'title'     => 'Data Anggota',
+      'subtitle'  => 'Seluruh Data Anggota',
     ];
 
     // view
@@ -34,15 +31,12 @@ class User extends MY_Controller
     if (count($post) == 0) {
       // dataView
       $dataView = [
-        'title'     => 'Master Data',
-        'subtitle'  => 'Add New User'
+        'title'     => 'Data Anggota',
+        'subtitle'  => 'Tambah Data Anggota',
       ];
 
       // view
       $this->load_template('user/page/add', $dataView);
-    } else {
-      $response = $this->lib_curl->curl_request($this->pos_service_v1 . 'register', 'POST', $_POST);
-      echo json_encode($response);
     }
   }
 

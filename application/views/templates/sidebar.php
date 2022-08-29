@@ -74,7 +74,13 @@
           </a>
         </li>
         <li>
-          <a href="#">
+          <a href="#" class="">
+            <i class="metismenu-icon pe-7s-graph2"></i>
+            Grafik Balita
+          </a>
+        </li>
+        <li>
+          <a href="<?= base_url('user'); ?>" class="<?= $this->uri->segment(1) == 'user' ? 'mm-active' : null ?>">
             <i class="metismenu-icon pe-7s-user"></i>
             Data Anggota
           </a>
