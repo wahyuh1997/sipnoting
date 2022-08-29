@@ -20,6 +20,36 @@ class Auth extends MY_Controller
       'subtitle'  => 'Login Sipnoting',
     ];
 
-    $this->load->view('balita/page/index', $data);
+    $this->load->view('auth/login', $data);
+  }
+
+  public function register()
+  {
+    $data = [
+      'title'     => 'Daftar',
+      'subtitle'  => 'Daftar Sipnoting',
+    ];
+
+    $this->load->view('auth/register', $data);
+  }
+
+  public function verif_email()
+  {
+    $data = [
+      'title'     => 'Verifikasi Email',
+      'subtitle'  => 'Daftar Sipnoting',
+    ];
+
+    $this->load->view('auth/verif_email', $data);
+  }
+
+  public function verif_success()
+  {
+    $data = [
+      'title'     => 'Verifikasi Berhasil',
+      'subtitle'  => 'Daftar Sipnoting',
+    ];
+
+    $this->load->view('auth/verif_success', $data);
   }
 }

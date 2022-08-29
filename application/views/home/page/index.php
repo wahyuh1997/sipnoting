@@ -3,11 +3,11 @@
   <div class="row mt-5">
     <div class="col-lg-6 pe-0 top-header" style="position: relative;">
       <div class="title">
-        <p>Diagnosis</p>
-        <p style="margin-left: 5rem;">Stunting</p>
-        <p>Pada Anak</p>
+        <p class="mb-0">Diagnosis</p>
+        <p class="mb-0" style="margin-left: 5rem;">Stunting</p>
+        <p class="mb-0">Pada Anak</p>
       </div>
-      <div style="width: 42rem;">
+      <div style="width: 32rem;">
         <span>Anak pendek belum tentu stunting, tetapi anak stunting sudah pasti pendek, cegah stunting sejak dini dengan kenali pertumbuhan tingginya.</span>
       </div>
       <img class="stetoskop" src="<?= base_url('assets/img/stethoscope_1.png'); ?>" alt="Stetoskop">

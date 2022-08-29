@@ -23,8 +23,8 @@
         <div class="navbar-nav ms-auto">
           <a class="nav-link me-3 <?= $this->uri->segment(1) == 'home' || $this->uri->segment(1) == '' ? 'active' : null; ?>" href="<?= base_url(); ?>">HOME</a>
           <a class="nav-link me-3 <?= $this->uri->segment(1) == 'diagnosis' ? 'active' : null; ?>" href="<?= base_url('diagnosis'); ?>">DIAGNOSIS</a>
-          <a class="nav-link me-5" href="#">RIWAYAT</a>
-          <a class="nav-link" href="#">LOGIN</a>
+          <a class="nav-link me-5 <?= $this->uri->segment(1) == 'riwayat' ? 'active' : null; ?>" href="<?= base_url('riwayat'); ?>">RIWAYAT</a>
+          <a class="nav-link" href="<?= base_url('auth/login'); ?>">LOGIN</a>
         </div>
       </div>
     </div>

@@ -33,7 +33,7 @@ body {
   {
   color: white !important;
   font-weight: 500;
-}
+  }
 
 .nav-link.active {
   color: white !important;
@@ -43,25 +43,25 @@ body {
 .top-header .title {
   color: var(--primaryText);
   font-weight: 700;
-  font-size: 7rem;
-  /* line-height: 240px; */
+  font-size: 5rem;
+  line-height: -1rem !important;
   margin-bottom: 0;
   font-family: 'Poppins', sans-serif;
 }
 
 .top-header span {
   font-weight: 600;
-  font-size: 30px;
+  font-size: 2rem;
   line-height: 108.1%;
   color: #FFFFFF;
 }
 
 .stetoskop {
   position: absolute;
-  width: 20rem;
-  height: 347.54px;
-  top: 20rem;
-  right: 3rem;
+  width: 17rem;
+  height: 15rem;
+  top: 21rem;
+  right: 0;
 /* transform: matrix(-0.95, -0.31, -0.31, 0.95, 0, 0); */
 }
 
@@ -85,7 +85,7 @@ body {
 
 .card-body .title{
   font-weight: 600;
-  font-size: 4rem;
+  font-size: 3rem;
 }
 
 .card-body .subtitle{
