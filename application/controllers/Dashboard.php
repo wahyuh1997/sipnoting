@@ -18,6 +18,7 @@ class Dashboard extends MY_Controller
     $data = [
       'title'     => 'Dashboard',
       'subtitle'  => 'Anak Laki-Laki',
+      'js'        => 'dashboard/js/data'
     ];
 
     $this->load_template('dashboard/page/index', $data);
