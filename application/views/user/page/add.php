@@ -20,9 +20,9 @@
     <div class="card">
       <div class="card-body">
         <div class="form-group row">
-          <label for="" class="col-form-label col-lg-3">Username <span class="text-danger">*</span></label>
+          <label for="" class="col-form-label col-lg-3">Email <span class="text-danger">*</span></label>
           <div class="col-lg-9">
-            <input type="text" class="form-control" autocomplete="off" autofocus required>
+            <input type="email" class="form-control" autocomplete="off" autofocus required>
           </div>
         </div>
         <div class="form-group row">

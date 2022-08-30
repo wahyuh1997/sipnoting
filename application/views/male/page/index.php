@@ -18,4 +18,23 @@
   </div>
 </div>
 
-<!-- End Main Content -->
+<div class="card">
+  <div class="card-body">
+    <table id="myTable" class="table table-striped display nowrap" style="width: 100%;">
+      <thead>
+        <tr class="table-info">
+          <th>#</th>
+          <th></th>
+          <th>Usia (Bulan)</th>
+          <th class="text-center">-3 SD</th>
+          <th class="text-center">-2 SD</th>
+          <th class="text-center">-1 SD</th>
+          <th class="text-center">Median</th>
+          <th class="text-center">1 SD</th>
+          <th class="text-center">2 SD</th>
+          <th class="text-center">3 SD</th>
+        </tr>
+      </thead>
+    </table>
+  </div>
+</div>

@@ -18,4 +18,19 @@
   </div>
 </div>
 
-<!-- End Main Content -->
+<div class="card">
+  <div class="card-body">
+    <table id="myTable" class="table table-striped display nowrap" style="width: 100%;">
+      <thead>
+        <tr class="table-info">
+          <th>#</th>
+          <th></th>
+          <th>Nama</th>
+          <th>Jabatan</th>
+          <th>Email</th>
+          <th>No. Telp</th>
+        </tr>
+      </thead>
+    </table>
+  </div>
+</div>

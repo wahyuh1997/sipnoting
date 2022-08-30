@@ -12,6 +12,7 @@
   <meta name="msapplication-tap-highlight" content="no">
 
   <link href="<?= base_url(); ?>assets/css/bootstrap-datepicker.css" rel="stylesheet">
+  <link href="<?= base_url(); ?>assets/css/datatables.css" rel="stylesheet">
   <link href="<?= base_url(); ?>assets/main.css" rel="stylesheet">
   <style>
     .tab-content>.tab-pane:not(.active) {

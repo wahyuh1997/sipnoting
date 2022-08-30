@@ -74,7 +74,7 @@
           </a>
         </li>
         <li>
-          <a href="#" class="">
+          <a href="<?= base_url('grafik'); ?>" class="<?= $this->uri->segment(1) == 'grafik' ? 'mm-active' : null ?>">
             <i class="metismenu-icon pe-7s-graph2"></i>
             Grafik Balita
           </a>

@@ -18,4 +18,22 @@
   </div>
 </div>
 
-<!-- End Main Content -->
+<div class="card">
+  <div class="card-body">
+    <table id="myTable" class="table table-striped display nowrap" style="width: 100%;">
+      <thead>
+        <tr class="table-info">
+          <th>#</th>
+          <th></th>
+          <th>Nama Balita</th>
+          <th>Jenis Kelamin</th>
+          <th>Usia</th>
+          <th>Berat Badan</th>
+          <th>Tinggi Badan</th>
+          <th>Z-Score</th>
+          <th>Kesimpulan</th>
+        </tr>
+      </thead>
+    </table>
+  </div>
+</div>

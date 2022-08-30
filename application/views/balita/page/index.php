@@ -20,3 +20,25 @@
   </div>
 </div>
 <!-- End Main Content -->
+
+<div class="card">
+  <div class="card-body">
+    <table id="myTable" class="table table-striped display nowrap" style="width: 100%;">
+      <thead>
+        <tr class="table-info">
+          <th>#</th>
+          <th></th>
+          <th>Nama Balita</th>
+          <th>Jenis Kelamin</th>
+          <th>Tempat Lahir</th>
+          <th>Tgl Lahir</th>
+          <th>Usia</th>
+          <th>Nama Ayah</th>
+          <th>Nama Ibu</th>
+          <th>Email</th>
+          <th>No. Hp</th>
+        </tr>
+      </thead>
+    </table>
+  </div>
+</div>

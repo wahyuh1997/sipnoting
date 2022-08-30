@@ -12,7 +12,7 @@
       </div>
       <img class="stetoskop" src="<?= base_url('assets/img/stethoscope_1.png'); ?>" alt="Stetoskop">
 
-      <button class="btn primary-btn px-5" style="margin-top: 90px; margin-left: 5rem;">Mulai Diagnosa</button>
+      <a href="<?= base_url('diagnosis'); ?>" class="btn primary-btn px-5" style="margin-top: 90px; margin-left: 5rem;">Mulai Diagnosa</a>
     </div>
     <div class="col-lg-6">
       <img class="stunting-img" src="<?= base_url('assets/img/stunting_1.png'); ?>" alt="">
