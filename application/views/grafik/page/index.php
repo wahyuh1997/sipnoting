@@ -45,9 +45,7 @@
 <div class="card mt-4">
   <div class="card-body">
     <div class="widget-chart p-3">
-      <div style="height: 350px">
-        <canvas id="line-chart"></canvas>
-      </div>
+      <canvas id="myLineChart" height="100"></canvas>
     </div>
     <div class="pt-2 card-body">
       <div class="row">

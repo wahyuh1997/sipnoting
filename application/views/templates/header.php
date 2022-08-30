@@ -69,20 +69,7 @@
             <div class="widget-content p-0">
               <div class="widget-content-wrapper">
                 <div class="widget-content-left">
-                  <div class="btn-group">
-                    <a data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="p-0 btn">
-                      <img width="42" class="rounded-circle" src="<?= base_url('assets'); ?>/assets/images/avatars/1.jpg" alt="">
-                      <i class="fa fa-angle-down ml-2 opacity-8"></i>
-                    </a>
-                    <div tabindex="-1" role="menu" aria-hidden="true" class="dropdown-menu dropdown-menu-right">
-                      <button type="button" tabindex="0" class="dropdown-item">User Account</button>
-                      <button type="button" tabindex="0" class="dropdown-item">Settings</button>
-                      <h6 tabindex="-1" class="dropdown-header">Header</h6>
-                      <button type="button" tabindex="0" class="dropdown-item">Actions</button>
-                      <div tabindex="-1" class="dropdown-divider"></div>
-                      <button type="button" tabindex="0" class="dropdown-item">Dividers</button>
-                    </div>
-                  </div>
+                  <a href="#" class="btn text-decoration-none text-white font-weight-bold"><i class="fa fa-sign-out"></i> KELUAR</a>
                 </div>
               </div>
             </div>

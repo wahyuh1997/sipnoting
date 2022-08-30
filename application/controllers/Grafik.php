@@ -18,6 +18,7 @@ class Grafik extends MY_Controller
     $data = [
       'title'     => 'Data Grafik',
       'subtitle'  => 'Data Seluruh Grafik',
+      'js'        => 'grafik/js/core'
     ];
 
     $this->load_template('grafik/page/index', $data);
