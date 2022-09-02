@@ -8,7 +8,7 @@ class Profile extends MY_Controller
   public function __construct()
   {
     parent::__construct();
-    $this->load->model('Bayi_model', 'bayi');
+    $this->load->model('Balita_model', 'balita');
   }
 
   /**
@@ -18,7 +18,7 @@ class Profile extends MY_Controller
   {
     /* load Function Model Here to Show All Data*/
     $user_id = 1;
-    $res = $this->bayi->get_bayi($user_id);
+    $res = $this->balita->get_balita($user_id);
 
     $data = [
       'title'     => 'Profile',

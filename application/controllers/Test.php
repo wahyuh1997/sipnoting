@@ -7,16 +7,16 @@ class Test extends MY_Controller
     public function __construct()
     {
         parent::__construct();
-        $this->load->model('Bayi_model', 'bayi');
+        $this->load->model('Balita_model', 'balita');
     }
 
     function get_bayi()
     {
-        echo json_encode($this->bayi->get_bayi(1));
+        echo json_encode($this->bayi->get_balita(20));
     }
     
     function insert_or_update()
     {
-        echo json_encode($this->bayi->get_bayi());
+        //
     }
 }
