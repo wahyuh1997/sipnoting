@@ -8,6 +8,7 @@ class Profile extends MY_Controller
   public function __construct()
   {
     parent::__construct();
+    $this->load->model('Bayi_model', 'bayi');
   }
 
   /**
@@ -15,10 +16,15 @@ class Profile extends MY_Controller
    */
   public function index()
   {
+    /* load Function Model Here to Show All Data*/
+    $user_id = 1;
+    $res = $this->bayi->get_bayi($user_id);
+
     $data = [
       'title'     => 'Profile',
       'subtitle'  => 'SIPNOTING',
     ];
+    
     $this->load_template_user('profile/page/index', $data);
   }
 

@@ -1,28 +1,28 @@
 <?php 
 
-class Login_model extends CI_Model
+class Login_model extends My_Model
 {
-	function verify_account($username, $password)
+	function verify_account($email, $password)
 	{
 		// cek user dengan username
-		$data_user = $this->db->get_where('users', ['user_username' => $username])->row_array();
+		$data_user = $this->db->get_where('users', ['email' => $email])->row_array();
 
 		// cek jika data tidak NULL / KOSONG
 		if($data_user !== NULL)
 		{
 			//cek password
-			if(password_verify($password, $data_user['user_password']))
+			if(password_verify($password, $data_user['password']))
 			{
-				return $data_user;
+				return return_success('login berhasil', $data_user);
 			}
 			else
 			{
-				return false;
+				return return_success('password salah', []);
 			}
 		}
 		else
 		{
-			return false;
+			return return_success('email tidak ditemukan', []);
 		}
 	}
 }
