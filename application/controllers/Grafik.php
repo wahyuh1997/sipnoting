@@ -8,6 +8,10 @@ class Grafik extends MY_Controller
   public function __construct()
   {
     parent::__construct();
+
+    $this->load->model([
+      'Balita_model'=>'balita'
+    ]);
   }
 
   /**
@@ -15,6 +19,7 @@ class Grafik extends MY_Controller
    */
   public function index()
   {
+    $res = $this->balita->get_all_balita();
     $data = [
       'title'     => 'Data Grafik',
       'subtitle'  => 'Data Seluruh Grafik',

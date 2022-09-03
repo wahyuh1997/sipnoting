@@ -30,6 +30,20 @@ class Profile extends MY_Controller
 
   public function edit()
   {
+    $pos=[];
+    /* load Function Model Here to Show All Data*/
+    $update = [
+        'user_id' => $pos['user_id']  
+        ,'jenis_kelamin'=> $pos['jenis_kelamin']
+        ,'tempat_lahir' => $pos['tempat_lahir']
+        ,'tanggal_lahir' => $pos['tanggal_lahir']??''
+        ,'ayah' => $pos['ayah']
+        ,'ibu' => $pos['ibu']
+        ,'alamat' => $pos['alamat']
+
+    ];
+    $res = $this->balita->get_balita($update);
+
     $data = [
       'title'     => 'Ubah Profile',
       'subtitle'  => 'SIPNOTING',
