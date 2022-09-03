@@ -9,6 +9,9 @@ class Male extends MY_Controller
   {
     parent::__construct();
     /* Load Model Here */
+    $this->load->model([
+      'Deviasi_model' => 'deviasi'
+    ]);
   }
 
   public function index()
@@ -27,7 +30,21 @@ class Male extends MY_Controller
   {
     $post = $this->input->post(null, true);
     /* If Need Selection Load Here */
-    $res = '';
+    /** */
+
+    $insert = [
+            'jenis_kelamin' => 'L'
+            ,'usia' => $post['usia']
+            ,'minus_1_sd' => $post['minus_1_sd']
+            ,'minus_2_sd' => $post['minus_2_sd']
+            ,'minus_3_sd' => $post['minus_3_sd']
+            ,'median' => $post['median']
+            ,'1_sd' => $post['1_sd']
+            ,'2_sd' => $post['2_sd']
+            ,'3_sd' => $post['3_sd']
+        ];
+    
+    $res = $this->deviasi->insert_deviasi($insert);
 
     if (count($post) == 0) {
       $data = [
