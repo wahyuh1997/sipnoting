@@ -59,6 +59,13 @@ class Auth extends MY_Controller
   public function register()
   {
     $data = [
+            'email' => 'andi1@gmail.com'
+            ,'no_hp' => '08976565'
+            ,'password' => '12345678'
+        ];
+    $res = $this->user->register($data);
+
+    $data = [
       'title'     => 'Daftar',
       'subtitle'  => 'Daftar Sipnoting',
     ];
@@ -68,6 +75,7 @@ class Auth extends MY_Controller
 
   public function verif_email()
   {
+    $res = $this->user->verify('andi1@gmail.com', '751056');
     $data = [
       'title'     => 'Verifikasi Email',
       'subtitle'  => 'Daftar Sipnoting',
