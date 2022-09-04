@@ -155,12 +155,6 @@
 
             $this->db->update('users', ['verified' => 1],['email' => $email]);
 
-            $data_balita = [
-                'user_id' => $user['id']
-            ];
-
-            $this->db->insert('profile_bayi' , $data_balita);
-
             return $this->return_success('Verifikasi berhasil! Silahkan lengkapi profil anda!',[]);
         }
 
