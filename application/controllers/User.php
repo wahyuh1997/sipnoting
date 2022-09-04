@@ -18,6 +18,7 @@ class User extends MY_Controller
    */
   public function index()
   {
+    $res = $this->user->get_all_user();
     // dataView
     $dataView = [
       'title'     => 'Data Anggota',
@@ -40,8 +41,8 @@ class User extends MY_Controller
             ,'password' => '12345678'
         ];
 
-    $res = $this->User_model->insert_anggota($data);
-    
+    $res = $this->user->insert_anggota($data);
+
     if (count($post) == 0) {
       // dataView
       $dataView = [

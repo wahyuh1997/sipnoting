@@ -62,5 +62,14 @@
 
             return $this->return_success('Data berhasil disimpan!', $simpan);
         }
+
+        function get_all_user()
+        {
+            $sql = "
+                    select * from users
+                    order by id asc";
+            
+            return $this->db->query($sql)->result_array();
+        }
     }
 ?>
