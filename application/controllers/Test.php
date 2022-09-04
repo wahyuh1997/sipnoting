@@ -69,7 +69,6 @@ class Test extends MY_Controller
         ];
     
         echo json_encode( $this->deviasi->edit_deviasi($insert));
-        // echo json_encode( $this->deviasi->insert_deviasi($insert));
         
     }
 

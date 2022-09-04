@@ -15,6 +15,7 @@ class Balita extends MY_Controller
    */
   public function index()
   {
+    $res = 
     $data = [
       'title'     => 'Data Balita',
       'subtitle'  => 'Data Seluruh Balita',

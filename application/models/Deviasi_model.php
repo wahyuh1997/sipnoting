@@ -7,13 +7,13 @@ class Deviasi_model extends My_Model
         parent::__construct();
     }
 
-    function get_deviasi($data)
+    function get_deviasi($id)
     {
-        if (!$data) {
+        if (!$id) {
             return $this->return_failed('Harap data diisi!',[]);
         }
         
-        $cek = $this->db->get_where('standar_deviasi',['jenis_kelamin' => $data['jenis_kelamin'], 'usia' => $data['usia']]);
+        $cek = $this->db->get_where('standar_deviasi',['id' => $id]);
         
         if ($cek->num_rows() > 0) {
             return $this->return_success('',$cek->row_array());
@@ -73,7 +73,7 @@ class Deviasi_model extends My_Model
             return $this->return_failed('Harap data diisi!',[]);
         }
         
-        $cek = $this->db->get_where('standar_deviasi',['jenis_kelamin' => $data['jenis_kelamin'], 'usia' => $data['usia']]);
+        $cek = $this->db->get_where('standar_deviasi',['id' => $data['id']]);
 
         // return $cek->num_rows();
         
@@ -91,24 +91,25 @@ class Deviasi_model extends My_Model
             ,'3_sd' => $data['3_sd']
         ];
 
-        $simpan = $this->db->update('standar_deviasi', $insert, ['jenis_kelamin' => $data['jenis_kelamin'], 'usia' => $data['usia']]);
+        $simpan = $this->db->update('standar_deviasi', $insert, ['id' => $data['id']]);
 
         return $this->return_success('data berhasil diubah!', $simpan);
     }
 
-    function delete($data)
+    // function delete($data)
+    function delete($id)
     {
-        if (!$data) {
+        if (!$id) {
             return $this->return_failed('Harap data diisi!',[]);
         }
         
-        $cek = $this->db->get_where('standar_deviasi',['jenis_kelamin' => $data['jenis_kelamin'], 'usia' => $data['usia']]);
+        $cek = $this->db->get_where('standar_deviasi',['id' =>$id]);
         
         if ($cek->num_rows() < 1) {
             return $this->return_failed('data tidak ada',[]);
         } 
 
-        $this->db->delete('standar_deviasi',['jenis_kelamin' => $data['jenis_kelamin'], 'usia' => $data['usia']]);
+        $this->db->delete('standar_deviasi',['id' =>$id]);
 
         return $this->return_success('Berhasil dihapus',[]);
     }

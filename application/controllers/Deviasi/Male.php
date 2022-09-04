@@ -76,6 +76,7 @@ class Male extends MY_Controller
             ,'1_sd' => $post['1_sd']
             ,'2_sd' => $post['2_sd']
             ,'3_sd' => $post['3_sd']
+            ,'id' => $post['id']
         ];
     
     $res = $this->deviasi->insert_deviasi($insert);
@@ -96,19 +97,11 @@ class Male extends MY_Controller
   public function delete($id)
   {
     /* Delete Data Function */
-    $data = [
-      'jenis_kelamin' => 'L' //P = Perempuan, L= Laki2
-      ,'usia' => 12 //bulan
-    ];
-    $res = $this->deviasi->delete($data);
+    $res = $this->deviasi->delete($id);
   }
 
   public function detail()
   {
-    $data = [
-      'jenis_kelamin' => 'L' //P = Perempuan, L= Laki2
-      ,'usia' => 12 //bulan
-    ];
-    $res = $this->deviasi->get_deviasi($data);
+    $res = $this->deviasi->get_deviasi(1);
   }
 }
