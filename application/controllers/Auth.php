@@ -8,6 +8,9 @@ class Auth extends MY_Controller
   public function __construct()
   {
     parent::__construct();
+    $this->load->model([
+      'User_model', 'user'
+    ]);
   }
 
   /**
@@ -15,6 +18,13 @@ class Auth extends MY_Controller
    */
   public function login()
   {
+    $data = [
+            'email' => 'andi@gmail.com'
+            ,'password' => '12345678'
+        ];
+    
+    $res = $this->user->login($data['email'], $data['password']);
+    
     $data = [
       'title'     => 'Login',
       'subtitle'  => 'Login Sipnoting',

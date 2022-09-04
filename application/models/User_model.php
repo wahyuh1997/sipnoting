@@ -100,5 +100,13 @@
 
             return $this->return_success('Data berhasil disimpan!', $simpan);
         }
+
+        function get_user($user_id)
+        {
+            $sql = "
+                    select * from users
+                    where id = ?";
+            return $this->db->query($sql,[$user_id]);
+        }
     }
 ?>
