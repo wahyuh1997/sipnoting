@@ -7,7 +7,7 @@
         <p class="mb-0" style="margin-left: 5rem;">Stunting</p>
         <p class="mb-0">Pada Anak</p>
       </div>
-      <div style="width: 32rem;">
+      <div class="desc" style="width: 32rem;">
         <span>Anak pendek belum tentu stunting, tetapi anak stunting sudah pasti pendek, cegah stunting sejak dini dengan kenali pertumbuhan tingginya.</span>
       </div>
       <img class="stetoskop" src="<?= base_url('assets/img/stethoscope_1.png'); ?>" alt="Stetoskop">
