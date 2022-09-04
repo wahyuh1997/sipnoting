@@ -44,7 +44,7 @@ class Balita_model extends My_Model
     {
         $user = $this->db->get_where('users',['id'=>$data['user_id']]);
 
-        if ($user->num_row() < 1) {
+        if ($user->num_rows() < 1) {
             return $this->return_failed('data user tidak ada', []);
         }
 
@@ -60,10 +60,11 @@ class Balita_model extends My_Model
             ,'ayah' => $data['ayah']
             ,'ibu' => $data['ibu']
             ,'alamat' => $data['alamat']
+            ,'updated_at' => date('Y-m-d H:i:s')
         ];
 
         $this->db->update('users',$insert_user,['id'=>$data['user_id']]);
-        $this->db->update('profile_bayi',$insert_user,['user_id'=>$data['user_id']]);
+        $this->db->update('profile_bayi',$insert_bayi,['user_id'=>$data['user_id']]);
 
         return $this->return_success('berhasil',[]);
     }

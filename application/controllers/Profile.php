@@ -33,14 +33,15 @@ class Profile extends MY_Controller
     $pos=[];
     /* load Function Model Here to Show All Data*/
     $update = [
-        'user_id' => $pos['user_id']  
-        ,'jenis_kelamin'=> $pos['jenis_kelamin']
-        ,'tempat_lahir' => $pos['tempat_lahir']
-        ,'tanggal_lahir' => $pos['tanggal_lahir']??''
-        ,'ayah' => $pos['ayah']
-        ,'ibu' => $pos['ibu']
-        ,'alamat' => $pos['alamat']
-
+      'user_id' => $pos['user_id']  
+      ,'jenis_kelamin'=> $pos['jenis_kelamin']
+      ,'tempat_lahir' => $pos['tempat_lahir']
+      ,'tanggal_lahir' => $pos['tanggal_lahir']??''
+      ,'ayah' => $pos['ayah']
+      ,'ibu' => $pos['ibu']
+      ,'alamat' => $pos['alamat']
+      ,'nama'=> $pos['nama']
+      ,'no_hp' => $pos['no_hp']??''
     ];
     $res = $this->balita->get_balita($update);
 

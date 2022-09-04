@@ -10,7 +10,8 @@ class Test extends MY_Controller
         $this->load->model('Balita_model', 'balita');
         $this->load->model('Deviasi_model', 'deviasi');
         $this->load->model([
-        'User_model'=> 'user'
+        'User_model'=> 'user',
+        'Balita_model' => 'balita'
         ]);
     }
 
@@ -46,12 +47,13 @@ class Test extends MY_Controller
     function register()
     {
         $data = [
-            'email' => 'andi1@gmail.com'
+            'email' => 'andi2@gmail.com'
             ,'no_hp' => '08976565'
             ,'password' => '12345678'
         ];
 
-        echo json_encode($this->user->verify('andi1@gmail.com', '751056'));
+        // echo json_encode($this->user->register($data));
+        echo json_encode($this->user->verify('andi2@gmail.com', '853002'));
     }
 
     function edit_deviasi()
@@ -80,5 +82,25 @@ class Test extends MY_Controller
             ];
         // echo json_encode( $this->deviasi->get_deviasi($data));
         echo json_encode( $this->deviasi->get_deviasi($data));
+    }
+
+    function balita()
+    {
+        // echo json_encode($this->balita->get_all_balita());
+        // echo json_encode($this->balita->get_balita(7));
+
+        $update = [
+        'user_id' => 7  
+            ,'jenis_kelamin'=> 'L'
+            ,'tempat_lahir' => 'Tangerang'
+            ,'tanggal_lahir' => '2022-07-02'
+            ,'ayah' => 'mian'
+            ,'ibu' => 'maun'
+            ,'alamat' => 'lolo'
+            ,'nama'=> 'naim'
+            ,'no_hp' => '00000'
+        ];
+        $res = $this->balita->balita_edit($update);
+        echo json_encode($res);
     }
 }

@@ -8,6 +8,9 @@ class Balita extends MY_Controller
   public function __construct()
   {
     parent::__construct();
+    $this->load->model([
+      'Balita_model'=> 'balita'
+    ]);
   }
 
   /**
@@ -15,7 +18,7 @@ class Balita extends MY_Controller
    */
   public function index()
   {
-    $res = 
+    $res = $this->balita->get_all_balita();
     $data = [
       'title'     => 'Data Balita',
       'subtitle'  => 'Data Seluruh Balita',
@@ -32,5 +35,10 @@ class Balita extends MY_Controller
       'js'       => 'balita/js/core'
     ];
     $this->load_template('balita/page/add', $data);
+  }
+
+  public function detail($id)
+  {
+    $res = $this->balita->get_balita($id);
   }
 }
