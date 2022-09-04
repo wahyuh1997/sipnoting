@@ -139,7 +139,7 @@
                 return $this->return_failed('Email tidak terdaftar atau user sudah terhapus. silahkan daftar kembali!',[]);
             }
             
-            if ($user['is_active'] == 1) {
+            if ($user['verified'] == 1) {
                 return $this->return_failed('Akun sudah diaktifkan!',[]);
             }
             
