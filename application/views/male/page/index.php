@@ -23,7 +23,7 @@
     <table id="myTable" class="table table-striped display nowrap" style="width: 100%;">
       <thead>
         <tr class="table-info">
-          <th>#</th>
+          <th class="text-center">#</th>
           <th></th>
           <th>Usia (Bulan)</th>
           <th class="text-center">-3 SD</th>
@@ -35,6 +35,25 @@
           <th class="text-center">3 SD</th>
         </tr>
       </thead>
+      <tbody>
+        <?php foreach ($data['data'] as $key => $res) : ?>
+          <tr>
+            <td class="text-center"><?= $key + 1; ?></td>
+            <td>
+              <a href="" class="btn btn-primary btn-sm">Edit</a>
+              <a href="" class="btn btn-danger btn-sm">Hapus</a>
+            </td>
+            <td><?= $res['usia']; ?></td>
+            <td class="text-center"><?= $res['minus_3_sd']; ?></td>
+            <td class="text-center"><?= $res['minus_2_sd']; ?></td>
+            <td class="text-center"><?= $res['minus_1_sd']; ?></td>
+            <td class="text-center"><?= $res['median']; ?></td>
+            <td class="text-center"><?= $res['1_sd']; ?></td>
+            <td class="text-center"><?= $res['2_sd']; ?></td>
+            <td class="text-center"><?= $res['3_sd']; ?></td>
+          </tr>
+        <?php endforeach; ?>
+      </tbody>
     </table>
   </div>
 </div>

@@ -13,7 +13,7 @@
       </div>
     </div>
     <div class="page-title-actions">
-      <a href="<?= base_url('deviasi/male/add'); ?>" class="btn btn-shadow btn-info">Tambah Data</a>
+      <a href="<?= base_url('deviasi/female/add'); ?>" class="btn btn-shadow btn-info">Tambah Data</a>
     </div>
   </div>
 </div>
@@ -35,6 +35,25 @@
           <th class="text-center">3 SD</th>
         </tr>
       </thead>
+      <tbody>
+        <?php foreach ($data['data'] as $key => $res) : ?>
+          <tr>
+            <td class="text-center"><?= $key + 1; ?></td>
+            <td>
+              <a href="" class="btn btn-primary btn-sm">Edit</a>
+              <a href="" class="btn btn-danger btn-sm">Hapus</a>
+            </td>
+            <td><?= $res['usia']; ?></td>
+            <td class="text-center"><?= $res['minus_3_sd']; ?></td>
+            <td class="text-center"><?= $res['minus_2_sd']; ?></td>
+            <td class="text-center"><?= $res['minus_1_sd']; ?></td>
+            <td class="text-center"><?= $res['median']; ?></td>
+            <td class="text-center"><?= $res['1_sd']; ?></td>
+            <td class="text-center"><?= $res['2_sd']; ?></td>
+            <td class="text-center"><?= $res['3_sd']; ?></td>
+          </tr>
+        <?php endforeach; ?>
+      </tbody>
     </table>
   </div>
 </div>

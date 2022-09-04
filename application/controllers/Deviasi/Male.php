@@ -17,12 +17,14 @@ class Male extends MY_Controller
   public function index()
   {
     /* load Function Model Here to Show All Data*/
-    $res = '';
+    $res = $this->deviasi->get_all_deviasi('L');
 
     $data = [
-      'title'     => 'Standar Deviasi Berat Badan',
+      'title'     => 'Standar Deviasi Panjang Badan (cm) / Umur',
       'subtitle'  => 'Anak Laki-Laki',
+      'data'      => $res
     ];
+
     $this->load_template('male/page/index', $data);
   }
 
@@ -30,30 +32,15 @@ class Male extends MY_Controller
   {
     $post = $this->input->post(null, true);
     /* If Need Selection Load Here */
-    /** */
-
-    $insert = [
-            'jenis_kelamin' => 'L'
-            ,'usia' => $post['usia']
-            ,'minus_1_sd' => $post['minus_1_sd']
-            ,'minus_2_sd' => $post['minus_2_sd']
-            ,'minus_3_sd' => $post['minus_3_sd']
-            ,'median' => $post['median']
-            ,'1_sd' => $post['1_sd']
-            ,'2_sd' => $post['2_sd']
-            ,'3_sd' => $post['3_sd']
-        ];
-    
-    $res = $this->deviasi->insert_deviasi($insert);
 
     if (count($post) == 0) {
       $data = [
-        'title'     => 'Tambah Data Standar Deviasi Berat Badan (KG)',
+        'title'     => 'Tambah Data Standar Deviasi Panjang Badan (cm)',
         'subtitle'  => 'Anak Laki-Laki',
       ];
       $this->load_template('male/page/add', $data);
     } else {
-      /* Save Data Function */
+      echo json_encode($this->deviasi->insert_deviasi($post));
     }
   }
 
@@ -65,7 +52,7 @@ class Male extends MY_Controller
 
     if (count($post) == 0) {
       $data = [
-        'title'     => 'Tambah Data Standar Deviasi Berat Badan (KG)',
+        'title'     => 'Tambah Data Standar Deviasi Panjang Badan (cm)',
         'subtitle'  => 'Anak Laki-Laki',
       ];
       $this->load_template('male/page/edit', $data);
