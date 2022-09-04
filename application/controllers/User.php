@@ -9,7 +9,6 @@ class User extends MY_Controller
   {
     parent::__construct();
     $this->load->model('User_model', 'user');
-
   }
 
   /**
@@ -18,10 +17,12 @@ class User extends MY_Controller
   public function index()
   {
     $res = $this->user->get_all_user();
+    // trace($res);
     // dataView
     $dataView = [
       'title'     => 'Data Anggota',
       'subtitle'  => 'Seluruh Data Anggota',
+      'data'      => $res
     ];
 
     // view
@@ -32,17 +33,9 @@ class User extends MY_Controller
   {
     $post = $this->input->post(null, true);
 
-    $data = [
-            'email' => 'andi@gmail.com'
-            ,'nama' => 'andi'
-            ,'jabatan' => 'direktur'
-            ,'no_hp' => '089602584857'
-            ,'password' => '12345678'
-        ];
-
-    $res = $this->user->insert_anggota($data);
-
-    if (count($post) == 0) {
+    if (
+      count($post) == 0
+    ) {
       // dataView
       $dataView = [
         'title'     => 'Data Anggota',
@@ -51,6 +44,8 @@ class User extends MY_Controller
 
       // view
       $this->load_template('user/page/add', $dataView);
+    } else {
+      echo json_encode($this->user->insert_anggota($post));
     }
   }
 
@@ -68,12 +63,8 @@ class User extends MY_Controller
     $post = $this->input->post(null, true);
 
     $data = [
-            'email' => 'andi@gmail.com'
-            ,'nama' => 'andi rifaldi'
-            ,'jabatan' => 'direktur'
-            ,'no_hp' => '089602584857'
-            ,'user_id' => 3
-        ];
+      'email' => 'andi@gmail.com', 'nama' => 'andi rifaldi', 'jabatan' => 'direktur', 'no_hp' => '089602584857', 'user_id' => 3
+    ];
 
     $res = $this->user->insert_anggota($data);
 
@@ -113,7 +104,7 @@ class User extends MY_Controller
   {
     $post = $this->input->post(null, true);
 
-    
+
     if (count($post) == 0) {
       // dataView
       $dataView = [

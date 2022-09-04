@@ -23,7 +23,7 @@
     <table id="myTable" class="table table-striped display nowrap" style="width: 100%;">
       <thead>
         <tr class="table-info">
-          <th>#</th>
+          <th class="text-center">#</th>
           <th></th>
           <th>Nama</th>
           <th>Jabatan</th>
@@ -31,6 +31,21 @@
           <th>No. Telp</th>
         </tr>
       </thead>
+      <tbody>
+        <?php foreach ($data as $key => $res) : ?>
+          <tr>
+            <td class="text-center"><?= $key + 1; ?></td>
+            <td>
+              <a href="" class="btn btn-primary btn-sm">Edit</a>
+              <a href="" class="btn btn-danger btn-sm">Hapus</a>
+            </td>
+            <td><?= $res['nama']; ?></td>
+            <td><?= $res['jabatan']; ?></td>
+            <td><?= $res['email']; ?></td>
+            <td><?= $res['no_hp']; ?></td>
+          </tr>
+        <?php endforeach; ?>
+      </tbody>
     </table>
   </div>
 </div>

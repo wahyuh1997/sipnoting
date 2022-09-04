@@ -25,12 +25,32 @@
     .table-condensed {
       width: 100%;
     }
+
+    .bg-process {
+      position: fixed;
+      /* top: 0;
+	left: 0; */
+      z-index: 9999;
+      height: 100%;
+      width: 100%;
+      background-color: rgba(0, 0, 0, .6);
+    }
+
+    .bg-process .spinner-border {
+      width: 4rem;
+      height: 4rem;
+      border-width: 5px;
+    }
   </style>
 </head>
 
 <body>
+  <div class="bg-process d-flex justify-content-center" style="display: none !important;">
+    <div class="spinner-border text-light align-self-center" role="status">
+      <span class="sr-only">Loading...</span>
+    </div>
+  </div>
   <div class="app-container app-theme-white body-tabs-shadow fixed-sidebar fixed-header">
-
     <div class="app-header header-shadow bg-amy-crisp header-text-dark">
       <div class="app-header__logo">
         <div class="logo-src"></div>
