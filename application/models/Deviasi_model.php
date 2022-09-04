@@ -32,7 +32,7 @@ class Deviasi_model extends My_Model
                     where jenis_kelamin = ?
                     order by usia asc;
                     ";
-            return $this->return_failed('',$this->db->query($sql,[$jenis_kelamin])->result_array());
+            return $this->return_success('',$this->db->query($sql,[$jenis_kelamin])->result_array());
         } else {
             return $this->return_failed('data tidak ada',[]);
         }
