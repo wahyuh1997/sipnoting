@@ -80,6 +80,10 @@ class Deviasi_model extends My_Model
         if ($cek->num_rows() < 1) {
             return $this->return_failed('data tidak ada',[]);
         }
+        
+        if ($this->db->get_where('standar_deviasi',['jenis_kelamin' => $data['jenis_kelamin'], 'usia' => $data['usia']])->row_array()) {
+            return $this->return_failed('usia dan jenis kelamin sudah ada ada',[]);
+        }
 
         $insert = [
             'minus_1_sd' => $data['minus_1_sd']
