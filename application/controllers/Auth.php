@@ -63,17 +63,18 @@ class Auth extends MY_Controller
 
   public function register()
   {
-    $data = [
-      'email' => 'andi1@gmail.com', 'no_hp' => '08976565', 'password' => '12345678'
-    ];
-    $res = $this->user->register($data);
+    $post = $this->input->post(null, true);
 
-    $data = [
-      'title'     => 'Daftar',
-      'subtitle'  => 'Daftar Sipnoting',
-    ];
+    if (count($post) == 0) {
+      $data = [
+        'title'     => 'Daftar',
+        'subtitle'  => 'Daftar Sipnoting',
+      ];
 
-    $this->load->view('auth/register', $data);
+      $this->load->view('auth/register', $data);
+    } else {
+      echo json_encode($this->user->register($post));
+    }
   }
 
   public function verif_email()

@@ -15,7 +15,7 @@
   <link rel="stylesheet" href="<?= base_url('assets/login/'); ?>css/bootstrap.min.css">
 
   <!-- Style -->
-  <link rel="stylesheet" href="<?= base_url('assets/login/'); ?>css/style.css">
+  <link rel="stylesheet" href="<?= base_url('assets/login/'); ?>css/style-01.css">
 
   <title><?= $title; ?></title>
 </head>
@@ -34,23 +34,22 @@
                 <h3 class="primaryText"><strong>DAFTAR AKUN</strong></h3>
                 <p class="mb-4 text-white">Sistem Pakar Diagnosis Stunting.</p>
               </div>
-              <form action="<?= base_url('auth/verif_email'); ?>" method="post">
+              <form id="regCrudForm" data-redurl="<?= base_url('auth/verif_email'); ?>" method="post">
                 <div class="form-group first">
-                  <label for="username" class="text-warning">Email</label>
-                  <input type="email" class="form-control text-white" id="username">
+                  <label for="email" class="text-warning">Email</label>
+                  <input type="email" class="form-control text-white" id="email" name="email" required>
                 </div>
                 <div class="form-group first">
-                  <label for="telp" class="text-warning">No. Telp</label>
-                  <input type="text" class="form-control text-white" id="telp">
+                  <label for="no_hp" class="text-warning">No. Telp</label>
+                  <input type="number" class="form-control text-white" id="no_hp" name="no_hp" minlength="11" maxlength="13">
                 </div>
                 <div class="form-group last mb-4">
                   <label for="password" class="text-warning">Password</label>
-                  <input type="password" class="form-control text-white" id="password">
-
+                  <input type="password" class="form-control text-white" id="password" name="password" minlength="6" required>
                 </div>
                 <button type="submit" class="btn text-white btn-block rounded rounded-pill" style="background-color: #A97798;">Daftar</button>
               </form>
-              <h2 class="mt-5">
+              <h2 class="mt-5 line">
                 <a href="<?= base_url('auth/login'); ?>" class="text-decoration-none">Sudah Punya Akun ? <span>Masuk</span></a>
               </h2>
             </div>
@@ -67,6 +66,69 @@
   <script src="<?= base_url('assets/login/'); ?>js/popper.min.js"></script>
   <script src="<?= base_url('assets/login/'); ?>js/bootstrap.min.js"></script>
   <script src="<?= base_url('assets/login/'); ?>js/main.js"></script>
+  <script type="text/javascript" src="<?= base_url(); ?>assets/js/sweetalert2.all.min.js"></script>
+  <script>
+    $('#regCrudForm').on('submit', function(e) {
+      e.preventDefault();
+      // init
+      var url = $(this).attr('action');
+      var redUrl = $(this).data('redurl');
+      var form_data = new FormData($(this)[0]);
+      Swal.fire({
+        icon: 'warning',
+        title: 'Konfirmasi',
+        showCancelButton: true,
+        confirmButtonText: `OK`,
+        cancelButtonText: `Batal`,
+        text: 'Pastikan Data Yang Anda Input Telah Sesuai',
+      }).then((result) => {
+        if (result.isConfirmed == false) {
+          return false;
+        } else if (result.isConfirmed == true) {
+          $.ajax({
+            type: 'POST',
+            url: url,
+            data: form_data,
+            dataType: 'JSON',
+            async: true,
+            processData: false,
+            contentType: false,
+            beforeSend: function() {
+              $('.bg-process').fadeIn();
+            },
+            success: function(textParse) {
+              $('.bg-process').attr('style', 'display: none !important');
+
+              if (textParse.status == true) {
+                Swal.fire({
+                  icon: 'success',
+                  title: 'Berhasil',
+                  text: textParse.message,
+                }).then((result) => {
+                  if (result.isConfirmed) {
+                    window.location.href = redUrl;
+                  }
+                });
+              } else {
+                Swal.fire({
+                  icon: 'error',
+                  title: 'Gagal',
+                  text: textParse.message,
+                })
+              }
+            }
+          }).fail(function(jqXHR, ajaxOptions, thrownError) {
+            $('.bg-process').attr('style', 'display: none !important');
+            Swal.fire({
+              icon: 'error',
+              title: 'Failed',
+              text: 'Server Not Responding',
+            })
+          });
+        }
+      })
+    });
+  </script>
 </body>
 
 </html>

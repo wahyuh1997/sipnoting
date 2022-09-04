@@ -15,7 +15,7 @@
   <link rel="stylesheet" href="<?= base_url('assets/login/'); ?>css/bootstrap.min.css">
 
   <!-- Style -->
-  <link rel="stylesheet" href="<?= base_url('assets/login/'); ?>css/style.css">
+  <link rel="stylesheet" href="<?= base_url('assets/login/'); ?>css/style-01.css">
 
   <title><?= $title; ?></title>
 </head>
@@ -51,7 +51,7 @@
 
                 <button type="submit" class="btn text-white btn-block rounded rounded-pill" style="background-color: #A97798;">Masuk</button>
               </form>
-              <h2 class="mt-5">
+              <h2 class="mt-5 line">
                 <a href="<?= base_url('auth/register'); ?>" class="text-decoration-none">Belum Punya Akun ? <span>Daftar</span></a>
               </h2>
               <div class="row">
