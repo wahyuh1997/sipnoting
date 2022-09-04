@@ -46,13 +46,20 @@ class Auth extends MY_Controller
 
           redirect('dashboard');
         } else {
-          $_SESSION['sipnoting_user'] = [
-            'email'     => $res['data']['email'],
-            'nama'      => $res['data']['nama'],
-            'no_hp'     => $res['data']['no_hp'],
-            'is_admin'  => $res['data']['is_admin'],
-          ];
-          redirect('home');
+
+          if ($res['data']['verified'] == 1) {
+            # code...
+            $_SESSION['sipnoting_user'] = [
+              'email'     => $res['data']['email'],
+              'nama'      => $res['data']['nama'],
+              'no_hp'     => $res['data']['no_hp'],
+              'is_admin'  => $res['data']['is_admin'],
+            ];
+            redirect('home');
+          } else {
+            $_SESSION['sipnoting_user']['email'] = $res['data']['email'];
+            redirect('auth/verif_email');
+          }
         }
       } else {
         $this->session->set_flashdata('alert', $res['message']);
@@ -79,13 +86,23 @@ class Auth extends MY_Controller
 
   public function verif_email()
   {
-    $res = $this->user->verify('andi1@gmail.com', '751056');
-    $data = [
-      'title'     => 'Verifikasi Email',
-      'subtitle'  => 'Daftar Sipnoting',
-    ];
+    $post = $this->input->post(null, true);
 
-    $this->load->view('auth/verif_email', $data);
+    if (isset($_SESSION['sipnoting_user']['email'])) {
+      if (count($post) == 0) {
+        $data = [
+          'title'     => 'Verifikasi Email',
+          'subtitle'  => 'Daftar Sipnoting',
+        ];
+
+        $this->load->view('auth/verif_email', $data);
+      } else {
+        echo json_encode($this->user->verify($_SESSION['sipnoting_user']['email'], $post['kode_otp']));
+        unset($_SESSION['sipnoting_user']['email']);
+      }
+    } else {
+      redirect('');
+    }
   }
 
   public function verif_success()

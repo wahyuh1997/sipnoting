@@ -15,7 +15,7 @@
   <link rel="stylesheet" href="<?= base_url('assets/login/'); ?>css/bootstrap.min.css">
 
   <!-- Style -->
-  <link rel="stylesheet" href="<?= base_url('assets/login/'); ?>css/style.css">
+  <link rel="stylesheet" href="<?= base_url('assets/login/'); ?>css/style-02.css">
 
   <title><?= $title; ?></title>
 </head>

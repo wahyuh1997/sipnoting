@@ -15,7 +15,7 @@
   <link rel="stylesheet" href="<?= base_url('assets/login/'); ?>css/bootstrap.min.css">
 
   <!-- Style -->
-  <link rel="stylesheet" href="<?= base_url('assets/login/'); ?>css/style.css">
+  <link rel="stylesheet" href="<?= base_url('assets/login/'); ?>css/style-02.css">
 
   <title><?= $title; ?></title>
 </head>
@@ -34,12 +34,12 @@
                 <h3 class="primaryText"><strong><?= $title; ?></strong></h3>
                 <p class="mb-4 text-white">Masukkan kode verifikasi (OTP) yang telah dikirim melalui email</p>
               </div>
-              <form action="<?= base_url('auth/verif_success'); ?>" method="post">
+              <form id="regCrudForm" data-redurl="<?= base_url('auth/verif_success'); ?>" method="post">
                 <div class="row justify-content-center">
                   <div class="col-md-8">
                     <div class="form-group first">
-                      <label for="username" class="text-warning">Kode OTP</label>
-                      <input type="email" class="form-control text-white" id="username">
+                      <label for="kode_otp" class="text-warning">Kode OTP</label>
+                      <input type="number" class="form-control text-white" id="kode_otp" name="kode_otp" required>
                     </div>
                     <button type="submit" class="btn text-white btn-block rounded rounded-pill" style="background-color: #A97798;">Verifikasi</button>
                   </div>
@@ -59,6 +59,56 @@
   <script src="<?= base_url('assets/login/'); ?>js/popper.min.js"></script>
   <script src="<?= base_url('assets/login/'); ?>js/bootstrap.min.js"></script>
   <script src="<?= base_url('assets/login/'); ?>js/main.js"></script>
+  <script type="text/javascript" src="<?= base_url(); ?>assets/js/sweetalert2.all.min.js"></script>
+  <script>
+    $('#regCrudForm').on('submit', function(e) {
+      e.preventDefault();
+      // init
+      var url = $(this).attr('action');
+      var redUrl = $(this).data('redurl');
+      var form_data = new FormData($(this)[0]);
+      $.ajax({
+        type: 'POST',
+        url: url,
+        data: form_data,
+        dataType: 'JSON',
+        async: true,
+        processData: false,
+        contentType: false,
+        beforeSend: function() {
+          $('.bg-process').fadeIn();
+        },
+        success: function(textParse) {
+          $('.bg-process').attr('style', 'display: none !important');
+
+          if (textParse.status == true) {
+            Swal.fire({
+              icon: 'success',
+              title: 'Berhasil',
+              text: textParse.message,
+            }).then((result) => {
+              if (result.isConfirmed) {
+                window.location.href = redUrl;
+              }
+            });
+          } else {
+            Swal.fire({
+              icon: 'error',
+              title: 'Gagal',
+              text: textParse.message,
+            })
+          }
+        }
+      }).fail(function(jqXHR, ajaxOptions, thrownError) {
+        $('.bg-process').attr('style', 'display: none !important');
+        Swal.fire({
+          icon: 'error',
+          title: 'Failed',
+          text: 'Server Not Responding',
+        })
+      });
+    });
+  </script>
 </body>
 
 </html>
