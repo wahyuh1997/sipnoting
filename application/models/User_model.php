@@ -77,7 +77,7 @@
             $user_id = $data['user_id'];
             $email = $data['email'];
             $nama = $data['nama'];
-            $jabatan = $data['jabatan'];
+            $jabatan = $data['jabatan']??null;
             $no_hp = $data['no_hp'];
 
             $user = $this->db->get_where('users', ['id' => $user_id])->row_array();
@@ -108,5 +108,44 @@
                     where id = ?";
             return $this->db->query($sql,[$user_id]);
         }
+
+        function register($data)
+        {
+            $email = $data['email'];
+            $no_hp = $data['no_hp'];
+            $password = $data['password'];
+
+            if($this->db->get_where('users', ['email' => $email])->row_array()){
+                return $this->return_failed('email sudah ada!',[]);
+            }
+
+            $save = [
+                'email' => $email
+                ,'no_hp' => $no_hp
+                ,'password' => password_hash($password, PASSWORD_DEFAULT)
+                ,'kode_otp' => $this->token()
+                ,'is_admin' => 0
+            ];
+
+            $this->db->insert('users',$save);
+            
+            return $this->return_success('Kode OTP sudah dikirim, silahkan cek email anda',[]);
+        }
+
+        function verify($email, $kode_otp)
+        {
+            if(!$this->db->get_where('users', ['email' => $email])->row_array()){
+                return $this->return_failed('Email tidak terdaftar atau user sudah terhapus. silahkan daftar kembali!',[]);
+            }
+            
+            if (!$this->db->get_where('users', ['email' => $email, 'kode_otp'=> $kode_otp])->row_array()) {
+                return $this->return_failed('Kode OTP tidak berlaku!',[]);
+            }
+
+            $this->db->update('users', ['verified' => 1],['email' => $email]);
+
+            return $this->return_success('Verifikasi berhasil! Silahkan lengkapi profil anda!',[]);
+        }
+        // return $this->token();
     }
 ?>
