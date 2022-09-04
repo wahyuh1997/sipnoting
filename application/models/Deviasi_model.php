@@ -27,7 +27,12 @@ class Deviasi_model extends My_Model
         $cek = $this->db->get_where('standar_deviasi',['jenis_kelamin' => $jenis_kelamin]);
         
         if ($cek->num_rows() > 0) {
-            return $this->return_failed('',$cek->order_by('usia', 'asc')->result_array());
+            $sql = "
+                    select * from standar_deviasi
+                    where jenis_kelamin = ?
+                    order by usia asc;
+                    ";
+            return $this->return_failed('',$this->db->query($sql,[$jenis_kelamin])->result_array());
         } else {
             return $this->return_failed('data tidak ada',[]);
         }
