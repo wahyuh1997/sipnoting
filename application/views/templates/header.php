@@ -89,7 +89,7 @@
             <div class="widget-content p-0">
               <div class="widget-content-wrapper">
                 <div class="widget-content-left">
-                  <a href="#" class="btn text-decoration-none text-white font-weight-bold"><i class="fa fa-sign-out"></i> KELUAR</a>
+                  <a href="<?= base_url('auth/logout'); ?>" data-redurl="<?= base_url(); ?>" class="btn text-decoration-none text-white font-weight-bold btn-logout"><i class="fa fa-sign-out"></i> KELUAR</a>
                 </div>
               </div>
             </div>

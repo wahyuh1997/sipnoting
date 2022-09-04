@@ -9,7 +9,7 @@ class Auth extends MY_Controller
   {
     parent::__construct();
     $this->load->model([
-      'User_model', 'user'
+      'User_model' => 'user'
     ]);
   }
 
@@ -18,19 +18,42 @@ class Auth extends MY_Controller
    */
   public function login()
   {
-    $data = [
-            'email' => 'andi@gmail.com'
-            ,'password' => '12345678'
-        ];
-    
-    $res = $this->user->login($data['email'], $data['password']);
-    
-    $data = [
-      'title'     => 'Login',
-      'subtitle'  => 'Login Sipnoting',
-    ];
+    $post = $this->input->post(null, true);
+    if (count($post) == 0) {
+      $data = [
+        'title'     => 'Login',
+        'subtitle'  => 'Login Sipnoting',
+      ];
 
-    $this->load->view('auth/login', $data);
+      $this->load->view('auth/login', $data);
+    } else {
+      $res = $this->user->login($post['email'], $post['password']);
+
+      if ($res['status'] == true) {
+        if ($res['data']['is_admin'] == 1) {
+          $_SESSION['sipnoting_admin'] = [
+            'email'     => $res['data']['email'],
+            'nama'      => $res['data']['nama'],
+            'no_hp'     => $res['data']['no_hp'],
+            'is_admin'  => $res['data']['is_admin'],
+            'jabatan'   => $res['data']['jabatan'],
+          ];
+
+          redirect('dashboard');
+        } else {
+          $_SESSION['sipnoting_user'] = [
+            'email'     => $res['data']['email'],
+            'nama'      => $res['data']['nama'],
+            'no_hp'     => $res['data']['no_hp'],
+            'is_admin'  => $res['data']['is_admin'],
+          ];
+          redirect('home');
+        }
+      } else {
+        $this->session->set_flashdata('alert', $res['message']);
+        redirect('home');
+      }
+    }
   }
 
   public function register()
@@ -61,5 +84,10 @@ class Auth extends MY_Controller
     ];
 
     $this->load->view('auth/verif_success', $data);
+  }
+
+  public function logout()
+  {
+    session_destroy();
   }
 }

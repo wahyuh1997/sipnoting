@@ -41,13 +41,12 @@
               <form action="#" method="post">
                 <div class="form-group first">
                   <label for="username" class="text-warning">Email</label>
-                  <input type="email" class="form-control text-white" id="email" name="email">
+                  <input type="email" class="form-control text-white" id="email" name="email" autofocus required>
 
                 </div>
                 <div class="form-group last mb-4">
                   <label for="password" class="text-warning">Password</label>
-                  <input type="password" class="form-control text-white" id="password" name="password" minlength="6">
-
+                  <input type="password" class="form-control text-white" id="password" name="password" minlength="6" required>
                 </div>
 
                 <button type="submit" class="btn text-white btn-block rounded rounded-pill" style="background-color: #A97798;">Masuk</button>
