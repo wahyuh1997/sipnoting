@@ -68,6 +68,16 @@ class User extends MY_Controller
     // get body
     $post = $this->input->post(null, true);
 
+    $data = [
+            'email' => 'andi@gmail.com'
+            ,'nama' => 'andi rifaldi'
+            ,'jabatan' => 'direktur'
+            ,'no_hp' => '089602584857'
+            ,'user_id' => 3
+        ];
+
+    $res = $this->user->insert_anggota($data);
+
     // check body
     $user = $this->lib_curl->curl_request($this->pos_service_v1 . 'auth/get_user/' . $user_name);
     if (count($post) == 0) {

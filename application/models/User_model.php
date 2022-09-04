@@ -71,5 +71,34 @@
             
             return $this->db->query($sql)->result_array();
         }
+
+        function edit($data)
+        {
+            $user_id = $data['user_id'];
+            $email = $data['email'];
+            $nama = $data['nama'];
+            $jabatan = $data['jabatan'];
+            $no_hp = $data['no_hp'];
+
+            $user = $this->db->get_where('users', ['id' => $user_id])->row_array();
+            
+            if (!$user) {
+                return $this->return_failed('user tidak ada',[]);
+            }
+            
+            if ($this->db->get_where('users', ['email' => $email, 'email !=' => $user['email']])->row_array()) {
+                return $this->return_failed('email sudah ada.',[]);
+            }
+            $save = [
+                'email' => $email
+                ,'nama' => $nama
+                ,'no_hp' => $no_hp
+                ,'jabatan' => $jabatan
+            ];
+
+            $simpan = $this->db->update('users', $save, ['id' =>$user_id]);
+
+            return $this->return_success('Data berhasil disimpan!', $simpan);
+        }
     }
 ?>

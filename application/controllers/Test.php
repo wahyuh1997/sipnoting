@@ -21,14 +21,15 @@ class Test extends MY_Controller
     {
         $data = [
             'email' => 'andi@gmail.com'
-            ,'nama' => 'andi'
+            ,'nama' => 'andi rifaldi'
             ,'jabatan' => 'direktur'
             ,'no_hp' => '089602584857'
-            ,'password' => '12345678'
+            ,'user_id' => 3
         ];
 
         // echo json_encode($this->User_model->insert_anggota($data));
-        echo json_encode($this->User_model->get_all_user());
+        // echo json_encode($this->User_model->get_all_user());
+        echo json_encode($this->User_model->edit($data));
         // echo json_encode($this->deviasi->get_all_deviasi('L'));
     }
 }
