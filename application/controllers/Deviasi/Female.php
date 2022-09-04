@@ -31,8 +31,24 @@ class Female extends MY_Controller
   public function add()
   {
     $post = $this->input->post(null, true);
-    /* If Need Selection Load Here */
+    /* If Need Selection Load Here 
+
+      $insert = [
+            'jenis_kelamin' => 'P'
+            ,'usia' => $post['usia']
+            ,'minus_1_sd' => $post['minus_1_sd']
+            ,'minus_2_sd' => $post['minus_2_sd']
+            ,'minus_3_sd' => $post['minus_3_sd']
+            ,'median' => $post['median']
+            ,'1_sd' => $post['1_sd']
+            ,'2_sd' => $post['2_sd']
+            ,'3_sd' => $post['3_sd']
+        ];
+    
+    $res = $this->deviasi->insert_deviasi($insert);
+    */
     /** */
+    
 
     if (
       count($post) == 0

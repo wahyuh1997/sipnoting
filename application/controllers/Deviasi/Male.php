@@ -31,7 +31,25 @@ class Male extends MY_Controller
   public function add()
   {
     $post = $this->input->post(null, true);
-    /* If Need Selection Load Here */
+    /* If Need Selection Load Here 
+      $insert = [
+            'jenis_kelamin' => 'L'
+            ,'usia' => $post['usia']
+            ,'minus_1_sd' => $post['minus_1_sd']
+            ,'minus_2_sd' => $post['minus_2_sd']
+            ,'minus_3_sd' => $post['minus_3_sd']
+            ,'median' => $post['median']
+            ,'1_sd' => $post['1_sd']
+            ,'2_sd' => $post['2_sd']
+            ,'3_sd' => $post['3_sd']
+        ];
+    
+    $res = $this->deviasi->insert_deviasi($insert);
+
+
+    */
+
+    
 
     if (count($post) == 0) {
       $data = [
@@ -47,7 +65,21 @@ class Male extends MY_Controller
   public function edit($id)
   {
     $post = $this->input->post(null, true);
-    /* load Function Model Here to Get Data By ID*/
+    /* load Function Model Here to Get Data By ID
+      $insert = [
+            'jenis_kelamin' => 'L'
+            ,'usia' => $post['usia']
+            ,'minus_1_sd' => $post['minus_1_sd']
+            ,'minus_2_sd' => $post['minus_2_sd']
+            ,'minus_3_sd' => $post['minus_3_sd']
+            ,'median' => $post['median']
+            ,'1_sd' => $post['1_sd']
+            ,'2_sd' => $post['2_sd']
+            ,'3_sd' => $post['3_sd']
+        ];
+    
+    $res = $this->deviasi->insert_deviasi($insert);
+    */
     $res = '';
 
     if (count($post) == 0) {
@@ -64,5 +96,19 @@ class Male extends MY_Controller
   public function delete($id)
   {
     /* Delete Data Function */
+    $data = [
+      'jenis_kelamin' => 'L' //P = Perempuan, L= Laki2
+      ,'usia' => 12 //bulan
+    ];
+    $res = $this->deviasi->delete($data);
+  }
+
+  public function detail()
+  {
+    $data = [
+      'jenis_kelamin' => 'L' //P = Perempuan, L= Laki2
+      ,'usia' => 12 //bulan
+    ];
+    $res = $this->deviasi->get_deviasi($data);
   }
 }

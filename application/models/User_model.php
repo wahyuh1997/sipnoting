@@ -146,6 +146,5 @@
 
             return $this->return_success('Verifikasi berhasil! Silahkan lengkapi profil anda!',[]);
         }
-        // return $this->token();
     }
 ?>

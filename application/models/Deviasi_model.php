@@ -16,7 +16,7 @@ class Deviasi_model extends My_Model
         $cek = $this->db->get_where('standar_deviasi',['jenis_kelamin' => $data['jenis_kelamin'], 'usia' => $data['usia']]);
         
         if ($cek->num_rows() > 0) {
-            return $this->return_failed('',$cek->row_array());
+            return $this->return_success('',$cek->row_array());
         } else {
             return $this->return_failed('data tidak ada',[]);
         }
@@ -74,8 +74,10 @@ class Deviasi_model extends My_Model
         }
         
         $cek = $this->db->get_where('standar_deviasi',['jenis_kelamin' => $data['jenis_kelamin'], 'usia' => $data['usia']]);
+
+        // return $cek->num_rows();
         
-        if ($cek->num_rows() < 0) {
+        if ($cek->num_rows() < 1) {
             return $this->return_failed('data tidak ada',[]);
         }
 
@@ -92,5 +94,22 @@ class Deviasi_model extends My_Model
         $simpan = $this->db->update('standar_deviasi', $insert, ['jenis_kelamin' => $data['jenis_kelamin'], 'usia' => $data['usia']]);
 
         return $this->return_success('data berhasil diubah!', $simpan);
+    }
+
+    function delete($data)
+    {
+        if (!$data) {
+            return $this->return_failed('Harap data diisi!',[]);
+        }
+        
+        $cek = $this->db->get_where('standar_deviasi',['jenis_kelamin' => $data['jenis_kelamin'], 'usia' => $data['usia']]);
+        
+        if ($cek->num_rows() < 1) {
+            return $this->return_failed('data tidak ada',[]);
+        } 
+
+        $this->db->delete('standar_deviasi',['jenis_kelamin' => $data['jenis_kelamin'], 'usia' => $data['usia']]);
+
+        return $this->return_success('Berhasil dihapus',[]);
     }
 }
