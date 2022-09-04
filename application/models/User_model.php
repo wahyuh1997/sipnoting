@@ -157,5 +157,27 @@
 
             return $this->return_success('Verifikasi berhasil! Silahkan lengkapi profil anda!',[]);
         }
+
+        function change_password($email, $password)
+        {
+            if(!$this->db->get_where('users', ['email' => $email])->row_array()){
+                return $this->return_failed('Email tidak terdaftar!',[]);
+            }
+
+            $this->db->update('users', ['password' => password_hash($password, PASSWORD_DEFAULT)],['email' => $email]);
+
+            return $this->return_success('Perubahan password berhasil!',[]);
+        }
+        
+        function reset_password($email)
+        {
+            if(!$this->db->get_where('users', ['email' => $email])->row_array()){
+                return $this->return_failed('Email tidak terdaftar!',[]);
+            }
+
+            $this->db->update('users', ['password' => password_hash('12345678', PASSWORD_DEFAULT)],['email' => $email]);
+
+            return $this->return_success('Reset password berhasil!',[]);
+        }
     }
 ?>

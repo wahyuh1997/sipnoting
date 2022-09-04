@@ -104,6 +104,7 @@ class User extends MY_Controller
   {
     $post = $this->input->post(null, true);
 
+    $res = $this->user->change_password('email','password');
 
     if (count($post) == 0) {
       // dataView
@@ -137,6 +138,8 @@ class User extends MY_Controller
    */
   public function reset_password($username)
   {
+    $res = $this->user->change_password('email');
+
     $_POST['username'] = $username;
     echo json_encode($this->lib_curl->curl_request($this->pos_service_v1 . 'auth/reset_password', 'POST', $_POST));
   }
