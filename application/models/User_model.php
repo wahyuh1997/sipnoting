@@ -134,8 +134,13 @@
 
         function verify($email, $kode_otp)
         {
+            $user = $this->db->get_where('users', ['email' => $email])->row_array();
             if(!$this->db->get_where('users', ['email' => $email])->row_array()){
                 return $this->return_failed('Email tidak terdaftar atau user sudah terhapus. silahkan daftar kembali!',[]);
+            }
+            
+            if ($user['is_active'] == 1) {
+                return $this->return_failed('Akun sudah diaktifkan!',[]);
             }
             
             if (!$this->db->get_where('users', ['email' => $email, 'kode_otp'=> $kode_otp])->row_array()) {
@@ -143,6 +148,12 @@
             }
 
             $this->db->update('users', ['verified' => 1],['email' => $email]);
+
+            $data_balita = [
+                'user_id' => $user['id']
+            ];
+
+            $this->db->insert('profile_bayi' , $data_balita);
 
             return $this->return_success('Verifikasi berhasil! Silahkan lengkapi profil anda!',[]);
         }
