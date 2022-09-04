@@ -40,8 +40,8 @@
           <tr>
             <td class="text-center"><?= $key + 1; ?></td>
             <td>
-              <a href="" class="btn btn-primary btn-sm">Edit</a>
-              <a href="" class="btn btn-danger btn-sm">Hapus</a>
+              <a href="<?= base_url('deviasi/male/edit/' . $res['id']); ?>" class="btn btn-primary btn-sm">Edit</a>
+              <a href="<?= base_url('deviasi/male/delete/' . $res['id']); ?>" class="btn btn-danger btn-sm del-sel">Hapus</a>
             </td>
             <td><?= $res['usia']; ?></td>
             <td class="text-center"><?= $res['minus_3_sd']; ?></td>

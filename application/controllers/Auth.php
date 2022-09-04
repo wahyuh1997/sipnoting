@@ -18,6 +18,11 @@ class Auth extends MY_Controller
    */
   public function login()
   {
+    /* Check if already login */
+    if (isset($_SESSION['sipnoting_admin'])) {
+      redirect('dashboard');
+    }
+
     $post = $this->input->post(null, true);
     if (count($post) == 0) {
       $data = [
@@ -59,10 +64,8 @@ class Auth extends MY_Controller
   public function register()
   {
     $data = [
-            'email' => 'andi1@gmail.com'
-            ,'no_hp' => '08976565'
-            ,'password' => '12345678'
-        ];
+      'email' => 'andi1@gmail.com', 'no_hp' => '08976565', 'password' => '12345678'
+    ];
     $res = $this->user->register($data);
 
     $data = [

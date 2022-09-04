@@ -12,9 +12,9 @@
         </div>
       </div>
     </div>
-    <div class="page-title-actions">
+    <!-- <div class="page-title-actions">
       <a href="<?= base_url('user/add'); ?>" class="btn btn-shadow btn-info">Tambah <?= $title; ?></a>
-    </div>
+    </div> -->
   </div>
 </div>
 
@@ -37,7 +37,7 @@
             <td class="text-center"><?= $key + 1; ?></td>
             <td>
               <a href="" class="btn btn-primary btn-sm">Edit</a>
-              <a href="" class="btn btn-danger btn-sm">Hapus</a>
+              <!-- <a href="" class="btn btn-danger btn-sm">Hapus</a> -->
             </td>
             <td><?= $res['nama']; ?></td>
             <td><?= $res['jabatan']; ?></td>

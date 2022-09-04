@@ -32,25 +32,8 @@ class Male extends MY_Controller
   {
     $post = $this->input->post(null, true);
     /* If Need Selection Load Here 
-      $insert = [
-            'jenis_kelamin' => 'L'
-            ,'usia' => $post['usia']
-            ,'minus_1_sd' => $post['minus_1_sd']
-            ,'minus_2_sd' => $post['minus_2_sd']
-            ,'minus_3_sd' => $post['minus_3_sd']
-            ,'median' => $post['median']
-            ,'1_sd' => $post['1_sd']
-            ,'2_sd' => $post['2_sd']
-            ,'3_sd' => $post['3_sd']
-        ];
-    
-    $res = $this->deviasi->insert_deviasi($insert);
-
 
     */
-
-    
-
     if (count($post) == 0) {
       $data = [
         'title'     => 'Tambah Data Standar Deviasi Panjang Badan (cm)',
@@ -65,43 +48,30 @@ class Male extends MY_Controller
   public function edit($id)
   {
     $post = $this->input->post(null, true);
-    /* load Function Model Here to Get Data By ID
-      $insert = [
-            'jenis_kelamin' => 'L'
-            ,'usia' => $post['usia']
-            ,'minus_1_sd' => $post['minus_1_sd']
-            ,'minus_2_sd' => $post['minus_2_sd']
-            ,'minus_3_sd' => $post['minus_3_sd']
-            ,'median' => $post['median']
-            ,'1_sd' => $post['1_sd']
-            ,'2_sd' => $post['2_sd']
-            ,'3_sd' => $post['3_sd']
-            ,'id' => $post['id']
-        ];
-    
-    $res = $this->deviasi->insert_deviasi($insert);
-    */
-    $res = '';
+    /* load Function Model Here to Get Data By ID  */
+    $res = $this->deviasi->get_deviasi($id);
 
-    if (count($post) == 0) {
-      $data = [
-        'title'     => 'Tambah Data Standar Deviasi Panjang Badan (cm)',
-        'subtitle'  => 'Anak Laki-Laki',
-      ];
-      $this->load_template('male/page/edit', $data);
+    if ($res['status'] == true) {
+      if (count($post) == 0) {
+        $data = [
+          'title'     => 'Tambah Data Standar Deviasi Panjang Badan (cm)',
+          'subtitle'  => 'Anak Laki-Laki',
+          'data'      => $res['data']
+        ];
+
+        $this->load_template('male/page/edit', $data);
+      } else {
+        /* Update Data Function */
+        echo json_encode($this->deviasi->edit_deviasi($post));
+      }
     } else {
-      /* Update Data Function */
+      redirect('deviasi/male');
     }
   }
 
   public function delete($id)
   {
     /* Delete Data Function */
-    $res = $this->deviasi->delete($id);
-  }
-
-  public function detail()
-  {
-    $res = $this->deviasi->get_deviasi(1);
+    echo json_encode($this->deviasi->delete($id));
   }
 }
