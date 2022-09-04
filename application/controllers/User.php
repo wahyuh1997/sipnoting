@@ -8,6 +8,9 @@ class User extends MY_Controller
   public function __construct()
   {
     parent::__construct();
+    $this->load->model([
+      'User_model' => 'user'
+    ]);
   }
 
   /**
@@ -88,6 +91,16 @@ class User extends MY_Controller
   public function change_password()
   {
     $post = $this->input->post(null, true);
+
+    $data = [
+            'email' => 'andi@gmail.com'
+            ,'nama' => 'andi'
+            ,'jabatan' => 'direktur'
+            ,'no_hp' => '089602584857'
+            ,'password' => '12345678'
+        ];
+
+    $res = $this->User_model->insert_anggota($data);
     if (count($post) == 0) {
       // dataView
       $dataView = [
