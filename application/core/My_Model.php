@@ -50,8 +50,8 @@ class My_Model extends CI_Model
     $this->load->library('email');
     $this->email->initialize($config);
 
-    // $this->email->from($config['smtp_user'], 'Web Programming UNPAS');
-    $this->email->from('andi@gmail.com', 'Web Programming UNPAS');
+    $this->email->from($config['smtp_user'], 'Web Programming UNPAS');
+    // $this->email->from('andi@gmail.com', 'Web Programming UNPAS');
     $this->email->to($this->input->post('email'));
 
     $this->email->subject('Account Verification');
