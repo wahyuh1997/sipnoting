@@ -8,9 +8,8 @@ class Female extends MY_Controller
   public function __construct()
   {
     parent::__construct();
-    $this->load->model([
-      'Deviasi_model' => 'deviasi'
-    ]);
+    $this->load->model('User_model', 'user');
+
   }
 
   /**
