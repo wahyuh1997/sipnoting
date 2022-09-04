@@ -47,7 +47,7 @@ class Test extends MY_Controller
     function register()
     {
         $data = [
-            'email' => 'andirifaldi31@gmail.com'
+            'email' => 'test3@gmail.com'
             ,'no_hp' => '08976565'
             ,'password' => '12345678'
         ];
