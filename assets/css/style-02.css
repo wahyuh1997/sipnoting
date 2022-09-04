@@ -43,7 +43,7 @@ body {
 .top-header .title {
   color: var(--primaryText);
   font-weight: 700;
-  font-size: 5rem;
+  font-size: 5em;
   line-height: -1rem !important;
   margin-bottom: 0;
   font-family: 'Poppins', sans-serif;
@@ -61,7 +61,7 @@ body {
   width: 17rem;
   height: 15rem;
   top: 21rem;
-  right: 0;
+  left: 25.5em;
 /* transform: matrix(-0.95, -0.31, -0.31, 0.95, 0, 0); */
 }
 
@@ -113,4 +113,36 @@ body {
 
 .font-icon-wrapper {
   cursor: pointer;
+}
+
+@media (max-width: 767.98px) {
+  .stetoskop {    
+    display: none;
+  }
+
+  .top-header .title p {
+    text-align: center;
+    margin-left: 0 !important;
+  }
+
+  .top-header .desc {
+    width: 100% !important;
+    text-align: center;
+  }
+
+  .top-header .primary-btn {
+    text-align: center;    
+    margin-bottom: 1em;
+  }
+}
+
+@media (max-width: 1199.98px) {
+  .stetoskop {
+    position: absolute;
+    width: 17rem;
+    height: 15rem;
+    top: 21rem;
+    left: 21rem;
+    display: none;
+  }
 }
