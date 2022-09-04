@@ -127,6 +127,12 @@
                 ,'is_admin' => 0
             ];
 
+            $mail = $this->_sendEmail($save['kode_otp'], $email);
+
+            if (!$mail['status']) {
+                return $this->return_failed('',$mail['data']);
+            }
+
             $this->db->insert('users',$save);
             
             return $this->return_success('Kode OTP sudah dikirim, silahkan cek email anda',[]);

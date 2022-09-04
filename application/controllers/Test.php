@@ -47,13 +47,13 @@ class Test extends MY_Controller
     function register()
     {
         $data = [
-            'email' => 'andi2@gmail.com'
+            'email' => 'andirifaldi31@gmail.com'
             ,'no_hp' => '08976565'
             ,'password' => '12345678'
         ];
 
-        // echo json_encode($this->user->register($data));
-        echo json_encode($this->user->verify('andi2@gmail.com', '853002'));
+        echo json_encode($this->user->register($data));
+        // echo json_encode($this->user->verify('andi2@gmail.com', '853002'));
     }
 
     function edit_deviasi()
