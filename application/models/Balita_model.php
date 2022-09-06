@@ -112,16 +112,17 @@ class Balita_model extends My_Model
 
         return $this->return_success('berhasil',[]);
     }
-
+    
     function delete_balita($id)
     {
         $balita = $this->db->get_where('profile_bayi',['id'=>$id]);
-
+        
         if ($balita->num_rows() < 1) {
             return $this->return_failed('data bayi tidak ada', []);
         }
         
         $this->db->delete('profile_bayi', ['id' => $id]);
+        return $this->return_success('berhasil',[]);
     }
 
     
