@@ -17,7 +17,11 @@ class Profile extends MY_Controller
   public function index()
   {
     /* load Function Model Here to Show All Data*/
-    $res = $this->balita->get_balita_by_user($_SESSION['sipnoting_user']['id']);
+    if (isset($_SESSION['sipnoting_user']['id'])) {
+      $res = $this->balita->get_balita_by_user($_SESSION['sipnoting_user']['id']);
+    } else {
+      $res = ['status' => false];
+    }
 
     $data = [
       'title'     => 'Profile',
@@ -28,44 +32,44 @@ class Profile extends MY_Controller
     $this->load_template_user('profile/page/index', $data);
   }
 
-  public function edit()
-  {
-    $pos = [];
-    /* load Function Model Here to Show All Data*/
-    /*
-    $update = [
-      'bayi_id' => 4
-      ,'jenis_kelamin' => "L"
-      ,'nama' => 'Sumintul'
-      ,'tanggal_lahir' => '2022-03-06'
-      ,'ayah' => 'ganti'
-      ,'ibu' => 'santi'
-      ,'alamat' => 'kepo'
-    ];
-    $res = $this->balita->get_balita($update);
-
-    // echo json_encode($this->balita->get_balita(4)); //id bayi
-    */
-    $data = [
-      'title'     => 'Ubah Profile',
-      'subtitle'  => 'SIPNOTING',
-      'js'        => 'profile/js/data'
-    ];
-    $this->load_template_user('profile/page/edit', $data);
-  }
-
   public function add()
   {
-    $data = [
-        'jenis_kelamin'=> 'L'
-        ,'nama' => 'arel'
-        ,'tempat_lahir' => 'Tangerang'??null
-        ,'tanggal_lahir' => '2022-03-01'
-        ,'ayah' => 'Samian'
-        ,'ibu' => 'Masri'
-        ,'alamat' => 'gatau'
-        ,'user_id' => 7
-    ];
-    $res = ($this->balita->balita_add($data));
+    $post = $this->input->post(null, true);
+
+    if (count($post) == 0) {
+      $data = [
+        'title'     => 'Ubah Profile',
+        'subtitle'  => 'SIPNOTING',
+        'js'        => 'profile/js/data'
+      ];
+      $this->load_template_user('profile/page/add', $data);
+    } else {
+      echo json_encode($this->balita->balita_add($post));
+    }
+  }
+
+  public function edit($id)
+  {
+    $post = $this->input->post(null, true);
+    /* load Function Model Here to Show All Data*/
+    $res = $this->balita->get_balita($id);
+    if (count($post) == 0) {
+      # code...
+      $data = [
+        'title'     => 'Ubah Profile',
+        'subtitle'  => 'SIPNOTING',
+        'js'        => 'profile/js/data',
+        'data'      => $res['data']
+      ];
+      $this->load_template_user('profile/page/edit', $data);
+    } else {
+      echo json_encode($this->balita->get_balita($id)); //id bayi
+    }
+  }
+
+  public function delete($id)
+  {
+    /* Add Function here */
+    echo json_encode($id);
   }
 }

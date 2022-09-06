@@ -2,7 +2,7 @@
 
   <div class="d-flex justidy-content-between">
     <h1 class="title-text d-inline"><?= $title; ?></h1>
-    <a href="<?= base_url('profile/edit'); ?>" class="ms-auto mb-0 text-white text-decoration-none"><i class="fa-solid fa-xl fa-plus"></i> Tambah Data Balita</a>
+    <a href="<?= base_url('profile/add'); ?>" class="ms-auto mb-0 text-white text-decoration-none"><i class="fa-solid fa-xl fa-plus"></i> Tambah Data Balita</a>
   </div>
 
   <?php if ($data['status'] == true) : ?>
@@ -15,28 +15,28 @@
           <div class="col-md-8">
             <div class="card-body" style="position: relative;">
               <div class="action" style="position: absolute; right: 1rem; top: 0;">
-                <a href="<?= base_url('profile/edit'); ?>" class="me-2"><i class="fa-solid fa-xl fa-pen-to-square"></i></a>
-                <a href="<?= base_url('profile/delete'); ?>" class="text-danger"><i class="fa-solid fa-xl fa-trash"></i></a>
+                <a href="<?= base_url('profile/edit/' . $baby['id']); ?>" class="me-2"><i class="fa-solid fa-xl fa-pen-to-square"></i></a>
+                <a href="<?= base_url('profile/delete/' . $baby['id']); ?>" class="text-danger del-sel"><i class="fa-solid fa-xl fa-trash"></i></a>
               </div>
               <div class="row">
                 <div class="col-lg-3">Nama Balita</div>
-                <div class="col-lg-9">:</div>
+                <div class="col-lg-9">: <?= $baby['nama']; ?></div>
               </div>
               <div class="row">
                 <div class="col-lg-3 pe-0">Tempat Lahir</div>
-                <div class="col-lg-9">:</div>
+                <div class="col-lg-9">: <?= $baby['tempat_lahir']; ?></div>
               </div>
               <div class="row">
                 <div class="col-lg-3">Tgl Lahir</div>
-                <div class="col-lg-9">:</div>
+                <div class="col-lg-9">: <?= dateFormat($baby['tanggal_lahir']); ?></div>
               </div>
               <div class="row">
                 <div class="col-lg-3 pe-0">Jenis Kelamin</div>
-                <div class="col-lg-9">:</div>
+                <div class="col-lg-9">: <?= $baby['jenis_kelamin'] == 'L' ? 'Laki-Laki' : 'Perempuan'; ?></div>
               </div>
               <div class="row">
                 <div class="col-lg-3">Usia</div>
-                <div class="col-lg-9">:</div>
+                <div class="col-lg-9">: <?= $baby['usia_tahun'] != 0 ? $baby['usia_tahun'] . ' Tahun' : null; ?> <?= $baby['usia_bulan'] . ' Bulan'; ?></div>
               </div>
             </div>
           </div>
@@ -48,7 +48,7 @@
   <?php endif; ?>
 
   <div class="row mt-5">
-    <div class="col-lg-8 offset-lg-2">
+    <div class="col-lg-7 mx-auto">
       <div class="d-grid gap-2">
         <a href="<?= base_url('auth/logout'); ?>" data-redurl="<?= base_url(); ?>" class="btn primary-btn py-2 btn-logout" type="button" style="font-size: 20px;">KELUAR</a>
       </div>

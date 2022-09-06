@@ -5,7 +5,12 @@
         <div class="row">
           <div class="col-lg-12 mb-3">
             <label for="" class="text-white">Nama Balita</label>
-            <input type="test" step="0.1" min="0.1" value="Andi" class="form-control">
+            <!-- <input type="test" step="0.1" min="0.1" value="Andi" class="form-control"> -->
+            <select name="" id="" class="form-control">
+              <?php foreach ($data['data'] as $res) : ?>
+                <option value="<?= $res['id']; ?>"><?= $res['nama']; ?></option>
+              <?php endforeach; ?>
+            </select>
           </div>
           <div class="col-lg-12">
             <label for="" class="text-white">Berapa Usia Ibu Saat Melahirkan ?</label>
