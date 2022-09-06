@@ -43,6 +43,8 @@ class Profile extends MY_Controller
       ,'alamat' => 'kepo'
     ];
     $res = $this->balita->get_balita($update);
+
+    // echo json_encode($this->balita->get_balita(4)); //id bayi
     */
     $data = [
       'title'     => 'Ubah Profile',
