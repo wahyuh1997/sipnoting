@@ -12,7 +12,10 @@
       </div>
       <div class="col-md-8">
         <div class="card-body" style="position: relative;">
-          <a href="<?= base_url('profile/edit'); ?>" style="position: absolute; right: 1rem; top: 0;"><i class="fa-solid fa-xl fa-pen-to-square"></i></a>
+          <div class="action" style="position: absolute; right: 1rem; top: 0;">
+            <a href="<?= base_url('profile/edit'); ?>" class="me-2"><i class="fa-solid fa-xl fa-pen-to-square"></i></a>
+            <a href="<?= base_url('profile/delete'); ?>" class="text-danger"><i class="fa-solid fa-xl fa-trash"></i></a>
+          </div>
           <div class="row">
             <div class="col-lg-3">Nama Balita</div>
             <div class="col-lg-9">:</div>

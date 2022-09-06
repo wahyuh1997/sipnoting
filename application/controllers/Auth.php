@@ -80,6 +80,11 @@ class Auth extends MY_Controller
 
       $this->load->view('auth/register', $data);
     } else {
+      if ($post['no_hp'] != '') {
+        $str = $post['no_hp'];
+        preg_match_all('!\d+!', $str, $matches);
+        $post['no_hp'] = $matches[0][0] . $matches[0][1] . $matches[0][2];
+      }
       echo json_encode($this->user->register($post));
     }
   }

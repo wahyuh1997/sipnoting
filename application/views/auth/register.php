@@ -41,7 +41,7 @@
                 </div>
                 <div class="form-group first">
                   <label for="no_hp" class="text-warning">No. Telp</label>
-                  <input type="number" class="form-control text-white" id="no_hp" name="no_hp" minlength="11" maxlength="13">
+                  <input type="text" class="form-control text-white phone" id="no_hp" name="no_hp" minlength="11" maxlength="13">
                 </div>
                 <div class="form-group last mb-4">
                   <label for="password" class="text-warning">Password</label>
@@ -65,6 +65,7 @@
   <script src="<?= base_url('assets/login/'); ?>js/jquery-3.3.1.min.js"></script>
   <script src="<?= base_url('assets/login/'); ?>js/popper.min.js"></script>
   <script src="<?= base_url('assets/login/'); ?>js/bootstrap.min.js"></script>
+  <script src="<?= base_url('assets/'); ?>js/jquery.mask.js"></script>
   <script src="<?= base_url('assets/login/'); ?>js/main.js"></script>
   <script type="text/javascript" src="<?= base_url(); ?>assets/js/sweetalert2.all.min.js"></script>
   <script>
@@ -128,6 +129,8 @@
         }
       })
     });
+
+    $('.phone').mask('(0000) 0000-0000');
   </script>
 </body>
 
