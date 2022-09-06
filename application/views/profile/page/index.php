@@ -2,7 +2,7 @@
 
   <div class="d-flex justidy-content-between">
     <h1 class="title-text d-inline"><?= $title; ?></h1>
-    <a href="<?= base_url('profile/edit'); ?>" class="ms-auto mb-0"><i class="fa-solid fa-2x fa-pen-to-square text-white"></i></a>
+    <a href="<?= base_url('profile/edit'); ?>" class="ms-auto mb-0 text-white text-decoration-none"><i class="fa-solid fa-xl fa-plus"></i> Tambah Data Balita</a>
   </div>
 
   <div class="card mb-3 mx-auto" style="max-width: 768px;">
@@ -11,8 +11,8 @@
         <img src="<?= base_url('assets/img/baby.png'); ?>" class="img-fluid rounded-start" alt="..." style="height: 128px;">
       </div>
       <div class="col-md-8">
-        <div class="card-body">
-          <!-- <h5 class="card-title">Card title</h5> -->
+        <div class="card-body" style="position: relative;">
+          <a href="<?= base_url('profile/edit'); ?>" style="position: absolute; right: 1rem; top: 0;"><i class="fa-solid fa-xl fa-pen-to-square"></i></a>
           <div class="row">
             <div class="col-lg-3">Nama Balita</div>
             <div class="col-lg-9">:</div>
