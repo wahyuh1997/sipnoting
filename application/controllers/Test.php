@@ -123,8 +123,10 @@ class Test extends MY_Controller
       ,'berat_lahir' => 5
       ,'tinggi_badan' => 30
       ,'jarak_kehamilan' => 2
+      ,'created_by' => 7
     ];
 
-    echo json_encode($this->diagnosis->diagnosis_bayi($diagnosis));
+    // echo json_encode($this->diagnosis->diagnosis_bayi($diagnosis));
+    echo json_encode($this->diagnosis->get_all_diagnosis());
   }
 }

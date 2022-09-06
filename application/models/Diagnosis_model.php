@@ -10,9 +10,8 @@ class Diagnosis_model extends My_Model
     function get_all_diagnosis($user_id = null)
     {
         $sql = "
-                select a.*, b.nama
-                from profile_bayi a
-                left join users b on a.user_id = b.id
+                select a.*
+                from diagnosis a
                 ";
 
         if (strlen($user_id) > 0) {
@@ -67,7 +66,21 @@ class Diagnosis_model extends My_Model
         ];
         $stunting = $this->stunting($data_stunting);
         */
-        return $z_score;
+
+        $simpan = [
+            'bayi_id' => $balita['id']
+            ,'usia_ibu' => $usia_melahirkan
+            ,'berat_balita' => $berat_lahir
+            ,'jarak_kehamilan' => $jarak_kehamilan
+            ,'tinggi_balita' => $tinggi_badan
+            ,'z_score' => $z_score['z_score']
+            ,'created_by' => $data['created_by']
+            ,'kesimpulan' => $z_score['stunting']
+        ];
+
+        $this->db->insert('diagnosis', $simpan);
+
+        return $simpan;
     }
 
     function stunting($data)
