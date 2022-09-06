@@ -41,6 +41,9 @@
                       <label for="kode_otp" class="text-warning">Kode OTP</label>
                       <input type="number" class="form-control text-white" id="kode_otp" name="kode_otp" required>
                     </div>
+                    <div id="countdown" class="text-white text-center mb-3">
+
+                    </div>
                     <button type="submit" class="btn text-white btn-block rounded rounded-pill" style="background-color: #A97798;">Verifikasi</button>
                   </div>
                 </div>
@@ -108,6 +111,26 @@
         })
       });
     });
+
+    countdown();
+
+    function countdown() {
+      var timeleft = 15;
+      var downloadTimer = setInterval(function() {
+        if (timeleft <= 0) {
+          clearInterval(downloadTimer);
+          document.getElementById("countdown").innerHTML = `<a href="#" class="text-white send-code">Kirim Ulang Kode OTP</a>`;
+        } else {
+          document.getElementById("countdown").innerHTML = `Kirim Ulang (${timeleft})`;
+        }
+        timeleft -= 1;
+      }, 1000);
+    }
+
+    $(document).on('click', '.send-code', function(e) {
+      e.preventDefault();
+      countdown();
+    })
   </script>
 </body>
 

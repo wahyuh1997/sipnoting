@@ -17,31 +17,23 @@ class Profile extends MY_Controller
   public function index()
   {
     /* load Function Model Here to Show All Data*/
-    $user_id = 1;
-    $res = $this->balita->get_balita($user_id);
+    $res = $this->balita->get_balita($_SESSION['sipnoting_user']['id']);
 
     $data = [
       'title'     => 'Profile',
       'subtitle'  => 'SIPNOTING',
+      'data'      => $res
     ];
-    
+    // trace($res);
     $this->load_template_user('profile/page/index', $data);
   }
 
   public function edit()
   {
-    $pos=[];
+    $pos = [];
     /* load Function Model Here to Show All Data*/
     $update = [
-      'user_id' => $pos['user_id']  
-      ,'jenis_kelamin'=> $pos['jenis_kelamin']
-      ,'tempat_lahir' => $pos['tempat_lahir']
-      ,'tanggal_lahir' => $pos['tanggal_lahir']??''
-      ,'ayah' => $pos['ayah']
-      ,'ibu' => $pos['ibu']
-      ,'alamat' => $pos['alamat']
-      ,'nama'=> $pos['nama']
-      ,'no_hp' => $pos['no_hp']??''
+      'user_id' => $pos['user_id'], 'jenis_kelamin' => $pos['jenis_kelamin'], 'tempat_lahir' => $pos['tempat_lahir'], 'tanggal_lahir' => $pos['tanggal_lahir'] ?? '', 'ayah' => $pos['ayah'], 'ibu' => $pos['ibu'], 'alamat' => $pos['alamat'], 'nama' => $pos['nama'], 'no_hp' => $pos['no_hp'] ?? ''
     ];
     $res = $this->balita->get_balita($update);
 

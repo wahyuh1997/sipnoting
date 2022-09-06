@@ -50,6 +50,7 @@ class Auth extends MY_Controller
           if ($res['data']['verified'] == 1) {
             # code...
             $_SESSION['sipnoting_user'] = [
+              'id'     => $res['data']['id'],
               'email'     => $res['data']['email'],
               'nama'      => $res['data']['nama'],
               'no_hp'     => $res['data']['no_hp'],
@@ -85,7 +86,11 @@ class Auth extends MY_Controller
         preg_match_all('!\d+!', $str, $matches);
         $post['no_hp'] = $matches[0][0] . $matches[0][1] . $matches[0][2];
       }
-      echo json_encode($this->user->register($post));
+      $res = $this->user->register($post);
+      if ($res['status'] == true) {
+        $_SESSION['sipnoting_user']['email'] = $post['email'];
+      }
+      echo json_encode($res);
     }
   }
 
