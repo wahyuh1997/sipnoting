@@ -70,6 +70,7 @@ class Profile extends MY_Controller
   public function delete($id)
   {
     /* Add Function here */
+    $res = $this->balita->delete_balita(3); //id balita
     echo json_encode($id);
   }
 }

@@ -94,7 +94,7 @@ class Test extends MY_Controller
         ,'alamat' => 'gatau'
         ,'user_id' => 7
     ];
-    // echo json_encode($this->balita->balita_add($data));
+    echo json_encode($this->balita->balita_add($data));
      // buat nambah
     echo json_encode($this->balita->get_balita_by_user(7)); 
     // echo json_encode($this->balita->get_balita(4)); 
@@ -110,8 +110,21 @@ class Test extends MY_Controller
       ,'alamat' => 'kepo'
     ];
     // echo json_encode($this->balita->balita_edit($data_edit));
-
-
     
+  }
+
+  function diagnosis()
+  {
+    $this->load->model('Diagnosis_model','diagnosis');
+
+    $diagnosis=[
+      'balita_id' => 4
+      ,'usia_melahirkan' => 20
+      ,'berat_lahir' => 5
+      ,'tinggi_badan' => 30
+      ,'jarak_kehamilan' => 2
+    ];
+
+    echo json_encode($this->diagnosis->diagnosis_bayi($diagnosis));
   }
 }

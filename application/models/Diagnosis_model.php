@@ -32,13 +32,18 @@ class Diagnosis_model extends My_Model
 
     function diagnosis_bayi($data)
     {
-        $user_id = $data['user_id'];
+        $id = $data['balita_id'];
         $usia_melahirkan = floatval($data['usia_melahirkan']);
         $berat_lahir = floatval($data['berat_lahir']);
         $tinggi_badan = floatval($data['tinggi_badan']);
         $jarak_kehamilan = floatval($data['jarak_kehamilan']);
 
-        $balita = $this->db->get_where('profile_bayi', ['user_id', $user_id]);
+        $sql = "
+                select id, jenis_kelamin, (timestampdiff(month, tanggal_lahir, current_date)) as usia
+                from profile_bayi
+                where id = ?
+        ";
+        $balita = $this->db->query($sql, [$id]);
 
         if ($balita->num_rows() < 0) {
             return $this->return_failed('data tidak ada!',[]);
@@ -48,7 +53,7 @@ class Diagnosis_model extends My_Model
 
         $data_z_score = [
             'tinggi_badan' => $tinggi_badan
-            ,'usia' => $usia_melahirkan
+            ,'usia' => $balita['usia']
             ,'jenis_kelamin' => $balita['jenis_kelamin']
         ];
         $z_score = $this->z_score($data_z_score);
@@ -131,7 +136,7 @@ class Diagnosis_model extends My_Model
 
     function z_score($data)
     {
-        $usia = $data['usia'];
+        $usia = (int)$data['usia'];
         $tinggi_badan = $data['tinggi_badan'];
         $jenis_kelamin = $data['jenis_kelamin'];
 
@@ -140,7 +145,6 @@ class Diagnosis_model extends My_Model
         if ($standar_deviasi->num_rows() < 0) {
             return $this->return_failed('data tidak ada', []);
         }
-
         $standar_deviasi = $standar_deviasi->row_array();
         $z_score = 0;
         $stunting = '';

@@ -66,7 +66,7 @@ class Balita_model extends My_Model
 
     function balita_edit($data)
     {
-        $user = $this->db->get_where('users',['id'=>$data['bayi_id']]);
+        $user = $this->db->get_where('profile_bayi',['id'=>$data['bayi_id']]);
 
         if ($user->num_rows() < 1) {
             return $this->return_failed('data bayi tidak ada', []);
@@ -111,6 +111,17 @@ class Balita_model extends My_Model
         $this->db->insert('profile_bayi',$insert_bayi);
 
         return $this->return_success('berhasil',[]);
+    }
+
+    function delete_balita($id)
+    {
+        $balita = $this->db->get_where('profile_bayi',['id'=>$id]);
+
+        if ($balita->num_rows() < 1) {
+            return $this->return_failed('data bayi tidak ada', []);
+        }
+        
+        $this->db->delete('profile_bayi', ['id' => $id]);
     }
 
     
