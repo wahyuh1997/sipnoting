@@ -17,7 +17,7 @@ class Profile extends MY_Controller
   public function index()
   {
     /* load Function Model Here to Show All Data*/
-    $res = $this->balita->get_balita($_SESSION['sipnoting_user']['id']);
+    $res = $this->balita->get_balita_by_user($_SESSION['sipnoting_user']['id']);
 
     $data = [
       'title'     => 'Profile',
@@ -34,7 +34,13 @@ class Profile extends MY_Controller
     /* load Function Model Here to Show All Data*/
     /*
     $update = [
-      'user_id' => $pos['user_id'], 'jenis_kelamin' => $pos['jenis_kelamin'], 'tempat_lahir' => $pos['tempat_lahir'], 'tanggal_lahir' => $pos['tanggal_lahir'] ?? '', 'ayah' => $pos['ayah'], 'ibu' => $pos['ibu'], 'alamat' => $pos['alamat'], 'nama' => $pos['nama'], 'no_hp' => $pos['no_hp'] ?? ''
+      'bayi_id' => 4
+      ,'jenis_kelamin' => "L"
+      ,'nama' => 'Sumintul'
+      ,'tanggal_lahir' => '2022-03-06'
+      ,'ayah' => 'ganti'
+      ,'ibu' => 'santi'
+      ,'alamat' => 'kepo'
     ];
     $res = $this->balita->get_balita($update);
     */
@@ -44,5 +50,20 @@ class Profile extends MY_Controller
       'js'        => 'profile/js/data'
     ];
     $this->load_template_user('profile/page/edit', $data);
+  }
+
+  public function add()
+  {
+    $data = [
+        'jenis_kelamin'=> 'L'
+        ,'nama' => 'arel'
+        ,'tempat_lahir' => 'Tangerang'??null
+        ,'tanggal_lahir' => '2022-03-01'
+        ,'ayah' => 'Samian'
+        ,'ibu' => 'Masri'
+        ,'alamat' => 'gatau'
+        ,'user_id' => 7
+    ];
+    $res = ($this->balita->balita_add($data));
   }
 }
