@@ -32,6 +32,7 @@ class Profile extends MY_Controller
   {
     $pos=[];
     /* load Function Model Here to Show All Data*/
+    /*
     $update = [
       'user_id' => $pos['user_id']  
       ,'jenis_kelamin'=> $pos['jenis_kelamin']
@@ -44,7 +45,7 @@ class Profile extends MY_Controller
       ,'no_hp' => $pos['no_hp']??''
     ];
     $res = $this->balita->get_balita($update);
-
+    */
     $data = [
       'title'     => 'Ubah Profile',
       'subtitle'  => 'SIPNOTING',

@@ -80,4 +80,38 @@ class Test extends MY_Controller
     $res = $this->balita->balita_edit($update);
     echo json_encode($res);
   }
+
+  function add_balita()
+  {
+    
+    $data = [
+        'jenis_kelamin'=> 'L'
+        ,'nama' => 'arel'
+        ,'tempat_lahir' => 'Tangerang'??null
+        ,'tanggal_lahir' => '2022-03-01'
+        ,'ayah' => 'Samian'
+        ,'ibu' => 'Masri'
+        ,'alamat' => 'gatau'
+        ,'user_id' => 7
+    ];
+    // echo json_encode($this->balita->balita_add($data));
+     // buat nambah
+    echo json_encode($this->balita->get_balita_by_user(7)); 
+    // echo json_encode($this->balita->get_balita(4)); 
+    // echo json_encode($this->balita->get_all_balita()); 
+    
+    $data_edit = [
+      'bayi_id' => 4
+      ,'jenis_kelamin' => "L"
+      ,'nama' => 'Sumintul'
+      ,'tanggal_lahir' => '2022-03-06'
+      ,'ayah' => 'ganti'
+      ,'ibu' => 'santi'
+      ,'alamat' => 'kepo'
+    ];
+    // echo json_encode($this->balita->balita_edit($data_edit));
+
+
+    
+  }
 }
