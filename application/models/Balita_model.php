@@ -7,7 +7,24 @@ class Balita_model extends My_Model
         parent::__construct();
     }
 
-    function get_balita($user_id = null)
+    function get_balita($id = null)
+    {
+        $sql = "
+                select a.*, b.no_hp,b.email
+                from profile_bayi a
+                left join users b on a.user_id = b.id
+                where a.id = ?
+                ";
+        
+        $data = $this->db->query($sql, [$id]);
+
+        if ($data->num_rows() < 1) {
+            return $this->return_failed('data tidak ada', []);
+        }
+        return $this->return_success('', $data->row_array());
+    }
+
+    function get_balita_by_user($user_id = null)
     {
         $sql = "
                 select a.*, b.no_hp,b.email
@@ -21,7 +38,7 @@ class Balita_model extends My_Model
         if ($data->num_rows() < 1) {
             return $this->return_failed('data tidak ada', []);
         }
-        return $this->return_success('', $data->row_array());
+        return $this->return_success('', $data->result_array());
     }
     
     function get_all_balita()

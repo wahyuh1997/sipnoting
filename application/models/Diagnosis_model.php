@@ -53,6 +53,7 @@ class Diagnosis_model extends My_Model
         ];
         $z_score = $this->z_score($data_z_score);
         
+        /*
         $data_stunting = [
             'umur_ibu' => $usia_melahirkan
             ,'berat_lahir' => $berat_lahir
@@ -60,8 +61,8 @@ class Diagnosis_model extends My_Model
             ,'z_score' => $z_score
         ];
         $stunting = $this->stunting($data_stunting);
-
-        return $stunting;
+        */
+        return $z_score;
     }
 
     function stunting($data)
@@ -142,13 +143,22 @@ class Diagnosis_model extends My_Model
 
         $standar_deviasi = $standar_deviasi->row_array();
         $z_score = 0;
+        $stunting = '';
 
         if ($tinggi_badan >= $standar_deviasi['median']) {
             $z_score = ($tinggi_badan - $standar_deviasi['median'])/($standar_deviasi['1_sd'] - $standar_deviasi['median']);
+            $stunting = 'HK02';
         } else {
             $z_score = ($tinggi_badan - $standar_deviasi['median'])/($standar_deviasi['median'] - $standar_deviasi['minus_1_sd']);
+            $stunting = 'HK01';
         }
 
-        return floatval($z_score);
+        $return = 
+        [
+            'z_score' => floatval($z_score)
+            ,'stunting' => $stunting
+        ];
+
+        return $return;
     }
 }
