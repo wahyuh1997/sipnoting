@@ -33,7 +33,7 @@ class Diagnosis_model extends My_Model
     {
         $id = $data['balita_id'];
         $usia_melahirkan = floatval($data['usia_melahirkan']);
-        $berat_lahir = floatval($data['berat_lahir']);
+        $berat_lahir = floatval($data['berat_lahir']) * 1000;
         $tinggi_badan = floatval($data['tinggi_badan']);
         $jarak_kehamilan = floatval($data['jarak_kehamilan']);
 

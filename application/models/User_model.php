@@ -179,5 +179,25 @@
 
             return $this->return_success('Reset password berhasil!',[]);
         }
+
+        function refresh_token($email)
+        {
+            // $user = $this->db->get_where('users', ['email' => $email])->row_array();
+            if(!$this->db->get_where('users', ['email' => $email])->row_array()){
+                return $this->return_failed('Email tidak terdaftar atau user sudah terhapus. silahkan daftar kembali!',[]);
+            }
+
+            $save = [
+                'kode_otp' => $this->token()
+            ];
+
+            $mail = $this->_sendEmail($save['kode_otp'], $email);
+
+            $this->db->update('users', $save, ['email' => $email]);
+
+            return $this->return_success('Token berhasil di refresh, silahkan cek email anda!',[]);
+
+
+        }
     }
 ?>
