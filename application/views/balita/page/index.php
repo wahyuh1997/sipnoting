@@ -27,7 +27,7 @@
 
 <div class="card">
   <div class="card-body">
-    <table id="myTable" class="table table-striped display nowrap" style="width: 100%;">
+    <table id="myTable" class="table display nowrap" style="width: 100%;">
       <thead>
         <tr class="table-info">
           <th>#</th>

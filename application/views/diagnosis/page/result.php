@@ -3,10 +3,10 @@
   <h1 class="title-text"><?= $title; ?></h1>
 
   <h2 class="text-white">Angka Z-Score :</h2>
-  <h3 class="text-white border-bottom">-2.34567899</h3>
+  <h3 class="text-white border-bottom"><?= $data['z_score']; ?></h3>
 
   <h2 class="text-white mt-5">Kesimpulan Akhir :</h2>
-  <h3 class="text-white border-bottom">Stunting</h3>
+  <h3 class="text-white border-bottom"><?= $data['kesimpulan'] == 'HK01' ? 'Stunting' : 'Tidak Stunting'; ?></h3>
   <div class="card mt-4 text-white" style="background-color: #63CFC6;">
     <div class="card-header">
       <h2>Solusi</h2>

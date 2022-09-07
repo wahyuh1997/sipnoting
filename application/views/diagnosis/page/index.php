@@ -4,40 +4,41 @@
       <div class="card" style="background-color: #62648A;">
         <div class="card-body">
           <div class="row">
+            <input type="hidden" name="created_by" value="<?= $_SESSION['sipnoting_user']['id']; ?>">
             <div class="col-lg-12 mb-3">
-              <label for="" class="text-white">Nama Balita</label>
-              <!-- <input type="test" step="0.1" min="0.1" value="Andi" class="form-control"> -->
-              <select name="" id="" class="form-control">
+              <label for="balita_id" class="text-white">Nama Balita</label>
+              <!-- <input type="test" step="0" min="0.1" value="Andi" class="form-control"> -->
+              <select name="balita_id" id="balita_id" class="form-control">
                 <?php foreach ($data['data'] as $res) : ?>
                   <option value="<?= $res['id']; ?>"><?= $res['nama']; ?></option>
                 <?php endforeach; ?>
               </select>
             </div>
             <div class="col-lg-12">
-              <label for="" class="text-white">Berapa Usia Ibu Saat Melahirkan ?</label>
+              <label for="usia_melahirkan" class="text-white">Berapa Usia Ibu Saat Melahirkan ?</label>
               <div class="input-group mb-3">
-                <input type="number" step="0.1" min="0.1" value="0.1" class="form-control">
+                <input type="number" id="usia_melahirkan" name="usia_melahirkan" step="0.1" min="0.1" value="0.1" class="form-control">
                 <span class="input-group-text">Tahun</span>
               </div>
             </div>
             <div class="col-lg-12">
-              <label for="" class="text-white">Berat Badan Balita Saat Lahir</label>
+              <label for="berat_lahir" class="text-white">Berat Badan Balita</label>
               <div class="input-group mb-3">
-                <input type="number" step="0.1" min="0.1" value="0.1" class="form-control">
+                <input type="number" id="berat_lahir" name="berat_lahir" step="0.1" min="0.1" value="0.1" class="form-control">
                 <span class="input-group-text">Kg</span>
               </div>
             </div>
             <div class="col-lg-12">
-              <label for="" class="text-white">Berapa Jarak Kehamilan Ibu Dari Anak Sebelumnya ?</label>
+              <label for="jarak_kehamilan" class="text-white">Berapa Jarak Kehamilan Ibu Dari Anak Sebelumnya ?</label>
               <div class="input-group mb-3">
-                <input type="number" step="0.1" min="0.1" value="0.1" class="form-control">
+                <input type="number" id="jarak_kehamilan" name="jarak_kehamilan" step="0" min="0" value="0" class="form-control">
                 <span class="input-group-text">Tahun</span>
               </div>
             </div>
             <div class="col-lg-12">
-              <label for="" class="text-white">Tinggi Badan Balita Saat Ini</label>
+              <label for="tinggi_badan" class="text-white">Tinggi Badan Balita Saat Ini</label>
               <div class="input-group mb-3">
-                <input type="number" min="0" value="0" class="form-control">
+                <input type="number" id="tinggi_badan" name="tinggi_badan" min="0" value="0" class="form-control">
                 <span class="input-group-text">CM</span>
               </div>
             </div>

@@ -8,6 +8,9 @@ class Riwayat extends MY_Controller
   public function __construct()
   {
     parent::__construct();
+    $this->load->model([
+      'Diagnosis_model' => 'diagnosis'
+    ]);
   }
 
   /**
@@ -15,9 +18,12 @@ class Riwayat extends MY_Controller
    */
   public function index()
   {
+    $res = $this->diagnosis->get_all_diagnosis($_SESSION['sipnoting_user']['id']);
+
     $data = [
       'title'     => 'Riwayat',
       'subtitle'  => 'SIPNOTING',
+      'data'      => $res
     ];
     $this->load_template_user('riwayat/page/index', $data);
   }
