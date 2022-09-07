@@ -116,7 +116,7 @@ class Test extends MY_Controller
   function diagnosis()
   {
     $this->load->model('Diagnosis_model','diagnosis');
-
+    
     $diagnosis=[
       'balita_id' => 4
       ,'usia_melahirkan' => 20
@@ -125,8 +125,18 @@ class Test extends MY_Controller
       ,'jarak_kehamilan' => 2
       ,'created_by' => 7
     ];
+    
+    echo json_encode($this->diagnosis->diagnosis_bayi($diagnosis));
+    // echo json_encode($this->diagnosis->get_all_diagnosis());
+    // echo json_encode($this->diagnosis->get_all_diagnosis(7));
+  }
+  
+  function dashboard()
+  {
+    $this->load->model('Dashboard_model','dashboard');
 
-    // echo json_encode($this->diagnosis->diagnosis_bayi($diagnosis));
-    echo json_encode($this->diagnosis->get_all_diagnosis());
+    // echo json_encode($this->dashboard->presentase_stunting());
+    // echo json_encode($this->dashboard->rata_z_score());
+    echo json_encode($this->dashboard->perbandingan_kelamin());
   }
 }
