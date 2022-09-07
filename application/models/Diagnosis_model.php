@@ -10,7 +10,7 @@ class Diagnosis_model extends My_Model
     function get_all_diagnosis($user_id = null)
     {
         $sql = "
-                select a.*, b.nama
+                select a.*, b.nama, b.jenis_kelamin, (timestampdiff(month, b.tanggal_lahir, current_date)) as usia
                 from diagnosis a
                 inner join profile_bayi b on a.bayi_id = b.id
                 ";
