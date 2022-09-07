@@ -15,7 +15,7 @@ class Diagnosis_model extends My_Model
                 ";
 
         if (strlen($user_id) > 0) {
-            $sql .= "where user_id = ?";
+            $sql .= "where created_by = ?";
             $data = $this->db->query($sql, [$user_id]);
         } else {
             $data = $this->db->query($sql);
