@@ -17,7 +17,7 @@
             <div class="col-lg-12">
               <label for="usia_melahirkan" class="text-white">Berapa Usia Ibu Saat Melahirkan ?</label>
               <div class="input-group mb-3">
-                <input type="number" id="usia_melahirkan" name="usia_melahirkan" step="0.1" min="0.1" value="0.1" class="form-control">
+                <input type="number" id="usia_melahirkan" name="usia_melahirkan" step="0.1" min="0.1" value="0.1" max="80" class="form-control">
                 <span class="input-group-text">Tahun</span>
               </div>
             </div>
@@ -31,7 +31,7 @@
             <div class="col-lg-12">
               <label for="jarak_kehamilan" class="text-white">Berapa Jarak Kehamilan Ibu Dari Anak Sebelumnya ?</label>
               <div class="input-group mb-3">
-                <input type="number" id="jarak_kehamilan" name="jarak_kehamilan" step="0" min="0" value="0" class="form-control">
+                <input type="number" id="jarak_kehamilan" name="jarak_kehamilan" step="0.1" min="0" value="0" class="form-control">
                 <span class="input-group-text">Tahun</span>
               </div>
             </div>
