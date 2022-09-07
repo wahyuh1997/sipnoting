@@ -27,11 +27,11 @@ SET time_zone = "+00:00";
 -- Table structure for table `diagnosis`
 --
 
-CREATE TABLE `diagnosis` (
+CCREATE TABLE `diagnosis` (
   `id` int(11) NOT NULL,
-  `usia_ibu` float(2,1) NOT NULL,
-  `berat_balita` float(5,1) NOT NULL,
-  `jarak_kehamilan` float(2,1) NOT NULL,
+  `usia_ibu` float(3,1) NOT NULL,
+  `berat_balita` float(6,1) NOT NULL,
+  `jarak_kehamilan` float(3,1) NOT NULL,
   `bayi_id` int(11) NOT NULL,
   `tinggi_balita` float NOT NULL,
   `z_score` float(8,4) NOT NULL,
