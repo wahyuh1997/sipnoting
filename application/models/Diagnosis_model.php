@@ -81,7 +81,7 @@ class Diagnosis_model extends My_Model
 
         $this->db->insert('diagnosis', $simpan);
 
-        return $simpan;
+        return $this->return_success('Proses diagnosis berhasil',$simpan);
     }
 
     function stunting($data)
