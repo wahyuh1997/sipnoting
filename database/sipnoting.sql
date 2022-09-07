@@ -30,7 +30,7 @@ SET time_zone = "+00:00";
 CREATE TABLE `diagnosis` (
   `id` int(11) NOT NULL,
   `usia_ibu` float(2,1) NOT NULL,
-  `berat_balita` float(2,1) NOT NULL,
+  `berat_balita` float(5,1) NOT NULL,
   `jarak_kehamilan` float(2,1) NOT NULL,
   `bayi_id` int(11) NOT NULL,
   `tinggi_balita` float NOT NULL,
