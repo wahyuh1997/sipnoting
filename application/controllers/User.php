@@ -47,53 +47,42 @@ class User extends MY_Controller
   }
 
 
-  public function edit($username = null)
+  public function edit()
   {
 
-    if ($username == null) {
-      $user_name = $_SESSION['pos_order']['username'];
-    } else {
-      $user_name = $username;
-    }
-
-    // get body
     $post = $this->input->post(null, true);
 
     $data = [
       'email' => 'andi@gmail.com', 'nama' => 'andi rifaldi', 'jabatan' => 'direktur', 'no_hp' => '089602584857', 'user_id' => 3
     ];
 
-    $res = $this->user->insert_anggota($data);
+    // $res = $this->user->insert_anggota($data);
 
-    // check body
-    $user = $this->lib_curl->curl_request($this->pos_service_v1 . 'auth/get_user/' . $user_name);
-    if (count($post) == 0) {
-      // get menu category details data
-      // response check
-      if ($user['status'] == true) {
-        // dataView
-        $dataView = [
-          'title'       => 'Master Data',
-          'subtitle'    => 'Edit Profile User',
-          'data'        => $user['data']
-        ];
+    if (
+      count($post) == 0
+    ) {
+      // dataView
+      $dataView = [
+        'title'     => 'Data Anggota',
+        'subtitle'  => 'Tambah Data Anggota',
+      ];
 
-        // view
-        $this->load_template('user/page/edit', $dataView);
-      } else {
-        // redirect
-        redirect('user');
-      }
+      // view
+      $this->load_template('user/page/edit', $dataView);
     } else {
-      $user = $this->lib_curl->curl_request($this->pos_service_v1 . 'auth/update_user/' . $user['data']['id'], "PUT", $post);
+      $post['user_id'] = $_SESSION['sipnoting_admin']['id'];
+      $res = $this->user->edit($post);
 
-      if ($username == null) {
-        $_SESSION['pos_order']['name'] = $user['data']['name'];
-        $_SESSION['pos_order']['username'] = $user['data']['username'];
-        $_SESSION['pos_order']['role'] = $user['data']['role'];
+      if ($res['status'] == true) {
+        $_SESSION['sipnoting_admin'] = [
+          'email'     => $post['email'],
+          'nama'      => $post['nama'],
+          'no_hp'     => $post['no_hp'],
+          'jabatan'   => $post['jabatan'],
+        ];
       }
 
-      echo json_encode($user);
+      echo json_encode($res);
     }
   }
 
