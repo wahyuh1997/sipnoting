@@ -82,7 +82,7 @@
         <li>
           <a href="<?= base_url('user'); ?>" class="<?= $this->uri->segment(1) == 'user' ? 'mm-active' : null ?>">
             <i class="metismenu-icon pe-7s-user"></i>
-            Data Anggota
+            Data Pengguna
           </a>
         </li>
       </ul>

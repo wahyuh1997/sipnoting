@@ -15,6 +15,10 @@
   <link href="<?= base_url(); ?>assets/css/datatables.css" rel="stylesheet">
   <link href="<?= base_url(); ?>assets/main.css" rel="stylesheet">
   <style>
+    body {
+      overflow-x: hidden;
+    }
+
     .tab-content>.tab-pane:not(.active) {
       display: block;
       height: 0;

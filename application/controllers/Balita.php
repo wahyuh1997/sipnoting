@@ -9,7 +9,7 @@ class Balita extends MY_Controller
   {
     parent::__construct();
     $this->load->model([
-      'Balita_model'=> 'balita'
+      'Balita_model' => 'balita'
     ]);
   }
 
@@ -22,6 +22,7 @@ class Balita extends MY_Controller
     $data = [
       'title'     => 'Data Balita',
       'subtitle'  => 'Data Seluruh Balita',
+      'data'      => $res
     ];
 
     $this->load_template('balita/page/index', $data);

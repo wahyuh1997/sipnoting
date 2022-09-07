@@ -16,13 +16,10 @@ class User extends MY_Controller
    */
   public function index()
   {
-    $res = $this->user->get_all_user();
-    // trace($res);
     // dataView
     $dataView = [
-      'title'     => 'Data Anggota',
-      'subtitle'  => 'Seluruh Data Anggota',
-      'data'      => $res
+      'title'     => 'Data Pengguna',
+      'subtitle'  => '',
     ];
 
     // view
@@ -104,7 +101,7 @@ class User extends MY_Controller
   {
     $post = $this->input->post(null, true);
 
-    $res = $this->user->change_password('email','password');
+    $res = $this->user->change_password('email', 'password');
 
     if (count($post) == 0) {
       // dataView

@@ -37,6 +37,7 @@ class Auth extends MY_Controller
       if ($res['status'] == true) {
         if ($res['data']['is_admin'] == 1) {
           $_SESSION['sipnoting_admin'] = [
+            'id'        => $res['data']['id'],
             'email'     => $res['data']['email'],
             'nama'      => $res['data']['nama'],
             'no_hp'     => $res['data']['no_hp'],

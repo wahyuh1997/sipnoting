@@ -47,7 +47,7 @@
     <h2 class="text-white text-center">Anda Belum Memiliki Data Balita</h2>
   <?php endif; ?>
 
-  <div class="row mt-5">
+  <div class="row my-5">
     <div class="col-lg-7 mx-auto">
       <div class="d-grid gap-2">
         <a href="<?= base_url('auth/logout'); ?>" data-redurl="<?= base_url(); ?>" class="btn primary-btn py-2 btn-logout" type="button" style="font-size: 20px;">KELUAR</a>

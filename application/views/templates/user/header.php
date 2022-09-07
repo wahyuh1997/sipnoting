@@ -23,9 +23,11 @@
       <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div class="navbar-nav ms-auto">
           <a class="nav-link me-3 <?= $this->uri->segment(1) == 'home' || $this->uri->segment(1) == '' ? 'active' : null; ?>" href="<?= base_url(); ?>">HOME</a>
-          <a class="nav-link me-3 <?= $this->uri->segment(1) == 'diagnosis' ? 'active' : null; ?>" href="<?= base_url('diagnosis'); ?>">DIAGNOSIS</a>
-          <a class="nav-link me-3 <?= $this->uri->segment(1) == 'riwayat' ? 'active' : null; ?>" href="<?= base_url('riwayat'); ?>">RIWAYAT</a>
-          <a class="nav-link me-3 <?= $this->uri->segment(1) == 'profile' ? 'active' : null; ?>" href="<?= base_url('profile'); ?>">PROFILE</a>
+          <?php if (isset($_SESSION['sipnoting_user'])) : ?>
+            <a class="nav-link me-3 <?= $this->uri->segment(1) == 'diagnosis' ? 'active' : null; ?>" href="<?= base_url('diagnosis'); ?>">DIAGNOSIS</a>
+            <a class="nav-link me-3 <?= $this->uri->segment(1) == 'riwayat' ? 'active' : null; ?>" href="<?= base_url('riwayat'); ?>">RIWAYAT</a>
+            <a class="nav-link me-3 <?= $this->uri->segment(1) == 'profile' ? 'active' : null; ?>" href="<?= base_url('profile'); ?>">PROFILE</a>
+          <?php endif; ?>
           <?php if (!isset($_SESSION['sipnoting_user'])) : ?>
             <a class="nav-link" href="<?= base_url('auth/login'); ?>">MASUK</a>
           <?php endif; ?>

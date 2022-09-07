@@ -10,7 +10,11 @@
 <script type="text/javascript" src="<?= base_url(); ?>assets/assets/scripts/main.js"></script>
 <script type="text/javascript" src="<?= base_url(); ?>assets/js/main-01.js"></script>
 <script>
-
+  $(document).ready(function() {
+    $('#myTable').DataTable({
+      'scrollX': true
+    });
+  });
 </script>
 
 </body>

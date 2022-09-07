@@ -4,12 +4,6 @@ $(".datepicker").datepicker({
   orientation: "bottom auto"
 });
 
-$(document).ready(function () {
-  $('#myTable').DataTable({
-    scrollX: true,
-  });
-});
-
 $('#regCrudForm').on('submit', function (e) {
   e.preventDefault();
   // init

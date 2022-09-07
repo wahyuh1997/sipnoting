@@ -12,40 +12,58 @@
         </div>
       </div>
     </div>
-    <!-- <div class="page-title-actions">
-      <a href="<?= base_url('user/add'); ?>" class="btn btn-shadow btn-info">Tambah <?= $title; ?></a>
-    </div> -->
+    <div class="page-title-actions">
+      <a href="<?= base_url('user/edit'); ?>" class="btn btn-shadow btn-info">Ubah</a>
+    </div>
   </div>
 </div>
 
-<div class="card">
-  <div class="card-body">
-    <table id="myTable" class="table table-striped display nowrap" style="width: 100%;">
-      <thead>
-        <tr class="table-info">
-          <th class="text-center">#</th>
-          <th></th>
-          <th>Nama</th>
-          <th>Jabatan</th>
-          <th>Email</th>
-          <th>No. Telp</th>
-        </tr>
-      </thead>
-      <tbody>
-        <?php foreach ($data as $key => $res) : ?>
-          <tr>
-            <td class="text-center"><?= $key + 1; ?></td>
-            <td>
-              <a href="" class="btn btn-primary btn-sm">Edit</a>
-              <!-- <a href="" class="btn btn-danger btn-sm">Hapus</a> -->
-            </td>
-            <td><?= $res['nama']; ?></td>
-            <td><?= $res['jabatan']; ?></td>
-            <td><?= $res['email']; ?></td>
-            <td><?= $res['no_hp']; ?></td>
-          </tr>
-        <?php endforeach; ?>
-      </tbody>
-    </table>
+<div class="row">
+  <div class="col-lg-8 offset-2">
+    <div class="card mb-3">
+      <div class="row no-gutters">
+        <div class="col-md-3">
+          <img src="<?= base_url('assets/img/doctor.png'); ?>" width="150" alt="Pakar Gizi">
+        </div>
+        <div class="col-md-8">
+          <div class="card-body">
+            <div class="row">
+              <div class="col-lg-3">
+                <h4 class="card-title">NAMA</h4>
+              </div>
+              <div class="col-lg-8">
+                : <?= $_SESSION['sipnoting_admin']['nama']; ?>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-lg-3">
+                <h4 class="card-title">EMAIL</h4>
+              </div>
+              <div class="col-lg-8">
+                : <?= $_SESSION['sipnoting_admin']['email']; ?>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-lg-3">
+                <h4 class="card-title">JABATAN</h4>
+              </div>
+              <div class="col-lg-8">
+                : <?= $_SESSION['sipnoting_admin']['jabatan']; ?>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-lg-3">
+                <h4 class="card-title">NO TELP</h4>
+              </div>
+              <div class="col-lg-8">
+                : <?= $_SESSION['sipnoting_admin']['no_hp']; ?>
+              </div>
+            </div>
+            <!-- <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p> -->
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
