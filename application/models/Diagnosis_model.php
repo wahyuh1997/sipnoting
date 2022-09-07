@@ -10,8 +10,9 @@ class Diagnosis_model extends My_Model
     function get_all_diagnosis($user_id = null)
     {
         $sql = "
-                select a.*
+                select a.*, b.nama
                 from diagnosis a
+                inner join profile_bayi b on a.bayi_id = b.id
                 ";
 
         if (strlen($user_id) > 0) {
