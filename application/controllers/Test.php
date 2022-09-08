@@ -126,9 +126,9 @@ class Test extends MY_Controller
       ,'created_by' => 7
     ];
     
-    echo json_encode($this->diagnosis->diagnosis_bayi($diagnosis));
+    // echo json_encode($this->diagnosis->diagnosis_bayi($diagnosis));
     // echo json_encode($this->diagnosis->get_all_diagnosis());
-    // echo json_encode($this->diagnosis->get_all_diagnosis(7));
+    echo json_encode($this->diagnosis->get_all_diagnosis(7));
   }
   
   function dashboard()
