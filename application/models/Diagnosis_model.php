@@ -77,6 +77,7 @@ class Diagnosis_model extends My_Model
             ,'z_score' => $z_score['z_score']
             ,'created_by' => $data['created_by']
             ,'kesimpulan' => $z_score['stunting']
+            ,'keterangan' => json_encode($this->get_kesimpulan($z_score['stunting']))
         ];
 
         $this->db->insert('diagnosis', $simpan);

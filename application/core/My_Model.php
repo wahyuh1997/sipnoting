@@ -75,4 +75,14 @@ class My_Model extends CI_Model
     $token = rand(1, 999999);
     return sprintf("%06d", $token);
   }
+
+  public function get_kesimpulan($stunting)
+  {
+    $keterangan = [
+            'HK01' => ['Penuhi nutrisi bunda dimasa menyusui','Berikan MPASI yang padat nutrisi (terutama protein, kalsium, Vitamin D)','Konsultasikan ke Dokter anak untuk penanganan lebih lanjut']
+            ,'HK02' => ['Jaga asupan nutrisi anak dengan memberikan makanan gizi seimbang', 'Latihan peregangan','Pantau tumbuh kembang anak']
+        ];
+    return $keterangan[$stunting];
+    
+  }
 }
