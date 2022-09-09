@@ -13,7 +13,7 @@ class Diagnosis_model extends My_Model
                 select a.*, b.nama, b.jenis_kelamin, (timestampdiff(month, b.tanggal_lahir, current_date)) as usia, a.created_at
                 from diagnosis a
                 inner join profile_bayi b on a.bayi_id = b.id
-                order by created_at desc
+                order by a.created_at desc
                 ";
 
     if (strlen($user_id) > 0) {
