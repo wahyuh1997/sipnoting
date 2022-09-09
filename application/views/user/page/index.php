@@ -13,7 +13,8 @@
       </div>
     </div>
     <div class="page-title-actions">
-      <a href="<?= base_url('user/edit'); ?>" class="btn btn-shadow btn-info">Ubah</a>
+      <a href="<?= base_url('user/edit'); ?>" class="btn btn-shadow btn-info">Ubah Profil</a>
+      <a href="<?= base_url('user/change_password'); ?>" class="btn btn-shadow btn-danger">Ubah Kata Sandi</a>
     </div>
   </div>
 </div>

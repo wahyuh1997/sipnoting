@@ -9,7 +9,17 @@
   <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;700&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&family=Rubik:wght@400;700&display=swap" rel="stylesheet">
   <link href="<?= base_url(); ?>assets/css/bootstrap-datepicker.css" rel="stylesheet">
+  <link href="<?= base_url(); ?>assets/css/select2.css" rel="stylesheet">
   <link rel="stylesheet" href="<?= base_url('assets/css/style-02.css'); ?>">
+  <style>
+    .select2-container {
+      width: 100% !important;
+    }
+
+    .select2-container--default .select2-selection--single {
+      height: calc(1.5em + .75rem + 2px) !important;
+    }
+  </style>
 </head>
 
 <body>

@@ -16,18 +16,25 @@ class Dashboard extends MY_Controller
    */
   public function index()
   {
-    /**
-     * $this->dashboard->presentase_stunting_pertahun($tahun); ->untuk tahun optional, default : tahun sekarang
-     * $this->dashboard->presentase_stunting() -> buat ngecek presentase stunting
-     * $this->dashboard->rata_z_score() -> buat mencari rata2 z_score dan total balita
-     * $this->dashboard->perbandingan_kelamin() -> mencari perbandingan kelamin laki2 dan perempuan
-     */
+
     $data = [
       'title'     => 'Dashboard',
       'subtitle'  => 'Anak Laki-Laki',
-      'js'        => 'dashboard/js/data'
+      'js'        => 'dashboard/js/data',
+      'data'      => $this->dashboard->rata_z_score(),
+      'percent'   => $this->dashboard->presentase_stunting(),
     ];
 
     $this->load_template('dashboard/page/index', $data);
+  }
+
+  public function statistic()
+  {
+    $data = [
+      'percent'     => $this->dashboard->presentase_stunting_pertahun(),
+      'comparison'  => $this->dashboard->perbandingan_kelamin()
+    ];
+
+    echo json_encode($data);
   }
 }

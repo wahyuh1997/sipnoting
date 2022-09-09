@@ -1,10 +1,15 @@
-<!-- Main Content -->
+<style>
+  .app-main__inner {
+    width: calc(100% - 50px) !important;
+  }
+</style>
 
+<!-- Main Content -->
 <div class="app-page-title">
   <div class="page-title-wrapper">
     <div class="page-title-heading">
       <div class="page-title-icon">
-        <i class="pe-7s-graph2 icon-gradient bg-mean-fruit">
+        <i class="pe-7s-note2 icon-gradient bg-mean-fruit">
         </i>
       </div>
       <div>
@@ -31,6 +36,8 @@
           <th>Nama Balita</th>
           <th>Jenis Kelamin</th>
           <th>Usia</th>
+          <th>Ayah</th>
+          <th>Ibu</th>
           <th>Berat Badan</th>
           <th>Tinggi Badan</th>
           <th>Z-Score Akhir</th>

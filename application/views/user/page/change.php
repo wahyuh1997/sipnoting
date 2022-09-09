@@ -1,36 +1,36 @@
-<?php
-
-use PhpOffice\PhpSpreadsheet\Calculation\MathTrig\Base;
-?>
-<!-- BEGIN breadcrumb -->
-<ol class="breadcrumb float-xl-end">
-  <li class="breadcrumb-item"><a href="javascript:;"><?= $title; ?></a></li>
-  <li class="breadcrumb-item"><a href="javascript:;"><?= $subtitle; ?></a></li>
-</ol>
-<!-- END breadcrumb -->
-<!-- BEGIN page-header -->
-<h1 class="page-header"><?= $subtitle; ?></h1>
-
-<!-- panel search -->
-<div class="panel panel-inverse">
-  <div class="panel-heading">
-    <h4 class="panel-title">Form Add</h4>
-    <div class="panel-heading-btn">
-      <a href="javascript:;" class="btn btn-xs btn-icon btn-warning" data-toggle="panel-collapse" data-bs-original-title="" title="" data-tooltip-init="true"><i class="fa fa-minus"></i></a>
-    </div>
-  </div>
-  <form id="regCrudForm" data-redurl="<?= base_url('user'); ?>" method="POST">
-    <input type="hidden" name="username" value="<?= $_SESSION['pos_order']['username']; ?>">
-    <div class="panel-body">
-      <div class="mb-3 row">
-        <label for="password" class="col-sm-2 col-form-label">Kata Sandi Baru Anda</label>
-        <div class="col-sm-6">
-          <input type="password" class="form-control" id="password" name="password" autocomplete="off">
+<div class="app-page-title">
+  <div class="page-title-wrapper">
+    <div class="page-title-heading">
+      <div class="page-title-icon">
+        <i class="pe-7s-calculator icon-gradient bg-mean-fruit">
+        </i>
+      </div>
+      <div>
+        <?= $title; ?>
+        <div class="page-title-subheading">
+          <?= $subtitle; ?>
         </div>
       </div>
-      <div class="panel-footer text-end">
-        <a href="<?= base_url('user'); ?>" class="btn btn-secondary">Back</a>
-        <button class="btn btn-info">Submit</button>
+    </div>
+  </div>
+</div>
+<form id="regCrudForm" data-redurl="<?= base_url('user'); ?>" method="POST">
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="card">
+        <div class="card-body">
+          <div class="mb-3 row">
+            <label for="password" class="col-form-label col-lg-3">Masukan Kata Sandi Baru <span class="text-danger">*</span></label>
+            <div class="col-lg-9">
+              <input type="password" class="form-control" id="password" name="password" autocomplete="off" value="" required>
+            </div>
+          </div>
+        </div>
+        <div class="card-footer d-flex justify-content-end">
+          <a href="<?= base_url('user'); ?>" class="btn btn-secondary mr-2">Kembali</a>
+          <button type="submit" class="btn btn-primary">Simpan</button>
+        </div>
       </div>
     </div>
-  </form>
+  </div>
+</form>
