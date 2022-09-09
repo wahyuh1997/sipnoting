@@ -33,18 +33,15 @@ class User_data extends MY_Controller
   public function add()
   {
     $post = $this->input->post(null, true);
-    $res = $this->user->get_all_user();
 
     if (count($post) == 0) {
       $data = [
-        'title' => 'Data Balita',
-        'subtitle' => 'Tambah Data Balita',
-        'js'       => 'balita/js/core',
-        'data'     => $res
+        'title'    => 'Data Pengguna',
+        'subtitle' => 'Tambah Data Pengguna',
       ];
-      $this->load_template('balita/page/add', $data);
+      $this->load_template('user_data/page/add', $data);
     } else {
-      echo json_encode($this->balita->balita_add($post));
+      /* Copy Function Here */
     }
   }
 
@@ -63,9 +60,9 @@ class User_data extends MY_Controller
         'data'      => $res['data'],
         'user'      => $user
       ];
-      $this->load_template('balita/page/edit', $data);
+      $this->load_template('user_data/page/edit', $data);
     } else {
-      echo json_encode($this->balita->balita_edit($post));
+      /* Copy Function Here */
     }
   }
 

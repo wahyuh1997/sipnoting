@@ -3,7 +3,7 @@
   <div class="page-title-wrapper">
     <div class="page-title-heading">
       <div class="page-title-icon">
-        <i class="pe-7s-smile icon-gradient bg-mean-fruit">
+        <i class="pe-7s-users icon-gradient bg-mean-fruit">
         </i>
       </div>
       <div>
@@ -14,7 +14,7 @@
       </div>
     </div>
     <div class="page-title-actions">
-      <a href="<?= base_url('balita/add'); ?>" class="btn btn-shadow btn-info">Tambah Data Pengguna</a>
+      <a href="<?= base_url('user_data/add'); ?>" class="btn btn-shadow btn-info">Tambah Data Pengguna</a>
     </div>
   </div>
 </div>
