@@ -102,7 +102,7 @@ Class Dashboard_model extends My_Model {
                             from diagnosis 
                             where bayi_id = a.bayi_id and MONTH(created_at) = $bulan and YEAR(created_at) = $tahun
                             order by created_at desc limit 1) as berat_balita
-                        , (select berat_balita 
+                        , (select tinggi_balita 
                             from diagnosis 
                             where bayi_id = a.bayi_id and MONTH(created_at) = $bulan and YEAR(created_at) = $tahun
                             order by created_at desc limit 1) as tinggi_balita
