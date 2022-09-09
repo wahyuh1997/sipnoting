@@ -80,9 +80,15 @@
           </a>
         </li>
         <li>
+          <a href="<?= base_url('user_data'); ?>" class="<?= $this->uri->segment(1) == 'user_data' ? 'mm-active' : null ?>">
+            <i class="metismenu-icon pe-7s-users"></i>
+            Data Pengguna
+          </a>
+        </li>
+        <li>
           <a href="<?= base_url('user'); ?>" class="<?= $this->uri->segment(1) == 'user' ? 'mm-active' : null ?>">
             <i class="metismenu-icon pe-7s-user"></i>
-            Data Pengguna
+            Profil
           </a>
         </li>
       </ul>

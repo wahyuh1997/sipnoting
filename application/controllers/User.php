@@ -52,12 +52,6 @@ class User extends MY_Controller
 
     $post = $this->input->post(null, true);
 
-    $data = [
-      'email' => 'andi@gmail.com', 'nama' => 'andi rifaldi', 'jabatan' => 'direktur', 'no_hp' => '089602584857', 'user_id' => 3
-    ];
-
-    // $res = $this->user->insert_anggota($data);
-
     if (count($post) == 0) {
       // dataView
       $dataView = [
