@@ -124,6 +124,30 @@ Class Dashboard_model extends My_Model {
                 ";
         $data = $this->db->query($sql)->result_array();
         return $this->return_success('Laporan', $data);
-        // return $sql;
+    }
+
+    function detail_report($param, $bayi_id)
+    {
+        
+        $pemisah = explode('-',$param);
+        $tahun = (int)$pemisah[0];
+        $bulan = (int)$pemisah[1];
+        
+        for ($i=$bulan; $i = 0 ; $i--) { 
+            $sql ="
+                    select tinggi_balita, z_score, berat_balita
+                    from diagnosis 
+                    where bayi_id = a.bayi_id and MONTH(created_at) = $i and YEAR(created_at) = $tahun and bayi_id = $bayi_id
+                    order by created_at desc limit 1;
+            ";
+            $bulan[$i] = $this->db->query($sql)->result_array();
+        }
+
+        $return = [
+            'tahun' => $tahun
+            , 'bulan' => $bulan
+        ];
+
+        return $this->return_success('', $return);
     }
 }

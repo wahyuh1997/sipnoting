@@ -24,6 +24,8 @@ class Grafik extends MY_Controller
       $month = date('Y-m');
     }
 
+    $this->dashboard->detail_report($month, 9);
+
     $data = [
       'title'     => 'Data Grafik',
       'subtitle'  => 'Data Seluruh Grafik',
