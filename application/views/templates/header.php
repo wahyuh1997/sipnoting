@@ -13,6 +13,7 @@
 
   <link href="<?= base_url(); ?>assets/css/bootstrap-datepicker.css" rel="stylesheet">
   <link href="<?= base_url(); ?>assets/css/datatables.css" rel="stylesheet">
+  <link href="<?= base_url(); ?>assets/css/buttons.dataTables.min.css" rel="stylesheet">
   <link href="<?= base_url(); ?>assets/css/select2.css" rel="stylesheet">
   <link href="<?= base_url(); ?>assets/main.css" rel="stylesheet">
   <style>
@@ -45,6 +46,14 @@
       width: 4rem;
       height: 4rem;
       border-width: 5px;
+    }
+
+    tr.selected {
+      background-color: #bedff8 !important;
+    }
+
+    tr.selected:hover {
+      background-color: #9fb2d6;
     }
 
     .select2-container {
