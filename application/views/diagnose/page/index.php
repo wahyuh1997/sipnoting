@@ -30,7 +30,7 @@
       <thead>
         <tr class="table-info">
           <th>#</th>
-          <!-- <th></th> -->
+          <th></th>
           <th>Nama Balita</th>
           <th>Jenis Kelamin</th>
           <th>Usia</th>
@@ -44,6 +44,9 @@
         <?php foreach ($data['data'] as $key => $res) : ?>
           <tr>
             <td class="text-center"><?= $key + 1; ?></td>
+            <td>
+              <a href="<?= base_url('diagnose/delete/' . $res['id']); ?>" class="btn btn-danger btn-sm del-sel">Hapus</a>
+            </td>
             <td><?= $res['nama']; ?></td>
             <td><?= $res['jenis_kelamin'] == 'L' ? 'Laki-Laki' : 'Perempuan'; ?></td>
             <td><?= $res['usia']; ?> Bulan</td>

@@ -44,11 +44,13 @@ class Diagnose extends MY_Controller
       ];
       $this->load_template('diagnose/page/add', $data);
     } else {
-      $diagnosis = [
-        'balita_id' => 4, 'usia_melahirkan' => 20, 'berat_lahir' => 5, 'tinggi_badan' => 30, 'jarak_kehamilan' => 2, 'created_by' => 7
-      ];
-
       echo json_encode($this->diagnosis->diagnosis_bayi($post));
     }
+  }
+
+  public function delete($id)
+  {
+    /* Copy Here */
+    // echo json_encode($this->diagnosis->diagnosis_bayi($id));
   }
 }
