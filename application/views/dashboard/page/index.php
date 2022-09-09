@@ -6,8 +6,8 @@
         </i>
       </div>
       <div>Dashboard
-        <div class="page-title-subheading">This is an example dashboard created using build-in elements and
-          components.
+        <div class="page-title-subheading">
+          Data Perhitungan Balita
         </div>
       </div>
     </div>
@@ -23,7 +23,7 @@
           <!-- <div class="widget-subheading">Last year expenses</div> -->
         </div>
         <div class="widget-content-right">
-          <div class="widget-numbers text-white"><span>1896</span></div>
+          <div class="widget-numbers text-white"><span><?= $data['data']['total_balita']; ?></span></div>
         </div>
       </div>
     </div>
@@ -36,7 +36,7 @@
           <!-- <div class="widget-subheading">Total Clients Profit</div> -->
         </div>
         <div class="widget-content-right">
-          <div class="widget-numbers text-white"><span>1.23</span></div>
+          <div class="widget-numbers text-white"><span><?= $data['data']['rerata']; ?></span></div>
         </div>
       </div>
     </div>
@@ -49,7 +49,7 @@
           <!-- <div class="widget-subheading">People Interested</div> -->
         </div>
         <div class="widget-content-right">
-          <div class="widget-numbers text-white"><span>46%</span></div>
+          <div class="widget-numbers text-white"><span><?= $percent['data']['persentase']; ?>%</span></div>
         </div>
       </div>
     </div>

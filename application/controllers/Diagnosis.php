@@ -26,10 +26,6 @@ class Diagnosis extends MY_Controller
       $res = ['status' => false];
     }
 
-    // $diagnosis = [
-    //   'balita_id' => 4, 'usia_melahirkan' => 20, 'berat_lahir' => 5, 'tinggi_badan' => 30, 'jarak_kehamilan' => 2, 'created_by' => 7
-    // ];
-
     $data = [
       'title'     => 'Diagnosis',
       'subtitle'  => 'SIPNOTING',
@@ -44,7 +40,7 @@ class Diagnosis extends MY_Controller
 
     if (count($post) > 0) {
       $res = $this->diagnosis->diagnosis_bayi($post);
-
+      // trace($res);
       $data = [
         'title'     => 'Hasil Diagnosa',
         'subtitle'  => 'Hasil Diagnosa',

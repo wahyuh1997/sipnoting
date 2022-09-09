@@ -1,3 +1,9 @@
+<style>
+  .app-main__inner {
+    width: calc(100% - 15px) !important;
+  }
+</style>
+
 <div class="app-page-title">
   <div class="page-title-wrapper">
     <div class="page-title-heading">
@@ -20,7 +26,7 @@
 
 <div class="card">
   <div class="card-body">
-    <table id="myTable" class="table table-striped display nowrap" style="width: 100%;">
+    <table id="myTable" class="table display nowrap" style="width: 100%;">
       <thead>
         <tr class="table-info">
           <th>#</th>

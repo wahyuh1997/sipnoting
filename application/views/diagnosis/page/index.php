@@ -17,28 +17,28 @@
             <div class="col-lg-12">
               <label for="usia_melahirkan" class="text-white">Berapa Usia Ibu Saat Melahirkan ?</label>
               <div class="input-group mb-3">
-                <input type="number" id="usia_melahirkan" name="usia_melahirkan" step="0.1" min="0.1" value="0.1" max="80" class="form-control">
+                <input type="number" id="usia_melahirkan" name="usia_melahirkan" step="0.1" min="0.1" max="80" class="form-control" required>
                 <span class="input-group-text">Tahun</span>
               </div>
             </div>
             <div class="col-lg-12">
               <label for="berat_lahir" class="text-white">Berat Badan Balita</label>
               <div class="input-group mb-3">
-                <input type="number" id="berat_lahir" name="berat_lahir" step="0.1" min="0.1" value="0.1" class="form-control">
+                <input type="number" id="berat_lahir" name="berat_lahir" step="0.1" min="0.1" class="form-control" required>
                 <span class="input-group-text">Kg</span>
               </div>
             </div>
             <div class="col-lg-12">
               <label for="jarak_kehamilan" class="text-white">Berapa Jarak Kehamilan Ibu Dari Anak Sebelumnya ?</label>
               <div class="input-group mb-3">
-                <input type="number" id="jarak_kehamilan" name="jarak_kehamilan" step="0.1" min="0" value="0" class="form-control">
+                <input type="number" id="jarak_kehamilan" name="jarak_kehamilan" step="0.1" min="0" class="form-control" required>
                 <span class="input-group-text">Tahun</span>
               </div>
             </div>
             <div class="col-lg-12">
               <label for="tinggi_badan" class="text-white">Tinggi Badan Balita Saat Ini</label>
               <div class="input-group mb-3">
-                <input type="number" id="tinggi_badan" name="tinggi_badan" min="0" value="0" class="form-control">
+                <input type="number" id="tinggi_badan" name="tinggi_badan" min="0" class="form-control" required>
                 <span class="input-group-text">CM</span>
               </div>
             </div>

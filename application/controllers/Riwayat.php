@@ -19,7 +19,7 @@ class Riwayat extends MY_Controller
   public function index()
   {
     $res = $this->diagnosis->get_all_diagnosis($_SESSION['sipnoting_user']['id']);
-
+    // trace($res);
     $data = [
       'title'     => 'Riwayat',
       'subtitle'  => 'SIPNOTING',
