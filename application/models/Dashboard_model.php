@@ -140,12 +140,12 @@ Class Dashboard_model extends My_Model {
                     where bayi_id = a.bayi_id and MONTH(created_at) = $i and YEAR(created_at) = $tahun and bayi_id = $bayi_id
                     order by created_at desc limit 1;
             ";
-            $bulan[$i] = $this->db->query($sql)->result_array();
+            $bulan_data[$i] = $this->db->query($sql)->result_array();
         }
 
         $return = [
             'tahun' => $tahun
-            , 'bulan' => $bulan
+            , 'bulan' => $bulan_data
         ];
 
         return $this->return_success('', $return);
