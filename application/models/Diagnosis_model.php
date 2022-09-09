@@ -10,17 +10,17 @@ class Diagnosis_model extends My_Model
   function get_all_diagnosis($user_id = null)
   {
     $sql = "
-                select a.*, b.nama, b.jenis_kelamin, (timestampdiff(month, b.tanggal_lahir, current_date)) as usia, a.created_at
+                select a.*, b.nama, b.jenis_kelamin, (timestampdiff(month, b.tanggal_lahir, current_date)) as usia
                 from diagnosis a
                 inner join profile_bayi b on a.bayi_id = b.id
-                order by a.created_at desc
+                
                 ";
 
     if (strlen($user_id) > 0) {
-      $sql .= "where created_by = ?";
+      $sql .= "where a.created_by = ? order by a.created_at desc";
       $data = $this->db->query($sql, [$user_id]);
     } else {
-      $sql .= "order by created_at desc";
+      $sql .= "order by a.created_at desc";
       $data = $this->db->query($sql);
     }
 
