@@ -171,4 +171,21 @@ class Diagnosis_model extends My_Model
 
     return $return;
   }
+
+  function delete($id)
+    {
+        if (!$id) {
+            return $this->return_failed('Harap data diisi!',[]);
+        }
+        
+        $cek = $this->db->get_where('diagnosis',['id' =>$id]);
+        
+        if ($cek->num_rows() < 1) {
+            return $this->return_failed('data tidak ada',[]);
+        } 
+
+        $this->db->delete('diagnosis',['id' =>$id]);
+
+        return $this->return_success('Berhasil dihapus',[]);
+    }
 }

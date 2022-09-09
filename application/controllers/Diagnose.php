@@ -51,6 +51,6 @@ class Diagnose extends MY_Controller
   public function delete($id)
   {
     /* Copy Here */
-    // echo json_encode($this->diagnosis->diagnosis_bayi($id));
+    // echo json_encode($this->diagnosis->delete($id));
   }
 }
