@@ -95,6 +95,11 @@ class Auth extends MY_Controller
     }
   }
 
+  public function resend_otp()
+  {
+    /* Paste Send OTP HERE */
+  }
+
   public function verif_email()
   {
     $post = $this->input->post(null, true);
