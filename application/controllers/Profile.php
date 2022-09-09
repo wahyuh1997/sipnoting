@@ -8,7 +8,10 @@ class Profile extends MY_Controller
   public function __construct()
   {
     parent::__construct();
-    $this->load->model('Balita_model', 'balita');
+    $this->load->model([
+      'Balita_model' => 'balita',
+      'User_model'   => 'user'
+    ]);
   }
 
   /**
@@ -67,10 +70,52 @@ class Profile extends MY_Controller
     }
   }
 
+  public function edit_user()
+  {
+    $post = $this->input->post(null, true);
+    /* load Function Model Here to Show All Data*/
+    $res = $this->balita->get_balita();
+    if (count($post) == 0) {
+      # code...
+      $data = [
+        'title'     => 'Ubah Profile',
+        'subtitle'  => 'SIPNOTING',
+      ];
+      $this->load_template_user('profile/page/edit_user', $data);
+    } else {
+      $post['user_id'] = $_SESSION['sipnoting_user']['id'];
+      $res = $this->user->edit($post);
+
+      if ($res['status'] == true) {
+        $_SESSION['sipnoting_user']['email']  = $post['email'];
+        $_SESSION['sipnoting_user']['nama']   = $post['nama'];
+        $_SESSION['sipnoting_user']['no_hp']  = $post['no_hp'];
+      }
+
+      echo json_encode($res);
+    }
+  }
+
+  public function change_pass()
+  {
+    $post = $this->input->post(null, true);
+    /* load Function Model Here to Show All Data*/
+
+    if (count($post) == 0) {
+      # code...
+      $data = [
+        'title'     => 'Ubah Password',
+        'subtitle'  => 'SIPNOTING',
+      ];
+      $this->load_template_user('profile/page/change_pass', $data);
+    } else {
+      /* Write Your Function Here */
+      echo json_encode('');
+    }
+  }
+
   public function delete($id)
   {
-    /* Add Function here */
-    $res = $this->balita->delete_balita(3); //id balita
-    echo json_encode($id);
+    echo json_encode($this->balita->delete_balita($id));
   }
 }

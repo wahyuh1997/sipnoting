@@ -74,12 +74,10 @@ class User extends MY_Controller
       $res = $this->user->edit($post);
 
       if ($res['status'] == true) {
-        $_SESSION['sipnoting_admin'] = [
-          'email'     => $post['email'],
-          'nama'      => $post['nama'],
-          'no_hp'     => $post['no_hp'],
-          'jabatan'   => $post['jabatan'],
-        ];
+        $_SESSION['sipnoting_admin']['email']   = $post['email'];
+        $_SESSION['sipnoting_admin']['nama']    = $post['nama'];
+        $_SESSION['sipnoting_admin']['no_hp']   = $post['no_hp'];
+        $_SESSION['sipnoting_admin']['jabatan'] = $post['jabatan'];
       }
 
       echo json_encode($res);

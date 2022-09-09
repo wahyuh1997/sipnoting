@@ -129,6 +129,7 @@
 
     $(document).on('click', '.send-code', function(e) {
       e.preventDefault();
+      $.get('resend_otp', function(data) {});
       countdown();
     })
   </script>

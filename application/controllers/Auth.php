@@ -51,7 +51,7 @@ class Auth extends MY_Controller
           if ($res['data']['verified'] == 1) {
             # code...
             $_SESSION['sipnoting_user'] = [
-              'id'     => $res['data']['id'],
+              'id'        => $res['data']['id'],
               'email'     => $res['data']['email'],
               'nama'      => $res['data']['nama'],
               'no_hp'     => $res['data']['no_hp'],
@@ -98,6 +98,7 @@ class Auth extends MY_Controller
   public function resend_otp()
   {
     /* Paste Send OTP HERE */
+    $this->user->refresh_token($_SESSION['sipnoting_user']['email']);
   }
 
   public function verif_email()

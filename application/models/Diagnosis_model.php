@@ -15,11 +15,11 @@ class Diagnosis_model extends My_Model
                 inner join profile_bayi b on a.bayi_id = b.id                
                 ";
 
-    $sql .= "order by created_at desc";
     if (strlen($user_id) > 0) {
       $sql .= "where created_by = ?";
       $data = $this->db->query($sql, [$user_id]);
     } else {
+      $sql .= "order by created_at desc";
       $data = $this->db->query($sql);
     }
 
