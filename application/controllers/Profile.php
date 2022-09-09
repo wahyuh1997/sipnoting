@@ -66,7 +66,7 @@ class Profile extends MY_Controller
       ];
       $this->load_template_user('profile/page/edit', $data);
     } else {
-      echo json_encode($this->balita->get_balita($id)); //id bayi
+      echo json_encode($this->balita->balita_edit($post));
     }
   }
 
@@ -84,6 +84,7 @@ class Profile extends MY_Controller
       $this->load_template_user('profile/page/edit_user', $data);
     } else {
       $post['user_id'] = $_SESSION['sipnoting_user']['id'];
+      $post['jabatan'] = null;
       $res = $this->user->edit($post);
 
       if ($res['status'] == true) {

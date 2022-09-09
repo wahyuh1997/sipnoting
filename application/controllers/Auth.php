@@ -95,6 +95,11 @@ class Auth extends MY_Controller
     }
   }
 
+  public function not_found()
+  {
+    $this->load->view('errors/html/error_404');
+  }
+
   public function resend_otp()
   {
     /* Paste Send OTP HERE */

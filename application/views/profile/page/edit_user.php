@@ -3,7 +3,6 @@
 
   <div class="card mb-4" style="background-color: #62648A;">
     <form id="regCrudForm" data-redurl="<?= base_url('profile'); ?>" method="POST">
-      <input type="hidden" name="jabatan" value="">
       <div class="card-body">
         <div class="mb-3 row">
           <label for="email" class="col-form-label text-white col-lg-3">Email <span class="text-danger">*</span></label>

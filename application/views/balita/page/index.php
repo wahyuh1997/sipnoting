@@ -1,6 +1,6 @@
 <style>
   .app-main__inner {
-    width: calc(100% - 150px) !important;
+    width: calc(100% - 280px) !important;
   }
 </style>
 <!-- Main Content -->
@@ -18,9 +18,9 @@
         </div>
       </div>
     </div>
-    <!-- <div class="page-title-actions">
+    <div class="page-title-actions">
       <a href="<?= base_url('balita/add'); ?>" class="btn btn-shadow btn-info">Tambah Data Balita</a>
-    </div> -->
+    </div>
   </div>
 </div>
 <!-- End Main Content -->
@@ -30,8 +30,8 @@
     <table id="myTable" class="table display nowrap" style="width: 100%;">
       <thead>
         <tr class="table-info">
-          <th>#</th>
-          <!-- <th></th> -->
+          <th style="width: 8%;">#</th>
+          <th></th>
           <th>Nama Balita</th>
           <th>Jenis Kelamin</th>
           <th>Tempat Lahir</th>
@@ -46,6 +46,10 @@
       <?php foreach ($data['data'] as $key => $res) : ?>
         <tr>
           <td class="text-center"><?= $key + 1; ?></td>
+          <td>
+            <a href="<?= base_url('balita/edit/' . $res['id']); ?>" class="btn btn-primary btn-sm">Edit</a>
+            <a href="<?= base_url('balita/delete/' . $res['id']); ?>" class="btn btn-danger btn-sm del-sel">Hapus</a>
+          </td>
           <td><?= $res['nama']; ?></td>
           <td><?= $res['jenis_kelamin'] == 'L' ? 'Laki-Laki' : 'Perempuan'; ?></td>
           <td><?= $res['tempat_lahir']; ?></td>

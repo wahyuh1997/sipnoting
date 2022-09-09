@@ -54,6 +54,16 @@
     .select2-container--default .select2-selection--single {
       height: calc(1.5em + .75rem + 2px) !important;
     }
+
+    .font-icon-wrapper.active {
+      background-image: linear-gradient(to top, #a18cd1 0%, #fbc2eb 100%) !important;
+      color: white;
+    }
+
+    .font-icon-wrapper.active i,
+    .font-icon-wrapper.active p {
+      color: white !important;
+    }
   </style>
 </head>
 

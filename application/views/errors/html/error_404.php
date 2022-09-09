@@ -2,54 +2,38 @@
 <html lang="en">
 
 <head>
-  <meta charset="utf-8" />
-  <title>404 Error Page</title>
-  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport" />
-  <meta content="" name="description" />
-  <meta content="" name="author" />
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
-  <!-- ================== BEGIN core-css ================== -->
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
-  <link href="<?= base_url() ?>assets/css/vendor.min.css" rel="stylesheet" />
-  <link href="<?= base_url() ?>assets/css/default/app.min.css" rel="stylesheet" />
-  <!-- ================== END core-css ================== -->
+  <title>404 HTML Tempalte by Colorlib</title>
+
+  <!-- Google font -->
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,900" rel="stylesheet">
+
+  <!-- Custom stlylesheet -->
+  <link type="text/css" rel="stylesheet" href="<?= base_url('assets/css/'); ?>error.css" />
+
 </head>
 
-<body class='pace-top'>
-  <!-- BEGIN #loader -->
-  <div id="loader" class="app-loader">
-    <span class="spinner"></span>
-  </div>
-  <!-- END #loader -->
+<body>
 
-  <!-- BEGIN #app -->
-  <div id="app" class="app">
-    <!-- BEGIN error -->
-    <div class="error">
-      <div class="error-code">404</div>
-      <div class="error-content">
-        <div class="error-message">We couldn't find it...</div>
-        <div class="error-desc mb-4">
-          The page you're looking for doesn't exist. <br />
-          Perhaps, there pages will help find what you're looking for.
-        </div>
-        <div>
-          <a href="<?= base_url(); ?>" class="btn btn-success px-3">Go Home</a>
-        </div>
+  <div id="notfound">
+    <div class="notfound">
+      <div class="notfound-404">
+        <h1>Oops!</h1>
       </div>
+      <h2>404 - Page not found</h2>
+      <p>The page you are looking for might have been removed had its name changed or is temporarily unavailable.</p>
+      <?php if (isset($_SESSION['sipnoting_admin'])) : ?>
+        <a href="<?= base_url('dashboard'); ?>">Go To Homepage</a>
+      <?php else : ?>
+        <a href="<?= base_url('home'); ?>">Go To Homepage</a>
+      <?php endif; ?>
     </div>
-    <!-- END error -->
-
-    <!-- BEGIN scroll-top-btn -->
-    <a href="javascript:;" class="btn btn-icon btn-circle btn-success btn-scroll-to-top" data-toggle="scroll-to-top"><i class="fa fa-angle-up"></i></a>
-    <!-- END scroll-top-btn -->
   </div>
-  <!-- END #app -->
 
-  <!-- ================== BEGIN core-js ================== -->
-  <script src="<?= base_url() ?>assets/js/vendor.min.js"></script>
-  <script src="<?= base_url() ?>assets/js/app.min.js"></script>
-  <!-- ================== END core-js ================== -->
-</body>
+</body><!-- This templates was made by Colorlib (https://colorlib.com) -->
 
 </html>

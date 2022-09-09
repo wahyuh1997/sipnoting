@@ -7,7 +7,7 @@
       </div>
       <div>Dashboard
         <div class="page-title-subheading">
-          Data Perhitungan Balita
+          Halaman Utama
         </div>
       </div>
     </div>
