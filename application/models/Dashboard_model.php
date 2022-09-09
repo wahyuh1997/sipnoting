@@ -113,10 +113,10 @@ Class Dashboard_model extends My_Model {
                         , b.jenis_kelamin
                         , (timestampdiff(month, b.tanggal_lahir, current_date)) as usia
                         , ayah, ibu
-                        , (select keterangan 
+                        , (select kesimpulan 
                             from diagnosis 
                             where bayi_id = a.bayi_id and MONTH(created_at) = $bulan and YEAR(created_at) = $tahun
-                            order by created_at desc limit 1) as keterangan
+                            order by created_at desc limit 1) as kesimpulan
                 from diagnosis a
                 inner join profile_bayi b on a.bayi_id = b.id
                 where MONTH(a.created_at) = $bulan and YEAR(a.created_at) = $tahun
