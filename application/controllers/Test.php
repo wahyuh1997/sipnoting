@@ -22,23 +22,31 @@ class Test extends MY_Controller
 
   function insert_or_update()
   {
-    $data = [
-      'email' => 'andi@gmail.com', 'nama' => 'andi rifaldi', 'jabatan' => 'direktur', 'no_hp' => '089602584857'
-      // ,'user_id' => 3
-      , 'password' => '12345678'
-    ];
+    // $data = [
+    //   'email' => 'andi@gmail.com', 'nama' => 'andi rifaldi', 'jabatan' => 'direktur', 'no_hp' => '089602584857'
+    //   // ,'user_id' => 3
+    //   , 'password' => '12345678'
+    // ];
 
-    $data = [
-      'email' => 'andi@gmail.com', 'password' => '12345678'
-    ];
+    // $data = [
+    //   'email' => 'andi@gmail.com', 'password' => '12345678'
+    // ];
 
     // echo json_encode($this->User_model->insert_anggota($data));
     // echo json_encode($this->User_model->get_all_user());
     // echo json_encode($this->User_model->edit($data));
     // echo json_encode($this->User_model->get_user(3));
     // echo json_encode($this->user->login($data['email'], $data['password']));
-    echo json_encode($this->user->token());
+    // echo json_encode($this->user->token());
     // echo json_encode($this->deviasi->get_all_deviasi('L'));
+    $data = [
+        'email' => 'andi44@gmail.com'
+        , 'nama' => 'andi rifaldi'
+        , 'no_hp' => '089602584857'
+        // ,'user_id' => 3
+        , 'password' => '12345678'
+      ];
+    echo json_encode($this->user->insert_by_admin($data));
   }
   function register()
   {
@@ -126,9 +134,9 @@ class Test extends MY_Controller
       ,'created_by' => 7
     ];
     
-    echo json_encode($this->diagnosis->diagnosis_bayi($diagnosis));
+    // echo json_encode($this->diagnosis->diagnosis_bayi($diagnosis));
     // echo json_encode($this->diagnosis->get_all_diagnosis());
-    // echo json_encode($this->diagnosis->get_all_diagnosis(7));
+    echo json_encode($this->diagnosis->get_all_diagnosis(7));
   }
   
   function dashboard()

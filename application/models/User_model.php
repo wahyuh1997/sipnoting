@@ -62,6 +62,36 @@
 
             return $this->return_success('Data berhasil disimpan!', $simpan);
         }
+        
+        function insert_by_admin($data)
+        {
+            $email = $data['email'];
+            $nama = $data['nama'];
+            $no_hp = $data['no_hp'];
+            $password = $data['password'];
+
+            if (strlen($email) < 1 && strlen($nama) < 1 && strlen($password) < 1) {
+                return $this->return_failed('email, nama, dan password silahkan diisi!',[]);
+            }
+            
+            if ($this->db->get_where('users', ['email' => $email])->row_array()) {
+                return $this->return_failed('email sudah digunakan!',[]);
+            }
+
+            $save = [
+                'email' => $email
+                ,'nama' => $nama
+                ,'no_hp' => $no_hp
+                ,'password' => password_hash($password, PASSWORD_DEFAULT)
+                ,'kode_otp' => null
+                ,'verified' => 1
+                ,'is_admin' => 0
+            ];
+
+            $simpan = $this->db->insert('users', $save);
+
+            return $this->return_success('Data berhasil disimpan!', $simpan);
+        }
 
         function get_all_user()
         {
@@ -70,6 +100,33 @@
                     order by id asc";
             
             return $this->db->query($sql)->result_array();
+        }
+
+        function edit_by_admin($data)
+        {
+            $user_id = $data['user_id'];
+            $email = $data['email'];
+            $nama = $data['nama'];
+            $no_hp = $data['no_hp'];
+
+            $user = $this->db->get_where('users', ['id' => $user_id])->row_array();
+            
+            if (!$user) {
+                return $this->return_failed('user tidak ada',[]);
+            }
+            
+            if ($this->db->get_where('users', ['email' => $email, 'email !=' => $user['email']])->row_array()) {
+                return $this->return_failed('email sudah ada.',[]);
+            }
+            $save = [
+                'email' => $email
+                ,'nama' => $nama
+                ,'no_hp' => $no_hp
+            ];
+
+            $simpan = $this->db->update('users', $save, ['id' =>$user_id]);
+
+            return $this->return_success('Data berhasil disimpan!', $simpan);
         }
 
         function edit($data)
@@ -106,7 +163,7 @@
             $sql = "
                     select * from users
                     where id = ?";
-            return $this->db->query($sql,[$user_id]);
+            return $this->db->query($sql,[$user_id])->row_array();
         }
 
         function register($data)
@@ -186,7 +243,7 @@
             if(!$this->db->get_where('users', ['email' => $email])->row_array()){
                 return $this->return_failed('Email tidak terdaftar atau user sudah terhapus. silahkan daftar kembali!',[]);
             }
-
+            
             $save = [
                 'kode_otp' => $this->token()
             ];
@@ -194,9 +251,20 @@
             $mail = $this->_sendEmail($save['kode_otp'], $email);
 
             $this->db->update('users', $save, ['email' => $email]);
-
+            
             return $this->return_success('Token berhasil di refresh, silahkan cek email anda!',[]);
-
-
+        }
+        
+        function delete_by_admin($id)
+        {
+            if (strlen($id) < 1) {
+                return $this->return_failed('Silahkan masukkan id user',[]);
+            }
+            if(!$this->db->get_where('users', ['id' => $id])->row_array()){
+                return $this->return_failed('User tidak ditemukan!',[]);
+            }
+            
+            $this->db->delete('users',['id'=>$id]);
+            return $this->return_success('User berhasil dihapus!',[]);
         }
     }
