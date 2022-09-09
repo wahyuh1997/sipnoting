@@ -49,15 +49,14 @@ class User_data extends MY_Controller
   {
     $post = $this->input->post(null, true);
     /* load Function Model Here to Show All Data*/
-    $res = $this->balita->get_balita($id);
     $user = $this->user->get_all_user();
+
     if (count($post) == 0) {
       # code...
       $data = [
         'title'     => 'Ubah Profile',
         'subtitle'  => 'SIPNOTING',
         'js'        => 'profile/js/data',
-        'data'      => $res['data'],
         'user'      => $user
       ];
       $this->load_template('user_data/page/edit', $data);
@@ -68,7 +67,7 @@ class User_data extends MY_Controller
 
   public function delete($id)
   {
-    echo json_encode($this->balita->delete_balita($id));
+    // echo json_encode($this->balita->delete_balita($id));
   }
 
   public function reset_pass()
