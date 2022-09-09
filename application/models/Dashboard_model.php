@@ -135,7 +135,7 @@ Class Dashboard_model extends My_Model {
 
         
         $bulan_data = [];
-        for ($i=1; $i <= $bulan ; $i++) {
+        for ($i=1; $i <= 12 ; $i++) {
             // return $bulan;
             $sql ="
                     select tinggi_balita, z_score, berat_balita
