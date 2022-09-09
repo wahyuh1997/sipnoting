@@ -132,12 +132,15 @@ Class Dashboard_model extends My_Model {
         $pemisah = explode('-',$param);
         $tahun = (int)$pemisah[0];
         $bulan = (int)$pemisah[1];
+
         
-        for ($i=$bulan; $i = 0 ; $i--) { 
+        $bulan_data = [];
+        for ($i=1; $i <= $bulan ; $i++) {
+            // return $bulan;
             $sql ="
                     select tinggi_balita, z_score, berat_balita
-                    from diagnosis 
-                    where bayi_id = a.bayi_id and MONTH(created_at) = $i and YEAR(created_at) = $tahun and bayi_id = $bayi_id
+                    from diagnosis a
+                    where bayi_id = $bayi_id and MONTH(created_at) = $i and YEAR(created_at) = $tahun
                     order by created_at desc limit 1;
             ";
             $bulan_data[$i] = $this->db->query($sql)->result_array();
