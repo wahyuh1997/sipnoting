@@ -24,7 +24,7 @@
           <div class="form-group row">
             <label for="" class="col-form-label col-lg-3">Nama Balita <span class="text-danger">*</span></label>
             <div class="col-lg-9">
-              <select name="balita_id" id="balita_id" class="form-control" required>
+              <select name="balita_id" id="balita_id" class="form-control select2" required>
                 <option value="">Pilih Balita</option>
                 <?php foreach ($data['data'] as $res) : ?>
                   <option value="<?= $res['id']; ?>"><?= $res['nama']; ?></option>

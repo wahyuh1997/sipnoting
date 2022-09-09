@@ -7,6 +7,7 @@
 <script type="text/javascript" src="<?= base_url(); ?>assets/js/bootstrap-datepicker.js"></script>
 <script type="text/javascript" src="<?= base_url(); ?>assets/js/datatables.js"></script>
 <script type="text/javascript" src="<?= base_url(); ?>assets/js/sweetalert2.all.min.js"></script>
+<script type="text/javascript" src="<?= base_url(); ?>assets/js/select2.full.js"></script>
 <script type="text/javascript" src="<?= base_url(); ?>assets/assets/scripts/main.js"></script>
 <script type="text/javascript" src="<?= base_url(); ?>assets/js/main-01.js"></script>
 <script>
@@ -14,6 +15,8 @@
     $('#myTable').DataTable({
       'scrollX': true
     });
+
+    $('.select2').select2();
   });
 </script>
 

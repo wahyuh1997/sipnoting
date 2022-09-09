@@ -13,6 +13,7 @@
 
   <link href="<?= base_url(); ?>assets/css/bootstrap-datepicker.css" rel="stylesheet">
   <link href="<?= base_url(); ?>assets/css/datatables.css" rel="stylesheet">
+  <link href="<?= base_url(); ?>assets/css/select2.css" rel="stylesheet">
   <link href="<?= base_url(); ?>assets/main.css" rel="stylesheet">
   <style>
     body {
@@ -44,6 +45,14 @@
       width: 4rem;
       height: 4rem;
       border-width: 5px;
+    }
+
+    .select2-container {
+      width: 100% !important;
+    }
+
+    .select2-container--default .select2-selection--single {
+      height: calc(1.5em + .75rem + 2px) !important;
     }
   </style>
 </head>

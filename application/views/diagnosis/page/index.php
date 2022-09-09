@@ -8,7 +8,7 @@
             <div class="col-lg-12 mb-3">
               <label for="balita_id" class="text-white">Nama Balita</label>
               <!-- <input type="test" step="0" min="0.1" value="Andi" class="form-control"> -->
-              <select name="balita_id" id="balita_id" class="form-control">
+              <select name="balita_id" id="balita_id" class="form-control select2">
                 <?php foreach ($data['data'] as $res) : ?>
                   <option value="<?= $res['id']; ?>"><?= $res['nama']; ?></option>
                 <?php endforeach; ?>

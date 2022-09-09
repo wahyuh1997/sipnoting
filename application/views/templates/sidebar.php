@@ -80,6 +80,12 @@
           </a>
         </li>
         <li>
+          <a href="<?= base_url('report'); ?>" class="<?= $this->uri->segment(1) == 'report' ? 'mm-active' : null ?>">
+            <i class="metismenu-icon pe-7s-note2"></i>
+            Laporan
+          </a>
+        </li>
+        <li>
           <a href="<?= base_url('user'); ?>" class="<?= $this->uri->segment(1) == 'user' ? 'mm-active' : null ?>">
             <i class="metismenu-icon pe-7s-user"></i>
             Data Pengguna
