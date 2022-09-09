@@ -97,7 +97,7 @@ Class Dashboard_model extends My_Model {
         $tahun = (int)$pemisah[0];
         $bulan = (int)$pemisah[1];
         $sql = "
-                select b.bayi_id,b.nama 
+                select a.bayi_id,b.nama 
                         ,(select berat_balita 
                             from diagnosis 
                             where bayi_id = a.bayi_id and MONTH(created_at) = $bulan and YEAR(created_at) = $tahun
