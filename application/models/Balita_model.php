@@ -16,6 +16,7 @@ class Balita_model extends My_Model
                 from profile_bayi a
                 left join users b on a.user_id = b.id
                 where a.id = ?
+                order by a.created_at desc
                 ";
 
     $data = $this->db->query($sql, [$id]);
@@ -36,6 +37,7 @@ class Balita_model extends My_Model
                 from profile_bayi a
                 left join users b on a.user_id = b.id
                 where b.id = ?
+                order by a.created_at desc
                 ";
 
     $data = $this->db->query($sql, [$user_id]);

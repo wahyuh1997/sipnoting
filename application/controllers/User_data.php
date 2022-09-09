@@ -42,6 +42,13 @@ class User_data extends MY_Controller
       $this->load_template('user_data/page/add', $data);
     } else {
       /* Copy Function Here */
+      $data = [
+        'email' => 'andi@gmail.com'
+        , 'nama' => 'andi rifaldi'
+        , 'no_hp' => '089602584857'
+        , 'password' => '12345678'
+      ];
+      $res = $this->user->insert_by_admin($data);
     }
   }
 
@@ -62,12 +69,20 @@ class User_data extends MY_Controller
       $this->load_template('user_data/page/edit', $data);
     } else {
       /* Copy Function Here */
+      $data = [
+        'email' => 'andi@gmail.com'
+        , 'nama' => 'andi rifaldi'
+        , 'no_hp' => '089602584857'
+        ,'user_id' => 3
+        , 'password' => '12345678'
+      ];
+      $res = $this->user->edit_by_admin($data);
     }
   }
 
   public function delete($id)
   {
-    // echo json_encode($this->balita->delete_balita($id));
+    echo json_encode($this->balita->delete_by_admin($id));
   }
 
   public function reset_pass()
