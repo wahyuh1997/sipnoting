@@ -54,10 +54,9 @@
   });
 
   $(document).on('click', '#select-date', function() {
+    let base_url = '<?= base_url() ?>'
     let month = $('.datemonth').val();
 
-    $.get('grafik/index/' + month, function(data) {
-
-    });
+    window.location.href = base_url + 'grafik/index/' + month
   });
 </script>

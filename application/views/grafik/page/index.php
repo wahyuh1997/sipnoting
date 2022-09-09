@@ -22,7 +22,7 @@
     <div class="row ml-auto">
       <div class="col-3">Pilih Bulan</div>
       <div class="col-6">
-        <input type="text" class="form-control datemonth" value="<?= date('Y-m'); ?>">
+        <input type="text" class="form-control datemonth" value="<?= $date; ?>">
       </div>
       <div class="col-lg-3">
         <button type="button" id="select-date" class="btn btn-sm btn-info">Pilih</button>

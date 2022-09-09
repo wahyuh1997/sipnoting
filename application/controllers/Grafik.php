@@ -28,6 +28,7 @@ class Grafik extends MY_Controller
       'title'     => 'Data Grafik',
       'subtitle'  => 'Data Seluruh Grafik',
       'js'        => 'grafik/js/core',
+      'date'      => $month,
       'data'      => $this->dashboard->report($month)
     ];
 
