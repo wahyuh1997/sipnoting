@@ -33,6 +33,12 @@
             </div>
           </div>
           <div class="form-group row">
+            <label for="password" class="col-form-label col-lg-3">Password <span class="text-danger">*</span></label>
+            <div class="col-lg-9">
+              <input type="password" minlength="6" class="form-control" id="password" name="password" autocomplete="off" required>
+            </div>
+          </div>
+          <div class="form-group row">
             <label for="no_hp" class="col-form-label col-lg-3">No Hp</label>
             <div class="col-lg-9">
               <input type="number" class="form-control" maxlength="" id="no_hp" name="no_hp" autocomplete="off">

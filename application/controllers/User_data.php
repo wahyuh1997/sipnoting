@@ -42,13 +42,7 @@ class User_data extends MY_Controller
       $this->load_template('user_data/page/add', $data);
     } else {
       /* Copy Function Here */
-      $data = [
-        'email' => 'andi@gmail.com'
-        , 'nama' => 'andi rifaldi'
-        , 'no_hp' => '089602584857'
-        , 'password' => '12345678'
-      ];
-      $res = $this->user->insert_by_admin($data);
+      echo json_encode($this->user->insert_by_admin($post));
     }
   }
 
@@ -56,27 +50,24 @@ class User_data extends MY_Controller
   {
     $post = $this->input->post(null, true);
     /* load Function Model Here to Show All Data*/
-    $user = $this->user->get_all_user();
-
+    $user = $this->user->get_user($id);
+    // trace($user);
     if (count($post) == 0) {
       # code...
       $data = [
         'title'     => 'Ubah Profile',
         'subtitle'  => 'SIPNOTING',
         'js'        => 'profile/js/data',
-        'user'      => $user
+        'data'      => $user
       ];
       $this->load_template('user_data/page/edit', $data);
     } else {
       /* Copy Function Here */
-      $data = [
-        'email' => 'andi@gmail.com'
-        , 'nama' => 'andi rifaldi'
-        , 'no_hp' => '089602584857'
-        ,'user_id' => 3
-        , 'password' => '12345678'
-      ];
-      $res = $this->user->edit_by_admin($data);
+      // $data = [
+      //   'email' => 'andi@gmail.com', 'nama' => 'andi rifaldi', 'no_hp' => '089602584857', 'user_id' => 3, 'password' => '12345678'
+      // ];
+      $post['user_id'] = $id;
+      echo json_encode($this->user->edit_by_admin($post));
     }
   }
 
