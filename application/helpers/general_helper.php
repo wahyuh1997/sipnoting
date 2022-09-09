@@ -105,6 +105,21 @@ function dateFormat($date)
   return $day . ' ' . $month . ' ' . $year;
 }
 
+function monthFormat($date)
+{
+  if ($date == '-') {
+    return $date;
+    exit();
+  }
+
+
+  $time   = gmdate($date, time() + 60 * 60 * 8);
+  $explode  = explode("-", $time);
+  $month    = month($explode[1]);
+  $year     = $explode[0];
+  return $month . ' ' . $year;
+}
+
 
 function timeFormat($date)
 {
@@ -157,9 +172,7 @@ function month($month)
 function return_success($message, $data)
 {
   $return = [
-    'message' => $message
-    ,'data' => $data
-    ,'status' => true
+    'message' => $message, 'data' => $data, 'status' => true
   ];
   return $return;
 }
@@ -167,9 +180,7 @@ function return_success($message, $data)
 function return_failed($message, $data)
 {
   $return = [
-    'message' => $message
-    ,'data' => $data
-    ,'status' => false
+    'message' => $message, 'data' => $data, 'status' => false
   ];
   return $return;
 }

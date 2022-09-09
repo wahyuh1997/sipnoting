@@ -23,11 +23,11 @@ class Grafik extends MY_Controller
     if ($month == null) {
       $month = date('Y-m');
     }
+    // trace($this->dashboard->report($month));
 
-    $this->dashboard->detail_report($month, 9);
 
     $data = [
-      'title'     => 'Data Grafik',
+      'title'     => 'Data Laporan ' . monthFormat($month),
       'subtitle'  => 'Data Seluruh Grafik',
       'js'        => 'grafik/js/core',
       'date'      => $month,
@@ -35,5 +35,10 @@ class Grafik extends MY_Controller
     ];
 
     $this->load_template('grafik/page/index', $data);
+  }
+
+  public function get_statistic()
+  {
+    echo json_encode($this->dashboard->detail_report($_GET['month'], $_GET['id']));
   }
 }
