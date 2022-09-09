@@ -90,4 +90,33 @@ Class Dashboard_model extends My_Model {
 
         return $this->return_success('Perbandingan Laki-laki dan Perempuan',$return);
     }
+
+    function report($param)
+    {
+        $pemisah = explode('-',$param);
+        $tahun = (int)$pemisah[0];
+        $bulan = (int)$pemisah[1];
+        $sql = "
+                select b.nama 
+                        ,(select berat_balita 
+                            from diagnosis 
+                            where bayi_id = a.bayi_id and MONTH(created_at) = $bulan and YEAR(created_at) = $tahun
+                            order by created_at desc limit 1) as berat_balita
+                        , (select berat_balita 
+                            from diagnosis 
+                            where bayi_id = a.bayi_id and MONTH(created_at) = $bulan and YEAR(created_at) = $tahun
+                            order by created_at desc limit 1) as tinggi_balita
+                        , (select z_score 
+                            from diagnosis 
+                            where bayi_id = a.bayi_id and MONTH(created_at) = $bulan and YEAR(created_at) = $tahun
+                            order by created_at desc limit 1) as z_score
+                from diagnosis a
+                inner join profile_bayi b on a.bayi_id = b.id
+                where MONTH(a.created_at) = $bulan and YEAR(a.created_at) = $tahun
+                group by a.bayi_id
+                ";
+        $data = $this->db->query($sql)->result_array();
+        return $this->return_success('Laporan', $data);
+        // return $sql;
+    }
 }

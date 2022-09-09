@@ -20,6 +20,7 @@ class Grafik extends MY_Controller
   public function index()
   {
     $res = $this->balita->get_all_balita();
+    $res1 = $this->dashboard->report('2022-09');
     $data = [
       'title'     => 'Data Grafik',
       'subtitle'  => 'Data Seluruh Grafik',

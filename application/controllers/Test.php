@@ -145,6 +145,7 @@ class Test extends MY_Controller
 
     // echo json_encode($this->dashboard->presentase_stunting());
     // echo json_encode($this->dashboard->rata_z_score());
-    echo json_encode($this->dashboard->perbandingan_kelamin());
+    // echo json_encode($this->dashboard->perbandingan_kelamin());
+    echo json_encode($this->dashboard->report('2022-09'));
   }
 }
