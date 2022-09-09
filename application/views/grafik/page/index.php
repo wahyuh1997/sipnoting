@@ -1,6 +1,6 @@
 <style>
   .app-main__inner {
-    width: calc(100% - 50px) !important;
+    width: calc(100% - 120px) !important;
   }
 </style>
 
@@ -19,9 +19,15 @@
         </div>
       </div>
     </div>
-    <!-- <div class="page-title-actions">
-      <a href="<?= base_url('balita/add'); ?>" class="btn btn-shadow btn-info">Tambah Data Balita</a>
-    </div> -->
+    <div class="row ml-auto">
+      <div class="col-3">Pilih Bulan</div>
+      <div class="col-6">
+        <input type="text" class="form-control datemonth" value="<?= date('Y-m'); ?>">
+      </div>
+      <div class="col-lg-3">
+        <button type="button" id="select-date" class="btn btn-sm btn-info">Pilih</button>
+      </div>
+    </div>
   </div>
 </div>
 <!-- End Main Content -->
@@ -44,6 +50,27 @@
           <th>Kesimpulan Akhir</th>
         </tr>
       </thead>
+      <tbody>
+        <?php
+        $i = 1;
+        foreach ($data['data'] as $res) : ?>
+          <tr>
+            <td><?= $i++; ?></td>
+            <td>
+              <button type="button" class="btn btn-sm btn-info">Detail</button>
+            </td>
+            <td><?= $res['nama']; ?></td>
+            <td><?= $res['jenis_kelamin'] == 'L' ? 'Laki-Laki' : 'Perempuan'; ?></td>
+            <td><?= $res['usia']; ?></td>
+            <td><?= $res['ayah']; ?></td>
+            <td><?= $res['ibu']; ?></td>
+            <td><?= $res['berat_balita'] / 1000; ?> Kg</td>
+            <td><?= $res['tinggi_balita']; ?> cm</td>
+            <td><?= $res['z_score']; ?></td>
+            <td><?= $res['kesimpulan'] == 'HK01' ? 'Stunting' : 'Tidak Stunting'; ?></td>
+          </tr>
+        <?php endforeach; ?>
+      </tbody>
     </table>
   </div>
 </div>

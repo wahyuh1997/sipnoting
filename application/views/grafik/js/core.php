@@ -1,4 +1,15 @@
 <script>
+  $(".datemonth").datepicker({
+    startView: 1,
+    minViewMode: 1,
+    maxViewMode: 2,
+    todayHighlight: true,
+    format: "yyyy-mm",
+    autoclose: true,
+    endDate: '+0m',
+    orientation: "bottom auto"
+  });
+
   const ctxLine = document.getElementById('myLineChart').getContext('2d');
   const myLineChart = new Chart(ctxLine, {
     type: 'line',
@@ -40,5 +51,13 @@
         }
       }
     }
+  });
+
+  $(document).on('click', '#select-date', function() {
+    let month = $('.datemonth').val();
+
+    $.get('grafik/index/' + month, function(data) {
+
+    });
   });
 </script>

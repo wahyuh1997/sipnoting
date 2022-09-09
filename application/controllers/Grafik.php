@@ -10,21 +10,25 @@ class Grafik extends MY_Controller
     parent::__construct();
 
     $this->load->model([
-      'Balita_model'=>'balita'
+      'Dashboard_model' => 'dashboard'
     ]);
   }
 
   /**
    * index
    */
-  public function index()
+  public function index($month = null)
   {
-    $res = $this->balita->get_all_balita();
-    $res1 = $this->dashboard->report('2022-09');
+    // trace($res);
+    if ($month == null) {
+      $month = date('Y-m');
+    }
+
     $data = [
       'title'     => 'Data Grafik',
       'subtitle'  => 'Data Seluruh Grafik',
-      'js'        => 'grafik/js/core'
+      'js'        => 'grafik/js/core',
+      'data'      => $this->dashboard->report($month)
     ];
 
     $this->load_template('grafik/page/index', $data);
