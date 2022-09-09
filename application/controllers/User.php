@@ -58,9 +58,7 @@ class User extends MY_Controller
 
     // $res = $this->user->insert_anggota($data);
 
-    if (
-      count($post) == 0
-    ) {
+    if (count($post) == 0) {
       // dataView
       $dataView = [
         'title'     => 'Data Anggota',
@@ -88,8 +86,6 @@ class User extends MY_Controller
   {
     $post = $this->input->post(null, true);
 
-    $res = $this->user->change_password('email', 'password');
-
     if (count($post) == 0) {
       // dataView
       $dataView = [
@@ -100,38 +96,8 @@ class User extends MY_Controller
       // view
       $this->load_template('user/page/change', $dataView);
     } else {
-      $response = $this->lib_curl->curl_request($this->pos_service_v1 . 'auth/change_password', 'POST', $_POST);
-      echo json_encode($response);
+      $post['email'] = $_SESSION['sipnoting_admin']['email'];
+      echo json_encode($this->user->change_password($post['email'], $post['password']));
     }
-  }
-
-  /**
-   * delete
-   */
-  public function delete($username)
-  {
-    // get params
-    $_POST['username'] = $username;
-    $response = $this->lib_curl->curl_request($this->pos_service_v1 . 'auth/delete_user', 'POST', $_POST);
-    echo json_encode($response);
-  }
-
-
-  /**
-   * Reset Password
-   */
-  public function reset_password($username)
-  {
-    $res = $this->user->change_password('email');
-
-    $_POST['username'] = $username;
-    echo json_encode($this->lib_curl->curl_request($this->pos_service_v1 . 'auth/reset_password', 'POST', $_POST));
-  }
-
-  /**
-   * Reset Password
-   */
-  public function change_user($id)
-  {
   }
 }

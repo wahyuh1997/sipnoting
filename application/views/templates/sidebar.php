@@ -75,12 +75,6 @@
         </li>
         <li>
           <a href="<?= base_url('grafik'); ?>" class="<?= $this->uri->segment(1) == 'grafik' ? 'mm-active' : null ?>">
-            <i class="metismenu-icon pe-7s-graph2"></i>
-            Grafik Balita
-          </a>
-        </li>
-        <li>
-          <a href="<?= base_url('report'); ?>" class="<?= $this->uri->segment(1) == 'report' ? 'mm-active' : null ?>">
             <i class="metismenu-icon pe-7s-note2"></i>
             Laporan
           </a>

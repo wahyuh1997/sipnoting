@@ -111,7 +111,8 @@ class Profile extends MY_Controller
       $this->load_template_user('profile/page/change_pass', $data);
     } else {
       /* Write Your Function Here */
-      echo json_encode('');
+      $post['email'] = $_SESSION['sipnoting_user']['email'];
+      echo json_encode($this->user->change_password($post['email'], $post['password']));
     }
   }
 
