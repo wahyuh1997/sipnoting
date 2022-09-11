@@ -158,9 +158,13 @@ class Diagnosis_model extends My_Model
 
     if ($tinggi_badan >= $standar_deviasi['median']) {
       $z_score = ($tinggi_badan - $standar_deviasi['median']) / ($standar_deviasi['1_sd'] - $standar_deviasi['median']);
-      $stunting = 'HK02';
     } else {
       $z_score = ($tinggi_badan - $standar_deviasi['median']) / ($standar_deviasi['median'] - $standar_deviasi['minus_1_sd']);
+    }
+
+    $stunting = 'HK02';
+    
+    if (floatval($z_score) <= -2) {
       $stunting = 'HK01';
     }
 
