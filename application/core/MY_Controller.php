@@ -30,10 +30,6 @@ class MY_Controller extends CI_Controller
 
   public function load_template_user($view = null, $data_view)
   {
-    // if (!isset($_SESSION['pos_order'])) {
-    //   redirect('login');
-    // }
-
     $this->load->view("templates/user/header", $data_view);
     $this->load->view($view, $data_view);
     $this->load->view("templates/user/footer", $data_view);

@@ -39,10 +39,9 @@
                   <div class="col-md-8">
                     <div class="form-group first">
                       <label for="kode_otp" class="text-warning">Kode OTP</label>
-                      <input type="number" class="form-control text-white" id="kode_otp" name="kode_otp" required>
+                      <input type="number" class="form-control text-white" id="kode_otp" minlength="6" maxlength="6" name="kode_otp" required>
                     </div>
                     <div id="countdown" class="text-white text-center mb-3">
-
                     </div>
                     <button type="submit" class="btn text-white btn-block rounded rounded-pill" style="background-color: #A97798;">Verifikasi</button>
                   </div>

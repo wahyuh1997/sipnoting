@@ -12,7 +12,7 @@
   <link rel="stylesheet" href="<?= base_url('assets/login/'); ?>css/owl.carousel.min.css">
 
   <!-- Bootstrap CSS -->
-  <link rel="stylesheet" href="<?= base_url('assets/login/'); ?>css/bootstrap.min.css">
+  <link rel="stylesheet" href="<?= base_url('assets/login/'); ?>css/bootstrap.css">
 
   <!-- Style -->
   <link rel="stylesheet" href="<?= base_url('assets/login/'); ?>css/style-02.css">
@@ -38,11 +38,16 @@
                 <h3 class="primaryText"><strong>SIPNOTING</strong></h3>
                 <p class="mb-4 text-white">Sistem Pakar Diagnosis Stunting.</p>
               </div>
+              <?php if ($this->session->flashdata('alert')) : ?>
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                  <strong><?= $this->session->flashdata('alert'); ?></strong>
+                  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+              <?php endif; ?>
               <form action="#" method="post">
-                <div class="form-group first">
+                <div class="form-group mb-4 first">
                   <label for="username" class="text-warning">Email</label>
                   <input type="email" class="form-control text-white" id="email" name="email" autofocus required>
-
                 </div>
                 <div class="form-group last mb-4">
                   <label for="password" class="text-warning">Password</label>
@@ -71,7 +76,7 @@
 
   <script src="<?= base_url('assets/login/'); ?>js/jquery-3.3.1.min.js"></script>
   <script src="<?= base_url('assets/login/'); ?>js/popper.min.js"></script>
-  <script src="<?= base_url('assets/login/'); ?>js/bootstrap.min.js"></script>
+  <script src="<?= base_url('assets/login/'); ?>js/bootstrap.js"></script>
   <script src="<?= base_url('assets/login/'); ?>js/main.js"></script>
 </body>
 

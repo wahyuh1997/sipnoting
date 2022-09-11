@@ -23,8 +23,8 @@
       </div>
     </div>
     <?php if ($data['status'] == true) : ?>
-      <?php foreach ($data['data'] as $baby) : ?>
-        <div class="col-lg-7">
+      <div class="col-lg-7">
+        <?php foreach ($data['data'] as $baby) : ?>
           <div class="card mb-3">
             <div class="row g-0 py-3">
               <div class="col-md-4 d-flex justify-content-center align-items-center">
@@ -33,6 +33,7 @@
               <div class="col-md-8">
                 <div class="card-body" style="position: relative;">
                   <div class="action" style="position: absolute; right: 1rem; top: 0;">
+                    <a href="<?= base_url('riwayat/index/' . $baby['id']); ?>" class="text-success me-2"><i class="fa-solid fa-xl fa-clock-rotate-left"></i></a>
                     <a href="<?= base_url('profile/edit/' . $baby['id']); ?>" class="me-2"><i class="fa-solid fa-xl fa-pen-to-square"></i></a>
                     <a href="<?= base_url('profile/delete/' . $baby['id']); ?>" class="text-danger del-sel"><i class="fa-solid fa-xl fa-trash"></i></a>
                   </div>
@@ -60,10 +61,11 @@
               </div>
             </div>
           </div>
-        </div>
-      <?php endforeach; ?>
+        <?php endforeach; ?>
+      </div>
     <?php else : ?>
       <h2 class="text-white text-center mt-3">Anda Belum Memiliki Data Balita</h2>
+      <h3 class="text-white text-center mt-3">Silahkan Lengkapi Data Terlebih Dahulu</h3>
     <?php endif; ?>
   </div>
 
@@ -71,7 +73,7 @@
   <div class="row my-5">
     <div class="col-lg-7 mx-auto">
       <div class="d-grid gap-2">
-        <a href="<?= base_url('auth/logout'); ?>" data-redurl="<?= base_url(); ?>" class="btn primary-btn py-2 btn-logout" type="button" style="font-size: 20px;">KELUAR</a>
+        <a href="<?= base_url('auth/logout'); ?>" data-redurl="<?= base_url(); ?>" class="primary-btn py-2 text-center text-dark text-decoration-none btn-logout" type="button" style="font-size: 20px;">KELUAR</a>
       </div>
     </div>
   </div>

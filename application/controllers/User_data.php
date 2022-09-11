@@ -73,7 +73,7 @@ class User_data extends MY_Controller
 
   public function delete($id)
   {
-    echo json_encode($this->balita->delete_by_admin($id));
+    echo json_encode($this->user->delete_by_admin($id));
   }
 
   public function reset_pass()
