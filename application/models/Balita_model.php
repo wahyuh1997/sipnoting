@@ -75,7 +75,14 @@ class Balita_model extends My_Model
     }
 
     $insert_bayi = [
-      'jenis_kelamin' => $data['jenis_kelamin'], 'nama' => $data['nama'], 'tempat_lahir' => $data['tempat_lahir'] ?? null, 'tanggal_lahir' => $data['tanggal_lahir'], 'ayah' => $data['ayah'], 'ibu' => $data['ibu'], 'alamat' => $data['alamat'], 'updated_at' => date('Y-m-d H:i:s')
+      'jenis_kelamin' => $data['jenis_kelamin']
+      , 'nama' => $data['nama']
+      , 'tempat_lahir' => $data['tempat_lahir']
+      , 'tanggal_lahir' => $data['tanggal_lahir']
+      , 'ayah' => $data['ayah']
+      , 'ibu' => $data['ibu']
+      , 'alamat' => $data['alamat']
+      , 'updated_at' => date('Y-m-d H:i:s')
     ];
 
     $this->db->update('profile_bayi', $insert_bayi, ['id' => $data['bayi_id']]);

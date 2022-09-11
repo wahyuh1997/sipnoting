@@ -31,6 +31,31 @@ class Diagnosis_model extends My_Model
 
     return $this->return_success('', $data->result_array());
   }
+  
+  function get_diagnosis_by_bayi($bayi_id = null)
+  {
+    $sql = "
+                select a.*, b.nama, b.jenis_kelamin, (timestampdiff(month, b.tanggal_lahir, current_date)) as usia
+                from diagnosis a
+                inner join profile_bayi b on a.bayi_id = b.id
+                
+                ";
+
+    if (strlen($bayi_id) > 0) {
+      $sql .= "where a.created_by = ? order by a.created_at desc";
+      $data = $this->db->query($sql, [$bayi_id]);
+    } else {
+      $sql .= "order by a.created_at desc";
+      $data = $this->db->query($sql);
+    }
+
+
+    if ($data->num_rows() < 1) {
+      return $this->return_failed('data tidak ada', []);
+    }
+
+    return $this->return_success('', $data->result_array());
+  }
 
   function diagnosis_bayi($data)
   {
