@@ -52,4 +52,12 @@
       </div>
     </div>
   </form>
+<?php else : ?>
+  <h2 class="text-white text-center mt-3">Anda Belum Memiliki Data Balita</h2>
+  <h3 class="text-white text-center mt-3">Silahkan Lengkapi Data Terlebih Dahulu</h3>
+  <div class="col-lg-4 mx-auto mt-4">
+    <div class="d-grid gap-2">
+      <a href="<?= base_url('profile'); ?>" class="primary-btn py-2 text-center text-dark text-decoration-none" type="button" style="font-size: 20px;">Pergi Ke Profil</a>
+    </div>
+  </div>
 <?php endif; ?>

@@ -1,4 +1,5 @@
 <script>
+  $('.list-data').css('cursor', 'pointer');
   var base_url = '<?= base_url() ?>'
   $(".datemonth").datepicker({
     startView: 1,
@@ -17,6 +18,9 @@
     window.location.href = base_url + 'grafik/index/' + month
   });
 
+  var berat = [];
+  var tinggi = [];
+  var score = [];
   $(document).on('click', '.list-data', function() {
     let id = $(this).data('id');
     let month = $('.datemonth').val();
@@ -24,13 +28,17 @@
     $('tr').removeClass('selected');
     $(this).toggleClass('selected');
 
+    $('#myLineChart').remove();
+
+    $('.widget-chart').html('<canvas id="myLineChart" height="100"></canvas>');
+
     $.get(base_url + `grafik/get_statistic?month=${month}&id=${id}`, function(data) {
       let res = JSON.parse(data)
-      let berat = [];
-      let tinggi = [];
-      let score = [];
+      berat = [];
+      tinggi = [];
+      score = [];
 
-      for (let i = 7; i <= 9; i++) {
+      for (let i = 7; i <= 12; i++) {
         let tempBerat = res.data.bulan[i].length > 0 ? res.data.bulan[i][0].berat_balita / 1000 : 0
         let tempTinggi = res.data.bulan[i].length > 0 ? res.data.bulan[i][0].tinggi_balita : 0
         let tempScore = res.data.bulan[i].length > 0 ? res.data.bulan[i][0].z_score : 0
@@ -83,5 +91,6 @@
         }
       });
     });
+
   });
 </script>

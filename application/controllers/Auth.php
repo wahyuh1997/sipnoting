@@ -9,7 +9,8 @@ class Auth extends MY_Controller
   {
     parent::__construct();
     $this->load->model([
-      'User_model' => 'user'
+      'User_model'    => 'user',
+      'Balita_model'  => 'balita',
     ]);
   }
 
@@ -34,7 +35,8 @@ class Auth extends MY_Controller
     } else {
       $res = $this->user->login($post['email'], $post['password']);
 
-      if ($res['status'] == true) {
+      if (count($res['data']) > 0) {
+        # Admin Section
         if ($res['data']['is_admin'] == 1) {
           $_SESSION['sipnoting_admin'] = [
             'id'        => $res['data']['id'],
@@ -49,7 +51,7 @@ class Auth extends MY_Controller
         } else {
 
           if ($res['data']['verified'] == 1) {
-            # code...
+            # User Section
             $_SESSION['sipnoting_user'] = [
               'id'        => $res['data']['id'],
               'email'     => $res['data']['email'],
@@ -57,7 +59,12 @@ class Auth extends MY_Controller
               'no_hp'     => $res['data']['no_hp'],
               'is_admin'  => $res['data']['is_admin'],
             ];
-            redirect('home');
+            $check_baby = $this->balita->get_balita_by_user($_SESSION['sipnoting_user']['id']);
+            if ($check_baby['status'] == true) {
+              redirect('home');
+            } else {
+              redirect('profile');
+            }
           } else {
             $_SESSION['sipnoting_user']['email'] = $res['data']['email'];
             redirect('auth/verif_email');
@@ -65,7 +72,7 @@ class Auth extends MY_Controller
         }
       } else {
         $this->session->set_flashdata('alert', $res['message']);
-        redirect('home');
+        redirect('auth/login');
       }
     }
   }
@@ -119,8 +126,11 @@ class Auth extends MY_Controller
 
         $this->load->view('auth/verif_email', $data);
       } else {
-        echo json_encode($this->user->verify($_SESSION['sipnoting_user']['email'], $post['kode_otp']));
-        unset($_SESSION['sipnoting_user']['email']);
+        $res = $this->user->verify($_SESSION['sipnoting_user']['email'], $post['kode_otp']);
+        if ($res['status'] == true) {
+          unset($_SESSION['sipnoting_user']['email']);
+        }
+        echo json_encode($res);
       }
     } else {
       redirect('');

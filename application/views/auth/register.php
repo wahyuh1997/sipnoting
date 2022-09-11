@@ -18,11 +18,29 @@
   <link rel="stylesheet" href="<?= base_url('assets/login/'); ?>css/style-02.css">
 
   <title><?= $title; ?></title>
+  <style>
+    .bg-process {
+      position: fixed;
+      z-index: 9999;
+      height: 100%;
+      width: 100%;
+      background-color: rgba(0, 0, 0, .6);
+    }
+
+    .bg-process .spinner-border {
+      width: 4rem;
+      height: 4rem;
+      border-width: 5px;
+    }
+  </style>
 </head>
 
 <body>
-
-
+  <div class="bg-process d-flex justify-content-center" style="display: none !important;">
+    <div class="spinner-border text-light align-self-center" role="status">
+      <span class="sr-only">Loading...</span>
+    </div>
+  </div>
 
   <div class="content">
     <div class="container">

@@ -8,6 +8,10 @@ class Profile extends MY_Controller
   public function __construct()
   {
     parent::__construct();
+    if (!isset($_SESSION['sipnoting_user'])) {
+      redirect('auth/login');
+    }
+
     $this->load->model([
       'Balita_model' => 'balita',
       'User_model'   => 'user'
