@@ -44,12 +44,20 @@ Class Dashboard_model extends My_Model {
     function rata_z_score()
     {
         $sql = "
-            SELECT cast(sum(z_score) / (select count(*) FROM diagnosis) as float) as rerata, count(*) as total_balita
+            SELECT cast(sum(z_score) / (select count(*) FROM diagnosis) as float) as rerata
             FROM diagnosis a
         " ;
         $return = $this->db->query($sql)->row_array();
 
-        return $this->return_success('Rata-rata Z Score dan total balita',$return);
+        return $this->return_success('Rata-rata Z Score',$return);
+    }
+    
+    function total_balita()
+    {
+        $sql = "select count(*) total_bayi FROM diagnosis a";
+        $return = $this->db->query($sql)->row_array();
+    
+        return $this->return_success('total balita',$return);
     }
     
     function perbandingan_kelamin($tahun=null)
