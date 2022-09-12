@@ -137,6 +137,33 @@ class Auth extends MY_Controller
     }
   }
 
+  public function verify_password()
+  {
+    if (isset($_GET['email']) && isset($_GET['token'])) {
+      # code...
+    }
+    $post = $this->input->post(null, true);
+
+    if (isset($_SESSION['sipnoting_user']['email'])) {
+      if (count($post) == 0) {
+        $data = [
+          'title'     => 'Verifikasi Email',
+          'subtitle'  => 'Daftar Sipnoting',
+        ];
+
+        $this->load->view('auth/verif_email', $data);
+      } else {
+        $res = $this->user->verify($_SESSION['sipnoting_user']['email'], $post['kode_otp']);
+        if ($res['status'] == true) {
+          unset($_SESSION['sipnoting_user']['email']);
+        }
+        echo json_encode($res);
+      }
+    } else {
+      redirect('');
+    }
+  }
+
   public function verif_success()
   {
     $data = [
@@ -146,6 +173,75 @@ class Auth extends MY_Controller
 
     $this->load->view('auth/verif_success', $data);
   }
+
+  /* Forgot Password Area */
+  public function forgot_password()
+  {
+    $post = $this->input->post();
+
+    if (count($post) == 0) {
+      $data = [
+        'title'     => 'Lupa Password',
+        'subtitle'  => 'Daftar Sipnoting',
+      ];
+
+      $this->load->view('auth/forgot_password', $data);
+    } else {
+      $res = $this->user->forgot_password($post['email']);
+      if ($res['status'] == true) {
+        $_SESSION['sipnoting_user']['email'] = $post['email'];
+      }
+      echo json_encode($res);
+    }
+  }
+
+  public function check_otp_reset()
+  {
+    $post = $this->input->post(null, true);
+
+    if (isset($_SESSION['sipnoting_user']['email'])) {
+      if (count($post) == 0) {
+        $data = [
+          'title'     => 'Verifikasi Email',
+          'subtitle'  => 'Daftar Sipnoting',
+        ];
+
+        $this->load->view('auth/check_otp_reset', $data);
+      } else {
+        $res = $this->user->verify_password($_SESSION['sipnoting_user']['email'], $post['kode_otp']);
+        if ($res['status'] == true) {
+          unset($_SESSION['sipnoting_user']['email']);
+        }
+
+        echo json_encode($res);
+      }
+    } else {
+      redirect('');
+    }
+  }
+
+  public function renew_password()
+  {
+    $post = $this->input->post(null, true);
+
+    if (count($post) == 0) {
+      $data = [
+        'title'     => 'Masukan Password Baru Anda',
+        'subtitle'  => 'Daftar Sipnoting',
+      ];
+
+      $this->load->view('auth/renew_password', $data);
+    } else {
+      $res = $this->user->verify_password($_SESSION['sipnoting_user']['email'], $post['kode_otp']);
+      if ($res['status'] == true) {
+        unset($_SESSION['sipnoting_user']['email']);
+      }
+
+      echo json_encode($res);
+    }
+  }
+
+  /* End Of Forgot Password Area */
 
   public function logout()
   {

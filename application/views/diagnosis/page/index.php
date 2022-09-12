@@ -1,6 +1,12 @@
 <?php if ($data['status'] == true) : ?>
   <form action="<?= base_url('diagnosis/result'); ?>" method="POST">
     <div class="container mt-5">
+      <?php if ($this->session->flashdata('alert')) : ?>
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+          <strong><?= $this->session->flashdata('alert'); ?></strong>
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+      <?php endif; ?>
       <div class="card" style="background-color: #62648A;">
         <div class="card-body">
           <div class="row">
@@ -24,7 +30,7 @@
             <div class="col-lg-12">
               <label for="berat_lahir" class="text-white">Berat Badan Balita</label>
               <div class="input-group mb-3">
-                <input type="number" id="berat_lahir" name="berat_lahir" step="0.1" min="0.1" class="form-control" required>
+                <input type="number" id="berat_lahir" name="berat_lahir" step="0.1" min="0.1" max="20" class="form-control" required>
                 <span class="input-group-text">Kg</span>
               </div>
             </div>

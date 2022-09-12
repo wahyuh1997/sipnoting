@@ -42,21 +42,19 @@
       </thead>
       <tbody>
         <?php foreach ($data['data'] as $key => $res) : ?>
-          <?php if ($res['kesimpulan'] == 'HK01') : ?>
-            <tr>
-              <td class="text-center"><?= $key + 1; ?></td>
-              <td>
-                <a href="<?= base_url('diagnose/delete/' . $res['id']); ?>" class="btn btn-danger btn-sm del-sel">Hapus</a>
-              </td>
-              <td><?= $res['nama']; ?></td>
-              <td><?= $res['jenis_kelamin'] == 'L' ? 'Laki-Laki' : 'Perempuan'; ?></td>
-              <td><?= $res['usia']; ?> Bulan</td>
-              <td><?= $res['berat_balita'] / 1000; ?> Kg</td>
-              <td><?= $res['tinggi_balita']; ?> cm</td>
-              <td><?= $res['z_score']; ?></td>
-              <td><?= $res['kesimpulan'] == 'HK01' ? 'Stunting' : 'Tidak Stunting'; ?></td>
-            </tr>
-          <?php endif; ?>
+          <tr>
+            <td class="text-center"><?= $key + 1; ?></td>
+            <td>
+              <a href="<?= base_url('diagnose/delete/' . $res['id']); ?>" class="btn btn-danger btn-sm del-sel">Hapus</a>
+            </td>
+            <td><?= $res['nama']; ?></td>
+            <td><?= $res['jenis_kelamin'] == 'L' ? 'Laki-Laki' : 'Perempuan'; ?></td>
+            <td><?= $res['usia']; ?> Bulan</td>
+            <td><?= $res['berat_balita'] / 1000; ?> Kg</td>
+            <td><?= $res['tinggi_balita']; ?> cm</td>
+            <td><?= $res['z_score']; ?></td>
+            <td><?= $res['kesimpulan'] == 'HK01' ? 'Stunting' : 'Tidak Stunting'; ?></td>
+          </tr>
         <?php endforeach; ?>
       </tbody>
     </table>

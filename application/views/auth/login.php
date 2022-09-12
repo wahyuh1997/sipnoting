@@ -54,7 +54,10 @@
                   <input type="password" class="form-control text-white" id="password" name="password" minlength="6" required>
                 </div>
 
-                <button type="submit" class="btn text-white btn-block rounded rounded-pill" style="background-color: #A97798;">Masuk</button>
+                <div class="d-flex justify-content-between">
+                  <button type="submit" class="btn text-white btn-block rounded rounded-pill" style="background-color: #A97798;">Masuk</button>
+                  <a href="<?= base_url('auth/forgot_password'); ?>" class="text-white text-decoration-none">Lupa Password ?</a>
+                </div>
               </form>
               <h2 class="mt-5 line">
                 <a href="<?= base_url('auth/register'); ?>" class="text-decoration-none">Belum Punya Akun ? <span>Daftar</span></a>

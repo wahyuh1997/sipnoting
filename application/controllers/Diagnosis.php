@@ -41,10 +41,9 @@ class Diagnosis extends MY_Controller
   public function result()
   {
     $post = $this->input->post(null, true);
+    $res = $this->diagnosis->diagnosis_bayi($post);
 
-    if (count($post) > 0) {
-      $res = $this->diagnosis->diagnosis_bayi($post);
-      // trace($res);
+    if ($res['status'] == true) {
       $data = [
         'title'     => 'Hasil Diagnosa',
         'subtitle'  => 'Hasil Diagnosa',
@@ -53,6 +52,7 @@ class Diagnosis extends MY_Controller
       ];
       $this->load_template_user('diagnosis/page/result', $data);
     } else {
+      $this->session->set_flashdata('alert', $res['message']);
       redirect('diagnosis');
     }
   }

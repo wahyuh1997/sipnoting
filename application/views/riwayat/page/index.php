@@ -1,4 +1,4 @@
-<div class="container mt-5">
+<div class="container my-5">
 
   <h1 class="title-text"><?= $title; ?></h1>
 
@@ -114,7 +114,7 @@
                 </div>
               </div>
               <div class="col-lg-7">
-                <label for="">Solusi :</label>
+                <label for=""><?= $res['kesimpulan'] == 'HK01' ? 'Solusi' : 'Saran'; ?> :</label>
                 <?php foreach (json_decode($res['keterangan']) as $ket) : ?>
                   <p class="mb-0">- <?= $ket; ?></p>
                 <?php endforeach; ?>

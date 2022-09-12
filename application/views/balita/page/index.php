@@ -1,6 +1,6 @@
 <style>
   .app-main__inner {
-    width: calc(100% - 280px) !important;
+    width: calc(100% - 300px) !important;
   }
 </style>
 <!-- Main Content -->
