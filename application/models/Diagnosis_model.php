@@ -179,7 +179,7 @@ class Diagnosis_model extends My_Model
     $standar_deviasi = $this->db->get_where('standar_deviasi', ['jenis_kelamin' => $jenis_kelamin, 'usia' => $usia]);
 
     if ($standar_deviasi->num_rows() < 1) {
-      return $this->return_failed('Ooops ada yang salah. Silahkan hubungi admin!', []);
+      return $this->return_failed('Belum ada deviasi yang terdaftar di usia ini.', []);
     }
     $standar_deviasi = $standar_deviasi->row_array();
     $z_score = 0;
