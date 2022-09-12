@@ -279,6 +279,8 @@
             if (!$this->_sendEmailVerify($kode_otp,$email)['status']) {
                 return $this->return_failed('Proses Gagal. Silahkan coba lagi',[]);
             }
+
+            $this->db->update('users', ['kode_otp' => $kode_otp], ['email' => $email]);
             return $this->return_success('Email sudah dikirim! Silahkan cek inbox atau spam!',[]);
         }
         
