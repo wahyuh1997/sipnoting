@@ -82,6 +82,10 @@ class Diagnosis_model extends My_Model
       'tinggi_badan' => $tinggi_badan, 'usia' => $balita['usia'], 'jenis_kelamin' => $balita['jenis_kelamin']
     ];
     $z_score = $this->z_score($data_z_score);
+    
+    if (!$z_score['status']) {
+      return $this->return_failed($z_score['data'], []);
+    }
 
     /*
         $data_stunting = [
@@ -195,7 +199,7 @@ class Diagnosis_model extends My_Model
 
     $return =
       [
-        'z_score' => floatval($z_score), 'stunting' => $stunting
+        'z_score' => floatval($z_score), 'stunting' => $stunting, 'status' => true
       ];
 
     return $return;
