@@ -6,7 +6,7 @@
     <?php foreach ($data['data'] as $res) : ?>
       <?php if (isset($id)) : ?>
         <?php if ($res['bayi_id'] == $id) : ?>
-          <div class="card mt-4 text-white" style="background-color: #63CFC6;">
+          <div class="card mt-4 text-dark" style="background-color: #63CFC6;">
             <div class="card-header">
               <h5>Tgl. Diagnosis : <?= dateFormat($res['created_at']); ?></h4>
             </div>
@@ -65,7 +65,7 @@
           </div>
         <?php endif; ?>
       <?php else : ?>
-        <div class="card mt-4 text-white" style="background-color: #63CFC6;">
+        <div class="card mt-4 text-dark" style="background-color: #63CFC6;">
           <div class="card-header">
             <h5>Tgl. Diagnosis : <?= dateFormat($res['created_at']); ?></h4>
           </div>

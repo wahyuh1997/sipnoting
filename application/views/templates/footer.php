@@ -9,7 +9,7 @@
 <script type="text/javascript" src="<?= base_url(); ?>assets/js/sweetalert2.all.min.js"></script>
 <script type="text/javascript" src="<?= base_url(); ?>assets/js/select2.full.js"></script>
 <script type="text/javascript" src="<?= base_url(); ?>assets/assets/scripts/main.js"></script>
-<script type="text/javascript" src="<?= base_url(); ?>assets/js/main-01.js"></script>
+<script type="text/javascript" src="<?= base_url(); ?>assets/js/main-02.js"></script>
 <script>
   $(document).ready(function() {
     $('#myTable').DataTable({
@@ -23,8 +23,6 @@
         'copy', 'csv', 'excel', 'pdf', 'print'
       ]
     });
-
-
 
     $('.select2').select2();
   });

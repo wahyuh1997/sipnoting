@@ -23,7 +23,7 @@
           <!-- <div class="widget-subheading">Last year expenses</div> -->
         </div>
         <div class="widget-content-right">
-          <div class="widget-numbers text-white"><span><?= $data['data']['total_balita']; ?></span></div>
+          <div class="widget-numbers text-white"><span><?= $balita['data']['total_bayi']; ?></span></div>
         </div>
       </div>
     </div>
@@ -68,8 +68,46 @@
     </div>
   </div>
 </div>
-
+<?php
+$stun = 0;
+$not_stun = 0;
+foreach ($report['data'] as $res) {
+  if ($res['kesimpulan'] == 'HK01') {
+    $stun++;
+  } else {
+    $not_stun++;
+  }
+}; ?>
 <div class="row">
+  <div class="col-md-6">
+    <div class="card mb-3 widget-content bg-success">
+      <div class="widget-content-wrapper text-white">
+        <div class="widget-content-left">
+          <div class="widget-heading text-uppercase">Total Balita Stunting</div>
+          <!-- <div class="widget-subheading">Last year expenses</div> -->
+        </div>
+        <div class="widget-content-right">
+          <div class="widget-numbers text-white"><span><?= $stun; ?></span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-6">
+    <div class="card mb-3 widget-content bg-danger">
+      <div class="widget-content-wrapper text-white">
+        <div class="widget-content-left">
+          <div class="widget-heading text-uppercase">Total Balita Tidak Stunting</div>
+          <!-- <div class="widget-subheading">Total Clients Profit</div> -->
+        </div>
+        <div class="widget-content-right">
+          <div class="widget-numbers text-white"><span><?= $not_stun; ?></span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row d-none">
   <div class="col-md-12 col-lg-6">
     <div class="mb-3 card">
       <div class="card-header-tab card-header-tab-animation card-header">

@@ -21,9 +21,12 @@ class Dashboard extends MY_Controller
       'title'     => 'Dashboard',
       'subtitle'  => 'Anak Laki-Laki',
       'js'        => 'dashboard/js/data',
+      'balita'    => $this->dashboard->total_balita(),
       'data'      => $this->dashboard->rata_z_score(),
       'percent'   => $this->dashboard->presentase_stunting(),
+      'report'    => $this->dashboard->report(date('Y-m'))
     ];
+
 
     $this->load_template('dashboard/page/index', $data);
   }

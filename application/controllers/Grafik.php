@@ -23,7 +23,6 @@ class Grafik extends MY_Controller
     if ($month == null) {
       $month = date('Y-m');
     }
-    // trace($this->dashboard->report($month));
 
 
     $data = [

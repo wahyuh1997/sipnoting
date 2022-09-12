@@ -48,9 +48,10 @@ class Diagnosis extends MY_Controller
       $data = [
         'title'     => 'Hasil Diagnosa',
         'subtitle'  => 'Hasil Diagnosa',
+        'js'        => 'diagnosis/js/data',
         'data'      => $res
       ];
-      $this->load_template_user('Diagnosis/page/result', $data);
+      $this->load_template_user('diagnosis/page/result', $data);
     } else {
       redirect('diagnosis');
     }

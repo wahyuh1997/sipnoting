@@ -15,7 +15,7 @@
         <div class="mb-3 row">
           <label for="" class="col-form-label text-white col-lg-3">Nama Balita <span class="text-danger">*</span></label>
           <div class="col-lg-9">
-            <input type="text" class="form-control" autocomplete="off" value="<?= $data['nama']; ?>" autofocus required>
+            <input type="text" class="form-control" name="nama" autocomplete="off" value="<?= $data['nama']; ?>" autofocus required>
           </div>
         </div>
         <div class="mb-3 row">

@@ -2,7 +2,7 @@
 
   <div class="d-flex justify-content-between">
     <h1 class="title-text"><?= $title; ?></h1>
-    <a data-bs-toggle="modal" href="#exampleModal" class="h5 text-white" role="button">Disclaimer</a>
+    <!-- <a data-bs-toggle="modal" href="#exampleModal" class="h5 text-white" role="button">Disclaimer</a> -->
   </div>
 
   <h2 class="text-white">Angka Z-Score :</h2>
@@ -10,9 +10,9 @@
 
   <h2 class="text-white mt-5">Kesimpulan Akhir :</h2>
   <h3 class="text-white border-bottom"><?= $data['data']['kesimpulan'] == 'HK01' ? 'Stunting' : 'Tidak Stunting'; ?></h3>
-  <div class="card mt-4 text-white" style="background-color: #63CFC6;">
+  <div class="card mt-4 text-dark" style="background-color: #63CFC6;">
     <div class="card-header">
-      <h2>Solusi</h2>
+      <h2><?= $data['data']['kesimpulan'] == 'HK01' ? 'Solusi' : 'Saran'; ?></h2>
     </div>
     <div class="card-body">
       <?php foreach (json_decode($data['data']['keterangan']) as $ket) : ?>

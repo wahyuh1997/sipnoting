@@ -53,18 +53,20 @@
         <?php
         $i = 1;
         foreach ($data['data'] as $res) : ?>
-          <tr class="list-data" data-id="<?= $res['bayi_id']; ?>">
-            <td><?= $i++; ?></td>
-            <td><?= $res['nama']; ?></td>
-            <td><?= $res['jenis_kelamin'] == 'L' ? 'Laki-Laki' : 'Perempuan'; ?></td>
-            <td><?= $res['usia']; ?></td>
-            <td><?= $res['ayah']; ?></td>
-            <td><?= $res['ibu']; ?></td>
-            <td><?= $res['berat_balita'] / 1000; ?> Kg</td>
-            <td><?= $res['tinggi_balita']; ?> cm</td>
-            <td><?= $res['z_score']; ?></td>
-            <td><?= $res['kesimpulan'] == 'HK01' ? 'Stunting' : 'Tidak Stunting'; ?></td>
-          </tr>
+          <?php if ($res['kesimpulan'] == 'HK01') : ?>
+            <tr class="list-data" data-id="<?= $res['bayi_id']; ?>">
+              <td><?= $i++; ?></td>
+              <td><?= $res['nama']; ?></td>
+              <td><?= $res['jenis_kelamin'] == 'L' ? 'Laki-Laki' : 'Perempuan'; ?></td>
+              <td class="text-center"><?= $res['usia']; ?></td>
+              <td><?= $res['ayah']; ?></td>
+              <td><?= $res['ibu']; ?></td>
+              <td class="text-center"><?= $res['berat_balita'] / 1000; ?> Kg</td>
+              <td class="text-center"><?= $res['tinggi_balita']; ?> cm</td>
+              <td class="text-right"><?= $res['z_score']; ?></td>
+              <td class="text-center"><?= $res['kesimpulan'] == 'HK01' ? 'Stunting' : 'Tidak Stunting'; ?></td>
+            </tr>
+          <?php endif; ?>
         <?php endforeach; ?>
       </tbody>
     </table>

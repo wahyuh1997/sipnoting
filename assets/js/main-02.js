@@ -1,9 +1,3 @@
-$(".datepicker").datepicker({
-  format: "yyyy-mm-dd",
-  autoclose: true,
-  orientation: "bottom auto"
-});
-
 $('#regCrudForm').on('submit', function (e) {
   e.preventDefault();
   // init
@@ -63,6 +57,16 @@ $('#regCrudForm').on('submit', function (e) {
       });
     }
   })
+});
+
+$(".datepicker").datepicker({
+  format: "yyyy-mm-dd",
+  autoclose: true,
+  changeMonth: true,
+  changeYear: true,
+  startDate: '-5y',
+  endDate: '-1d',
+  orientation: "bottom auto"
 });
 
 /* Logout Function */
