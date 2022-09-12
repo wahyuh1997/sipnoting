@@ -82,9 +82,9 @@ class Diagnosis_model extends My_Model
       'tinggi_badan' => $tinggi_badan, 'usia' => $balita['usia'], 'jenis_kelamin' => $balita['jenis_kelamin']
     ];
     $z_score = $this->z_score($data_z_score);
-    
+
     if (!$z_score['status']) {
-      return $this->return_failed($z_score['data'], []);
+      return $this->return_failed($z_score['message'], []);
     }
 
     /*
