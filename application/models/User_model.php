@@ -267,4 +267,38 @@
             $this->db->delete('users',['id'=>$id]);
             return $this->return_success('User berhasil dihapus!',[]);
         }
+        
+        function forgot_password($email)
+        {
+            if(!$this->db->get_where('users', ['email' => $email])->row_array()){
+                return $this->return_failed('Email tidak terdaftar atau user sudah terhapus. silahkan daftar kembali!',[]);
+            }
+
+            $kode_otp =  $this->token();
+
+            if (!$this->_sendEmailVerify($kode_otp,$email)['status']) {
+                return $this->return_failed('Proses Gagal. Silahkan coba lagi',[]);
+            }
+            return $this->return_success('Email sudah dikirim! Silahkan cek inbox atau spam!',[]);
+        }
+        
+        function verify_password($email, $kode_otp)
+        {
+            $user = $this->db->get_where('users', ['email' => $email])->row_array();
+            if(!$this->db->get_where('users', ['email' => $email])->row_array()){
+                return $this->return_failed('Email tidak terdaftar atau user sudah terhapus. silahkan daftar kembali!',[]);
+            }
+            
+            if (!$this->db->get_where('users', ['email' => $email, 'kode_otp'=> $kode_otp])->row_array()) {
+                return $this->return_failed('Kode OTP tidak berlaku!',[]);
+            }
+            
+            $reset = $this->reset_password($email);
+            
+            if (!$reset['status']) {
+                return $this->return_failed('Reset password gagal! Silahkan hubungi admin!',[]);
+            }
+            
+            return $this->return_success('Password berhasil di reset ke 12345678 . Silahkan login untuk mengubah password!',[]);
+        }
     }
