@@ -2,7 +2,9 @@
 
   <div class="d-flex justidy-content-between">
     <h1 class="title-text d-inline"><?= $title; ?></h1>
-    <a href="<?= base_url('profile/add'); ?>" class="ms-auto mb-0 text-white text-decoration-none"><i class="fa-solid fa-xl fa-plus"></i> Tambah Data Balita</a>
+    <?php if ($parent['ayah'] != null && $parent['ibu'] != null) : ?>
+      <a href="<?= base_url('profile/add'); ?>" class="ms-auto mb-0 text-white text-decoration-none"><i class="fa-solid fa-xl fa-plus"></i> Tambah Data Balita</a>
+    <?php endif; ?>
   </div>
 
   <div class="row">

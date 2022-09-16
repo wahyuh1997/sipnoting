@@ -1,8 +1,10 @@
-<style>
-  .app-main__inner {
-    width: calc(100% - 300px) !important;
-  }
-</style>
+<?php if (count($data['data']) > 0) : ?>
+  <style>
+    .app-main__inner {
+      width: calc(100% - 220px) !important;
+    }
+  </style>
+<?php endif; ?>
 <!-- Main Content -->
 <div class="app-page-title">
   <div class="page-title-wrapper">
@@ -55,8 +57,8 @@
           <td><?= $res['tempat_lahir']; ?></td>
           <td><?= dateFormat($res['tanggal_lahir']); ?></td>
           <td><?= $res['usia_tahun'] != 0 ? $res['usia_tahun'] . ' Tahun' : null; ?> <?= $res['usia_bulan'] . ' Bulan'; ?></td>
-          <td><?= $res['ayah']; ?></td>
-          <td><?= $res['ibu']; ?></td>
+          <td><?= $res['ayah_balita']; ?></td>
+          <td><?= $res['ibu_balita']; ?></td>
           <td><?= $res['email']; ?></td>
           <td><?= $res['no_hp']; ?></td>
         </tr>

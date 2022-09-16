@@ -17,6 +17,18 @@
           </div>
         </div>
         <div class="mb-3 row">
+          <label for="ayah" class="col-form-label text-white col-lg-3">Nama Ayah <span class="text-danger">*</span></label>
+          <div class="col-lg-9">
+            <input type="text" class="form-control" id="ayah" name="ayah" autocomplete="off" value="<?= $data['ayah']; ?>" required>
+          </div>
+        </div>
+        <div class="mb-3 row">
+          <label for="ibu" class="col-form-label text-white col-lg-3">Nama Ibu <span class="text-danger">*</span></label>
+          <div class="col-lg-9">
+            <input type="text" class="form-control" id="ibu" name="ibu" autocomplete="off" value="<?= $data['ibu']; ?>" required>
+          </div>
+        </div>
+        <div class="mb-3 row">
           <label for="no_hp" class="col-form-label text-white col-lg-3">No Hp</label>
           <div class="col-lg-9">
             <input type="number" class="form-control" id="no_hp" name="no_hp" maxlength="13" autocomplete="off" value="<?= $_SESSION['sipnoting_user']['no_hp']; ?>">

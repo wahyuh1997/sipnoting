@@ -46,16 +46,16 @@
             <input type="text" class="form-control datepicker" id="tanggal_lahir" name="tanggal_lahir" autocomplete="off" required>
           </div>
         </div>
-        <div class="mb-3 row">
+        <div class="mb-3 row d-none">
           <label for="ayah" class="col-form-label text-white col-lg-3">Nama Ayah</label>
           <div class="col-lg-9">
-            <input type="text" class="form-control" id="ayah" name="ayah" autocomplete="off">
+            <input type="text" class="form-control" id="ayah" name="ayah" value="<?= $parent['ayah']; ?>" autocomplete="off">
           </div>
         </div>
-        <div class="mb-3 row">
+        <div class="mb-3 row d-none">
           <label for="ibu" class="col-form-label text-white col-lg-3">Nama Ibu</label>
           <div class="col-lg-9">
-            <input type="text" class="form-control" id="ibu" name="ibu" autocomplete="off">
+            <input type="text" class="form-control" id="ibu" name="ibu" value="<?= $parent['ibu']; ?>" autocomplete="off">
           </div>
         </div>
         <div class="mb-3 row">

@@ -26,6 +26,7 @@ class Profile extends MY_Controller
     /* load Function Model Here to Show All Data*/
     if (isset($_SESSION['sipnoting_user']['id'])) {
       $res = $this->balita->get_balita_by_user($_SESSION['sipnoting_user']['id']);
+      $parent = $this->user->get_user($_SESSION['sipnoting_user']['id']);
     } else {
       $res = ['status' => false];
     }
@@ -33,20 +34,23 @@ class Profile extends MY_Controller
     $data = [
       'title'     => 'Profile',
       'subtitle'  => 'SIPNOTING',
-      'data'      => $res
+      'data'      => $res,
+      'parent'    => $parent,
     ];
-    // trace($res);
+
     $this->load_template_user('profile/page/index', $data);
   }
 
   public function add()
   {
     $post = $this->input->post(null, true);
+    $parent = $this->user->get_user($_SESSION['sipnoting_user']['id']);
 
     if (count($post) == 0) {
       $data = [
         'title'     => 'Ubah Profile',
         'subtitle'  => 'SIPNOTING',
+        'parent'    => $parent,
         'js'        => 'profile/js/data'
       ];
       $this->load_template_user('profile/page/add', $data);
@@ -60,13 +64,15 @@ class Profile extends MY_Controller
     $post = $this->input->post(null, true);
     /* load Function Model Here to Show All Data*/
     $res = $this->balita->get_balita($id);
+    $parent = $this->user->get_user($_SESSION['sipnoting_user']['id']);
     if (count($post) == 0) {
       # code...
       $data = [
         'title'     => 'Ubah Profile',
         'subtitle'  => 'SIPNOTING',
         'js'        => 'profile/js/data',
-        'data'      => $res['data']
+        'data'      => $res['data'],
+        'parent'    => $parent
       ];
       $this->load_template_user('profile/page/edit', $data);
     } else {
@@ -78,12 +84,14 @@ class Profile extends MY_Controller
   {
     $post = $this->input->post(null, true);
     /* load Function Model Here to Show All Data*/
-    $res = $this->balita->get_balita();
+    $res = $this->user->get_user($_SESSION['sipnoting_user']['id']);
+
     if (count($post) == 0) {
       # code...
       $data = [
         'title'     => 'Ubah Profile',
         'subtitle'  => 'SIPNOTING',
+        'data'      => $res
       ];
       $this->load_template_user('profile/page/edit_user', $data);
     } else {

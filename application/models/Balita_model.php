@@ -51,9 +51,14 @@ class Balita_model extends My_Model
   function get_all_balita()
   {
     $sql = "
-                select a.*, b.no_hp, b.email
-                    ,(timestampdiff(year, tanggal_lahir, current_date)) as usia_tahun
-                    ,(timestampdiff(month, tanggal_lahir, current_date) - (timestampdiff(year, tanggal_lahir, current_date)*12))  as usia_bulan
+                select 
+                a.*, 
+                b.no_hp, 
+                b.email,
+                b.ayah as ayah_balita,
+                b.ibu as ibu_balita,
+                (timestampdiff(year, tanggal_lahir, current_date)) as usia_tahun,
+                (timestampdiff(month, tanggal_lahir, current_date) - (timestampdiff(year, tanggal_lahir, current_date)*12))  as usia_bulan
                 from profile_bayi a
                 left join users b on a.user_id = b.id
                 ";
@@ -75,14 +80,7 @@ class Balita_model extends My_Model
     }
 
     $insert_bayi = [
-      'jenis_kelamin' => $data['jenis_kelamin']
-      , 'nama' => $data['nama']
-      , 'tempat_lahir' => $data['tempat_lahir']
-      , 'tanggal_lahir' => $data['tanggal_lahir']
-      , 'ayah' => $data['ayah']
-      , 'ibu' => $data['ibu']
-      , 'alamat' => $data['alamat']
-      , 'updated_at' => date('Y-m-d H:i:s')
+      'jenis_kelamin' => $data['jenis_kelamin'], 'nama' => $data['nama'], 'tempat_lahir' => $data['tempat_lahir'], 'tanggal_lahir' => $data['tanggal_lahir'], 'ayah' => $data['ayah'], 'ibu' => $data['ibu'], 'alamat' => $data['alamat'], 'updated_at' => date('Y-m-d H:i:s')
     ];
 
     $this->db->update('profile_bayi', $insert_bayi, ['id' => $data['bayi_id']]);
@@ -116,6 +114,7 @@ class Balita_model extends My_Model
       return $this->return_failed('data bayi tidak ada', []);
     }
 
+    $this->db->delete('diagnosis', ['bayi_id' => $id]);
     $this->db->delete('profile_bayi', ['id' => $id]);
     return $this->return_success('berhasil', []);
   }

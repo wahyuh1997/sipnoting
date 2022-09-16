@@ -23,18 +23,22 @@ class Diagnosis extends MY_Controller
    */
   public function index()
   {
-    $post = $this->input->post(null, true);
+
     if (isset($_SESSION['sipnoting_user']['id'])) {
-      $res = $this->balita->get_balita_by_user($_SESSION['sipnoting_user']['id']);
+      $res       = $this->balita->get_balita_by_user($_SESSION['sipnoting_user']['id']);
+      $diagnosis = $this->diagnosis->get_all_diagnosis($_SESSION['sipnoting_user']['id']);
     } else {
       $res = ['status' => false];
     }
 
+
     $data = [
       'title'     => 'Diagnosis',
       'subtitle'  => 'SIPNOTING',
-      'data'      => $res
+      'data'      => $res,
+      'diag'      => $diagnosis,
     ];
+
     $this->load_template_user('Diagnosis/page/index', $data);
   }
 

@@ -36,7 +36,7 @@
           <!-- <div class="widget-subheading">Total Clients Profit</div> -->
         </div>
         <div class="widget-content-right">
-          <div class="widget-numbers text-white"><span><?= $data['data']['rerata']; ?></span></div>
+          <div class="widget-numbers text-white"><span><?= count($data['data']['rerata']) > 0 ? $data['data']['rerata'] : 0; ?></span></div>
         </div>
       </div>
     </div>
@@ -49,7 +49,7 @@
           <!-- <div class="widget-subheading">People Interested</div> -->
         </div>
         <div class="widget-content-right">
-          <div class="widget-numbers text-white"><span><?= $percent['data']['persentase']; ?>%</span></div>
+          <div class="widget-numbers text-white"><span><?= count($percent['data']['persentase']) > 0 ? $percent['data']['persentase'] : 0; ?>%</span></div>
         </div>
       </div>
     </div>
